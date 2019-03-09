@@ -19,9 +19,10 @@ int signal(){
 
     TTree* readThis = 0;//create an empty object for new stuff.
     f1->GetObject("singlephoton/vertex_tree", readThis);
+    readThis->Draw("mctruth_nu_E[0]>>events(17,0,0.9)","lee_signal_weights.lee_weights","hist");
     
-    readThis->Draw("nu_energy>>hsqrt(17,0,0.7)","signal_weight","hist");
     return 0;
+
     int width = 29;
     
     string LEE_def = "lee_signal_weights";
