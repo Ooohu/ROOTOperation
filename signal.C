@@ -9,7 +9,7 @@
 using namespace std;
 
 int signal(){
-    /*file location:
+    /*file location (old):
 	    /pnfs/uboone/persistent/users/markross/single_photon_persistent_data/vertexed_v3/vertexed_nueintrinsic_fresh_v4.1.root
     */
 
@@ -19,104 +19,127 @@ int signal(){
 
     TTree* readThis = 0;//create an empty object for new stuff.
     f1->GetObject("singlephoton/vertex_tree", readThis);
-    readThis->Draw("mctruth_nu_E[0]>>events(17,0,0.9)","lee_signal_weights.lee_weights","hist");
     
-    return 0;
-
-    int width = 29;
+    // readThis is the vertex_tree.
+     
+//    readThis->Draw("mctruth_nu_E[0]>>events(17,0,0.9)","lee_signal_weights.lee_weights","hist");
     
-    string LEE_def = "lee_signal_weights";
-    string def = LEE_def;
 
-    cout<<"\n\nStarted with cosmic overlay nue mc file (5.7e22 POT)"<<endl;
+    int width = 29;//this is for the display in terminal.
     
-    cout<< setw(45)<<"Total number of vertices: "<<readThis->GetEntries()<<endl;
+//    string def = LEE_def; //this is the argument for applying weights.
 
-    double base = readThis->GetEntries("signal_weight");
-    cout<< setw(45)<<"Total number of vertices (LEE-reweighted): "<<base<<endl;//this shows the number of weighted events.
-  
+//--------------------- Variables --------------------------------
+    std::string fiducial_vertex = "(mctruth_nu_vertex_x > 10 && mctruth_nu_vertex_x < 246  && mctruth_nu_vertex_y > -106 && mctruth_nu_vertex_y < 106 && mctruth_nu_vertex_z > 10 && mctruth_nu_vertex_z < 1022)";
+
+//--------------------- Start to calculate events --------------------
+    cout<<"\n\nStarted with cosmic overlay nue mc file (?? POT) within a fiducial volumne"<<endl;
+
+    string base_cut = "reco_vertex_size==1 && reco_asso_showers == 1 && reco_asso_tracks==1";
+    string signal_cut = "(mctruth_nu_pdg==12&&mctruth_num_exiting_protons == 1&& ((mctruth_num_exiting_pi0+mctruth_num_exiting_pipm) ==0))";
+    string training_cut = "abs(mctruth_nu_pdg)==12&&mctruth_interaction_type==1001&&sim_shower_matched[0]==1&&          sim_shower_overlay_fraction[0]<0.2&&mctruth_lepton_E[0]>0.02 && mctruth_exiting_proton_energy[0]>0.04&&(reco_shower_energy[0]/1000<(mctruth_lepton_E[0]*0.8+0.2))&&(reco_shower_energy[0]/1000>(mctruth_lepton_E[0]*0.55-0.05))"; 
+
     //start
+    int index = 0;
+    string sequential_cut = fiducial_vertex+"&&"+"mctruth_nu_pdg==12&&";
 
+    double base = readThis->GetEntries((sequential_cut+"1").c_str());
+    cout<< setw(45)<<"Total number of vertices: "<<base<<endl;
+
+    //---------------------------------------------------------------------    
+    string label,new_cut;
+    while(index<4){
+	switch (index){
+	    case 0://1eXpXpi  note: "\" is for new line in c++!!
+		label = "1eXpXpi";
+		new_cut = "mctruth_num_exiting_protons >= 0"
+		    "&& ((mctruth_num_exiting_pi0+mctruth_num_exiting_pipm) >= 0)";	
+		break;
+	    case 1://1eXp0pi
+		label = "1eXp0pi";
+		new_cut = "mctruth_num_exiting_protons >= 0"
+		    "&& ((mctruth_num_exiting_pi0+mctruth_num_exiting_pipm) == 0)";	
+		break;
+	    case 2://1eNp0pi
+		label = "1eNp0pi";
+		new_cut = "mctruth_num_exiting_protons > 0"
+		    "&& ((mctruth_num_exiting_pi0+mctruth_num_exiting_pipm) == 0)";	
+		break;
+	    case 3://1e1p0pi
+		label = "1e1p0pi";
+		new_cut = "mctruth_num_exiting_protons == 1"
+		    "&& ((mctruth_num_exiting_pi0+mctruth_num_exiting_pipm) == 0)";	
+		break;
+	    default://do nothing
+		    ;
+	}
+    index++;
+    string cuts = sequential_cut+new_cut;
+    cout<<setw(width)<<right<<label<<": ";
+    cout<<setprecision(4)<<readThis->GetEntries( cuts.c_str() )/base*100<<"%";
+			    //factor comes from fiducial volumne
+    cout<<" | Wes's 1e20 POT: "<<0.827*206.2*readThis->GetEntries( cuts.c_str() )/base<<endl;
+    }
+
+
+    string LEE_def = "lee_signal_weights.lee_weights";
+    double lee_base = readThis->GetEntries(LEE_def.c_str());
+
+    cout<< setw(45)<<"Total number of vertices: "<<lee_base<<endl;
+
+    cout<< setw(45)<<"Number of signal: ";
+    cout<<readThis->GetEntries((LEE_def+"&&"+base_cut+"&&"+signal_cut).c_str());
+    cout<<"("<<readThis->GetEntries((LEE_def+"&&"+base_cut+"&&"+signal_cut).c_str())/lee_base*100<<")%;"<<endl;
+
+    cout<< setw(45)<<"Number of training sample: ";
+    cout<<readThis->GetEntries((LEE_def+"&&"+base_cut+"&&"+training_cut).c_str());
+    cout<<"("<<readThis->GetEntries((LEE_def+"&&"+base_cut+"&&"+training_cut).c_str())/lee_base*100<<")%;"<<endl;
+
+//---------------------------------------------------------------------    
     cout<< setw(width)<<right<<"\nPerform cuts, respected to LEE reweighted: sequential (individual)"<<endl; 
     
-    cout<<" signal cuts (based on LEE-reweighted sample)"<<endl;
+    cout<<" signal cuts on LEENue sample)"<<endl;
     
-    def = def + "&& abs(nu_pdg)==12";
 
-    cout<< setw(width)<<right<<" abs(nu_pdg)==12: ";
-    cout<<setprecision(4)<<readThis->GetEntries( def.c_str() )/base*100<<"%"<<endl;
-    
-    //individual cuts
-    string ind_def = LEE_def + "&&(exiting_electron_number+exiting_antielectron_number==1)";
-    def = def + "&&" + ind_def;
+    string allprecuts = "1";
+    string precuts;
+    index = 0;//reset index
+    while(index < 6){
+	switch(index){
+	case 0:
+	    label = "Photo-electron cut: ";
+	    precuts = "reco_flash_total_pe_in_beamgate[0]>20";
+	    break;
+	case 1:
+	    label = "Fiducial_cut: ";
+	    precuts = fiducial_vertex;
+	    break;
+	case 2:
+	    label = "Shower dEdx cut: ";
+	    precuts = "reco_shower_dEdx_plane2_nhits[0]>1";
+	    break;
+	case 3:
+	    label = "Minimum Shower Energy cut: ";
+	    precuts = "reco_shower_energy[0]>0.00";
+	    break;
+	case 4:
+	    label = "Track length cut: ";
+	    precuts = "reco_track_displacement[0]<250";
+	    break;
+	case 5:
+	    label = "Calometric cut: ";
+	    precuts = "reco_track_good_calo[0]>0";
+	    break;
+	default:
+	    ;
+	}
+    index++;
+    allprecuts = allprecuts + "&&" + precuts;
+    cout<< setw(width)<<right<<label;
+    cout<<setprecision(4)<<readThis->GetEntries( (LEE_def+"&&"+allprecuts).c_str() )/lee_base*100<<"%";
+    cout<<" ("<<readThis->GetEntries( (LEE_def+"&&"+precuts).c_str())/lee_base*100 <<"% );"<<endl;
+    }
 
-    cout<< setw(width)<<right<<" 1e- or 1e+: ";
-    cout<<setprecision(4)<<readThis->GetEntries( def.c_str() )/base*100<<"%";
-    cout<<" ("<<readThis->GetEntries( ind_def.c_str())/base*100 <<"% );"<<endl;
-    //
-    //repeat the same thing..
-    ind_def = LEE_def + "&&exiting_proton_number ==1";
-    def = def + "&&" + ind_def;
-
-    cout<< setw(width)<<right<<" 1 proton: ";
-    cout<<setprecision(4)<<readThis->GetEntries( def.c_str() )/base*100<<"%";
-    cout<<" ("<<readThis->GetEntries( ind_def.c_str())/base*100 <<"% );"<<endl;
-
-
-    //repeat the same thing..
-    ind_def = LEE_def + "&&exiting_piplus_number==0&&exiting_piminus_number==0&&exiting_pi0_number==0";
-    def = def + "&&" + ind_def;
-
-    cout<< setw(width)<<right<<" no pi0,pi-,pi+: ";
-    cout<<setprecision(4)<<readThis->GetEntries( def.c_str() )/base*100<<"%";
-    cout<<" ("<<readThis->GetEntries( ind_def.c_str())/base*100 <<"% );"<<endl;
-
-    //repeat the same thing..
-    ind_def = LEE_def + "&&true_shower_energy[0]>0.02&&true_track_energy[0]>0.04";   
-    def = def + "&&" + ind_def;
-
-    cout<< setw(width)<<right<<"KE_e>0.02; KE_p>0.04: ";
-    cout<<setprecision(4)<<readThis->GetEntries( def.c_str() )/base*100<<"%";
-    cout<<" ("<<readThis->GetEntries( ind_def.c_str())/base*100 <<"% );"<<endl;
-
-
-    //true_signal cuts
-    cout<<"\n true_signal cuts (for training)"<<endl; 
-
-    //ccnc == 0 is redundant
-    //ind_def = LEE_def + "&&ccnc==0";
-    //def = def + "&&" + ind_def;
-
-    //cout<< setw(width)<<right<<"cc interaction: ";
-    //cout<<setprecision(4)<<readThis->GetEntries( def.c_str() )/base*100<<"%";
-    //cout<<" ("<<readThis->GetEntries( ind_def.c_str())/base*100 <<"% );"<<endl;
-
-    //repeat the same thing..
-    ind_def = LEE_def + "&&true_track_pdg[0]==2212&&abs(true_shower_pdg[0])==11";
-    def = def + "&&" + ind_def;
-
-    cout<< setw(width)<<right<<"p+ track, e- or e+ shower: ";
-    cout<<setprecision(4)<<readThis->GetEntries( def.c_str() )/base*100<<"%";
-    cout<<" ("<<readThis->GetEntries( ind_def.c_str())/base*100 <<"% );"<<endl;
-
-    
-    //repeat the same thing..
-    ind_def = LEE_def + "&&true_track_origin[0]==1&&true_shower_origin[0]==1";
-    def = def + "&&" + ind_def;
-
-    cout<< setw(width)<<right<<"BNB signal: ";
-    cout<<setprecision(4)<<readThis->GetEntries( def.c_str() )/base*100<<"%";
-    cout<<" ("<<readThis->GetEntries( ind_def.c_str())/base*100 <<"% );"<<endl;
-
-    //repeat the same thing..
-    ind_def = LEE_def + "&&(abs(true_nuvertz-true_track_startz[0])+abs(true_nuverty-true_track_starty[0])+abs(true_nuvertx-true_track_startx[0])<1)";
-    def = def + "&&" + ind_def;
-
-    cout<< setw(width)<<right<<"Well-reconstructed signal: ";
-    cout<<setprecision(4)<<readThis->GetEntries( def.c_str() )/base*100<<"%";
-    cout<<" ("<<readThis->GetEntries( ind_def.c_str())/base*100 <<"% );"<<endl;
-
-
-	return 0;
+    return 0;
 }
 
