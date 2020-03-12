@@ -65,9 +65,9 @@ void BBhistograms(){
 	
 //	string sig_name = "/pnfs/uboone/persistent/users/klin/mcc9BBvertex_studies/v08_00_00_19/vertex/ncpi0v3.2_optimize1.root";
 	TString dir = "/pnfs/uboone/persistent/users/klin/mcc9BBvertex_studies/v08_00_00_19/vertex/"; 
-	vector <TString> files = {  "deltaradv4.2_optimize4.root",
-								"ncpi0v4.2_optimize4.root",
-								"bnbv4.2_optimize4.root"};
+	vector <TString> files = {  "deltaradv4.5_optimize5.root",
+								"ncpi0v4.5_optimize5.root",
+								"bnbv4.5_optimize5.root"};
 	int nfiles	= files.size();
 	vector<int> max_height(2);
 	
@@ -95,7 +95,7 @@ void BBhistograms(){
 	vector<string> parameter =  {"parameter_dist_tt","parameter_dist_sx","parameter_dist_st","parameter_dist_sst"};
 	
 	//binning	
-	vector<string> binning = {"(40,0,20)", "(70,0,200)"};
+	vector<string> binning = {"(30,0,35)", "(70,0,200)"};
 
 	//name
 //	vector<string> signal_name = {"Pandora ", "Bobby "};//put them in one plot;
@@ -109,11 +109,26 @@ void BBhistograms(){
 								"BB in the same slice or not?",
 								"Look at the parameters"};
 	//type, pandora, bobby
-	vector<string> pandora_conf = {"reco_asso_tracks == 0&&reco_asso_showers ==1","reco_asso_tracks == 1&&reco_asso_showers ==1"};
-	vector<string> bb_conf = {"reco_bobbytracksv == 0&&reco_bobbyshowersv ==1","reco_bobbytracksv == 1&&reco_bobbyshowersv ==1"};
+	vector<string> pandora_conf = {"reco_asso_tracks == 0&&reco_asso_showers ==1","reco_asso_tracks == 1&&reco_asso_showers ==2"};
+	vector<string> bb_conf = {"reco_bobbytracksv == 0&&reco_bobbyshowersv ==1","reco_bobbytracksv == 1&&reco_bobbyshowersv ==2"};
 	int topo_type = 1;
 	
 	//{type, pandora, bobby}
+	vector<string> true_sig = {"2#gammaXp",
+		"abs(sim_shower_parent_pdg[0]) == 111&&abs(sim_shower_parent_pdg[1])==111&&" 
+		"abs(sim_shower_pdg[0]) == 22&& abs(sim_shower_pdg[1]) == 22&&"+pandora_conf[topo_type],
+		delta_num_str(2)+"&& mctruth_bobbyphotonshowerv==2&&reco_bobbytracksv=="
+		"(mctruth_bobbydeltaradppdaughterv+mctruth_bobbydeltaradpdaughterv+mctruth_bobbydeltaradmdaughterv+"
+		"mctruth_bobbydeltarad0daughterv+mctruth_bobbyotherdaughterv+mctruth_bobbyoverlayv)&&"+bb_conf[topo_type]};
+	vector<string> fake_sig = {"Fake 0#gammaXp",
+		"abs(sim_shower_pdg[0]) != 22 && abs(sim_shower_pdg[1]) != 22&&"+pandora_conf[topo_type],
+		delta_num_str(0)+"&& mctruth_bobbyphotonshowerv==1&& reco_bobbytracksv=="
+		"(mctruth_bobbydeltaradppdaughterv+mctruth_bobbydeltaradpdaughterv+mctruth_bobbydeltaradmdaughterv+"
+		"mctruth_bobbydeltarad0daughterv+mctruth_bobbyotherdaughterv+mctruth_bobbyoverlayv-2)&&"+bb_conf[topo_type]};
+
+
+/*
+//		pandora_conf[topo_type],
 	vector<string> true_sig = {"1#gamma1p ",
 		"sim_shower_pdg[0] == 22&&sim_track_pdg[0]==2212&& mctruth_is_delta_radiative == 1&&"+pandora_conf[topo_type],
 		delta_num_str(2)+"&& mctruth_bobbyphotonshowerv==1&&mctruth_bobbyprotontrackv==1&&"+bb_conf[topo_type]};
@@ -126,7 +141,7 @@ void BBhistograms(){
 	vector<string> fake_sig = {"0#gamma0p ",
 		"(sim_shower_pdg[0] != 22&&sim_track_pdg[0]!=2212 &&  mctruth_is_delta_radiative == 1)&&"+pandora_conf[topo_type],
 		delta_num_str(0)+"&& mctruth_bobbyphotonshowerv + mctruth_bobbyprotontrackv == 0 &&"+bb_conf[topo_type]};
-
+*/
 
 	//constraint
 //	string same_track = "reco_bobbytracksv == reco_asso_tracks";
@@ -270,7 +285,8 @@ void BBhistograms(){
 		stacks->GetYaxis()->SetTitleOffset(1.5);
 		stacks->GetXaxis()->SetTitle(contents[i][4].c_str());
 		stacks->SetMinimum(1);
-		stacks->SetMaximum(( *std::max_element(max_height.begin(), max_height.end()))*1.1 );
+		stacks->SetMaximum( max_height[j]*1.2 );
+//		stacks->SetMaximum(( *std::max_element(max_height.begin(), max_height.end()))*1.2 );
 
 		l->Draw();
 		
