@@ -21,13 +21,15 @@ int applyweights(){
 	TString ratio_root = "calc_ratio_rw2dhist.root";
 	vector<TString> weights_name = {"GENIE_CCQEMEC_wgt", "GENIE_CCQE_wgt","GENIE_MEC_wgt"};
 //	vector<TString> mbfiles = {"MC_nu_all_1_16.root","MC_numu_all_00_15.root"};
-	vector<TString> mbfiles = {"timing_MC_nue_may07_2.root","timing_MC_numu_may07_2.root"};
+	vector<TString> mbfiles = {"timing_MC_fullosc_may07_2.root","MC_numu_all_00_15.root"};
+//	vector<TString> mbfiles = {"timing_MC_nue_may07_2.root","timing_MC_numu_may07_2.root"};
 	vector<TString> file_code = {"RECREATE","UPDATE"};
 //	vector< Int_t> ntp_type = {1,3};//MCBEAM.ntp: 1 - nue, 3 - numu
 	vector< int> particle_type = {3,1};//DIFFERENT to MCBEAM.ntp; MCEVNT.INNO: 1 - numu, 3 - nue 
 	vector< int> fin_par = {2,3,5,6};//final sate particle, CHECK to be determined, for electron/muon;
 	vector<TString> tags = {"Nue","Numu"}; 
 	vector<float> lep_mass = {0.511*0.001, 105.66*0.001};
+	TString output_tag = "_fullosc";//"_1699";
 
 	//record 2dhist for weights;
 	for(int hndex = 0; hndex < 2; ++hndex){
@@ -45,7 +47,7 @@ int applyweights(){
 //		Float_t mcevent_weight = 0;
 
 		//based on the old tree;
-		TString outfilename = "weights_"+tags[hndex]+"_1699.root";
+		TString outfilename = "weights_"+tags[hndex]+output_tag+".root";
 		TFile* output = TFile::Open(outfilename,file_code[0]);
 
 		TTree* out_tree = new TTree("T","2dweights");
@@ -70,9 +72,9 @@ int applyweights(){
 		
 		//STEP3: Get ratio histograms for three weights from `apply2dreweight.C`;
 		TFile* f2 = TFile::Open(ratio_root,"READ");
-		TH2F* twodhist_CCQEMEC = (TH2F*) f2->Get("weights");
-		TH2F* twodhist_CCQE = (TH2F*) f2->Get(tags[hndex]+"CCQEhist");
-		TH2F* twodhist_MEC = (TH2F*) f2->Get(tags[hndex]+"MEChist");
+		TH2F* twodhist_CCQEMEC = (TH2F*) f2->Get(tags[hndex]+"CCQEMEC_ratio");
+		TH2F* twodhist_CCQE = (TH2F*) f2->Get(tags[hndex]+"CCQE_ratio");
+		TH2F* twodhist_MEC = (TH2F*) f2->Get(tags[hndex]+"MEC_ratio");
 
 		//STEP3.4: Apply weight; do it by entries
 		int Nevents = input_tree->GetEntries();

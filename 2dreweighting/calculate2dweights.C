@@ -25,8 +25,8 @@ int calculate2dweights(){
 //	vector<TString> weights_name = {"uBnue_CCQEMEC_wgt", "uBnumu_CCQEMEC_wgt"};
 	TString GENIE_2dhist = "GENIE_twodhist.root";//read histograms from a root
 	TString ratio_root = "calc_ratio_rw2dhist.root";
-//	vector<TString> mbfiles = {"timing_MC_nue_may07_2.root","MC_numu_all_00_15.root"};
-	vector<TString> mbfiles = {"MC_nu_all_1_16.root","MC_numu_all_00_15.root"};
+//	vector<TString> NUANCEfiles = {"timing_MC_nue_may07_2.root","MC_numu_all_00_15.root"};
+	vector<TString> NUANCEfiles = {"MC_nu_all_1_16.root","MC_numu_all_00_15.root"};
 	vector<TString> file_code = {"RECREATE","UPDATE"};
 //	vector< Int_t> ntp_type = {1,3};//MCBEAM.ntp: 1 - nue, 3 - numu
 	vector< int> particle_type = {3,1};//DIFFERENT to MCBEAM.ntp; MCEVNT.INNO: 1 - numu, 3 - nue 
@@ -69,7 +69,7 @@ int calculate2dweights(){
 
 
 		//STEP2: read contents from the root file;
-		TFile* f1=TFile::Open("/scratch/condor-tmp/klin/data_timing_root/"+mbfiles[hndex],"READ"); //open a root file
+		TFile* f1=TFile::Open("/scratch/condor-tmp/klin/data_timing_root/"+NUANCEfiles[hndex],"READ"); //open a root file
 		TTree* input_tree = (TTree*) f1->Get("TTiming");
 //		TTree* input_tree = dynamic_cast <TTree* > (f1->Get("TTiming"));
 
@@ -92,7 +92,7 @@ int calculate2dweights(){
 //		cout<<input_tree->GetEntries("ibkgd==1&&MCEVNT.INNO=="+particle_type[hndex]+"&&MCEVNT.IPFS=="+fin_par[hndex])<<" CCQE entries"<<endl;	//only CCQE events
 
 		//STEP3.1: get 2dhistogrm of mB CCQE events 
-		TH2F* twodhist_CCQE_mb = new TH2F("CCQEhist", "CCQEhist",nb1,nle,nhe,nb2,nlz,nhz);//binning for xnbins,xmin,xmax,ybins,ymin.ymax;
+		TH2F* CCQE_old = new TH2F("CCQEhist", "CCQEhist",nb1,nle,nhe,nb2,nlz,nhz);//binning for xnbins,xmin,xmax,ybins,ymin.ymax;
 		Long64_t Nevents = input_tree->GetEntries();
 		int counts = 0;
 		std::cout<<"Filling in MB CCQE events "<<std::endl;
@@ -103,7 +103,7 @@ int calculate2dweights(){
 //			if(ibkgd!= 1 || INNO!=particle_type[hndex]|| IPFS[jndex]!=fin_par[hndex]) continue; //if it is not CCQE or not nue/numu, skip;
 			if(ibkgd ==1 && INNO == particle_type[hndex] && (IPFS[jndex]==fin_par[2*hndex]||IPFS[jndex]==fin_par[2*hndex+1])){
 			counts++;
-			twodhist_CCQE_mb->Fill(sqrt(pow(PFSPP[jndex],2)+pow(lep_mass[hndex],2)), PFSPZ[jndex], mcevent_weight);
+			CCQE_old->Fill(sqrt(pow(PFSPP[jndex],2)+pow(lep_mass[hndex],2)), PFSPZ[jndex], mcevent_weight);
 			}
 			}
 		}
@@ -114,166 +114,167 @@ int calculate2dweights(){
 //		TString Lepton_E = "sqrt("+psquare+"+"+lep_mass_square[hndex]+")";
 
 //		input_tree->Project("CCQEhist","MCEVNT.PFSPZ:"+Lepton_E,"1");//("ibkgd==1&&MCEVNT.INNO=="+std::to_string(particle_type[hndex])+"&&MCEVNT.IPFS=="+std::to_string(fin_par[hndex])).c_str());
-//		std::cout<<"\nFinish filling "<< twodhist_CCQE_mb->Integral()<<" CCQE events"<<std::endl;
+//		std::cout<<"\nFinish filling "<< CCQE_old->Integral()<<" CCQE events"<<std::endl;
 		std::cout<<"\nFinish filling "<< counts<<" NUANCE CCQE events"<<std::endl;
 		if(debug_message){
 			for(int index = 1; index<nb1+1 ; ++index){
 				for(int jndex = 1; jndex<nb2+1 ; ++jndex){
-					std::cout<<"Bin "<<index<<","<<jndex<<" has events "<<twodhist_CCQE_mb->GetBinContent(index,jndex) <<std::endl;
+					std::cout<<"Bin "<<index<<","<<jndex<<" has events "<<CCQE_old->GetBinContent(index,jndex) <<std::endl;
 				}
 			}
-			std::cout<<" Total: "<<twodhist_CCQE_mb->Integral()<<std::endl;
+			std::cout<<" Total: "<<CCQE_old->Integral()<<std::endl;
 		}
-		//STEP3.2: normalize 2dhistogram of mB CCQE, sum(uB CCQE, ub MEC);
-		TFile* f2 = TFile::Open(GENIE_2dhist,"READ");
-		TH2F* twodhist_CCQE_new = (TH2F*) f2->Get(tags[hndex]+"CCQEhist");
-		TH2F* twodhist_MEC_new = (TH2F*) f2->Get(tags[hndex]+"MEChist");
 
-		TH2F* norm_CCQE_mb = (TH2F*) twodhist_CCQE_mb->Clone("norm_CCQE_mb");
-		TH2F* CCQEMEC_new = (TH2F*) twodhist_CCQE_new->Clone("CCQEMEC_new");
-		//make CCEMEC sample;
-		CCQEMEC_new->Add(twodhist_MEC_new);
+		//STEP3.2: normalize 2dhistogram of old CCQE, new CCQE, new MEC, and new CCQE+MEC;
+		TFile* f2 = TFile::Open(GENIE_2dhist,"READ");
+		TH2F* norm_CCQE_new = (TH2F*) f2->Get(tags[hndex]+"CCQEhist");//GENIE CCQE
+		TH2F* norm_MEC_new = (TH2F*) f2->Get(tags[hndex]+"MEChist");//GENIE MEC
+
+		TH2F* norm_CCQE_old_CCQE = (TH2F*) CCQE_old->Clone("norm_CCQE_old_CCQE");//NUANCE CCQE
+		TH2F* norm_CCQE_old_MEC = (TH2F*) CCQE_old->Clone("norm_CCQE_old_MEC");//NUANCE CCQE
+		TH2F* norm_CCQE_old_CCQEMEC = (TH2F*) CCQE_old->Clone("norm_CCQE_old_CCQEMEC");//NUANCE CCQE
+		TH2F* CCQEMEC_new = (TH2F*) norm_CCQE_new->Clone("CCQEMEC_new");//GENIE CCQE+MEC
+		
+		//make CCQEMEC sample;
+		CCQEMEC_new->Add(norm_MEC_new);
 
 
 		TH2F* norm_CCQEMEC_new = (TH2F*) CCQEMEC_new->Clone("norm_CCQEMEC_new");
 		//start to normalize them;
 		bool cross_compare = true;
-		if(cross_compare){//kill ub events that does not shown in mb;
-			TH2F* temp_mb = (TH2F*) norm_CCQE_mb->Clone("temp_CCQE_mb");
-			//		TH2F* temp_ub = (TH2F*) norm_CCQEMEC_new->Clone("temp_CCQEMEC_new");
-			temp_mb->Divide(norm_CCQE_mb);//prepare two binary 2dhist, 0 or 1
-			//		temp_ub->Divide(norm_CCQEMEC_new);
+		if(cross_compare){//kill ub events that does not shown in NUANCE;
+			TH2F* temp_old = (TH2F*) norm_CCQE_old_CCQE->Clone("temp_CCQE_NUANCE_CCQE");
+			TH2F* temp_new = (TH2F*) norm_CCQE_new->Clone("temp_CCQE_new");
+			TH2F* temp_new2 = (TH2F*) norm_MEC_new->Clone("temp_EMEC_new");
+			TH2F* temp_new3 = (TH2F*) norm_CCQEMEC_new->Clone("temp_CCQEMEC_new");
+
+			temp_old->Divide(norm_CCQE_old_CCQE);//prepare two binary 2dhist, 0 or 1
+			temp_new->Divide(norm_CCQE_new);
+			temp_new2->Divide(norm_MEC_new);
+			temp_new3->Divide(norm_CCQEMEC_new);
 
 			//only keep cross-over slots;
-			//		norm_CCQE_mb->Divide(temp_ub);
-			norm_CCQEMEC_new->Divide(temp_mb);
-			twodhist_CCQE_new->Divide(temp_mb);
-			twodhist_MEC_new->Divide(temp_mb);
+			norm_CCQE_old_CCQE->Divide(temp_new);
+			norm_CCQE_old_MEC->Divide(temp_new2);
+			norm_CCQE_old_CCQEMEC->Divide(temp_new3);
+			norm_CCQE_new->Divide(temp_old);
+			norm_MEC_new->Divide(temp_old);
+			norm_CCQEMEC_new->Divide(temp_old);
 
-			std::cout<<tags[hndex]<<" CCQE 2dhist from ub, has been matched to CCQE mb 2dhist."<<std::endl;
+			std::cout<<tags[hndex]<<" GENIE and NUANCE 2dhist are now 100\% overlap."<<std::endl;
 		}
-		norm_CCQE_mb->Scale(1./twodhist_CCQE_mb->Integral());//done
-		std::cout<<tags[hndex]<<" CCQE 2dhist from mb is normalized"<<std::endl;
+
+		norm_CCQE_old_CCQE->Scale(1./norm_CCQE_old_CCQE->Integral());//CCQE
+		std::cout<<tags[hndex]<<" CCQE 2dhist from NUANCE is normalized check total sum:"<<norm_CCQE_old_CCQE->Integral()<<std::endl;
+		norm_CCQE_old_MEC->Scale(1./norm_CCQE_old_MEC->Integral());//MEC
+		std::cout<<tags[hndex]<<" CCQE 2dhist from NUANCE is normalized check total sum:"<<norm_CCQE_old_MEC->Integral()<<std::endl;
+		norm_CCQE_old_CCQEMEC->Scale(1./norm_CCQE_old_CCQEMEC->Integral());//CCQEMEC
+		std::cout<<tags[hndex]<<" CCQE 2dhist from NUANCE is normalized check total sum:"<<norm_CCQE_old_CCQEMEC->Integral()<<std::endl;
+
 		norm_CCQEMEC_new->Scale(1./norm_CCQEMEC_new->Integral());//done
-		std::cout<<tags[hndex]<<" CCQE+MEC 2dhist from ub is normalized"<<std::endl;
+		std::cout<<tags[hndex]<<" CCQE+MEC 2dhist from GENIE is normalized check total sum:"<<norm_CCQEMEC_new->Integral()<<std::endl;
+
+		norm_CCQE_new->Scale(1./norm_CCQE_new->Integral());
+		std::cout<<tags[hndex]<<" CCQE 2dhist from GENIE is normalized check total sum:"<<norm_CCQE_new->Integral()<<std::endl;
+
+		norm_MEC_new->Scale(1./norm_MEC_new->Integral());
+		std::cout<<tags[hndex]<<" MEC 2dhist from GENIE is normalized check total sum:"<<norm_MEC_new->Integral()<<std::endl;
 
 		if(debug_message){
-		std::cout<<"Check normalized NUANCE CCQE"<<std::endl; 
-		for(int index = 1; index<nb1+1 ; ++index){
-			for(int jndex = 1; jndex<nb2+1 ; ++jndex){
-				std::cout<<"weights Bin "<<index<<","<<jndex<<" has events "<<norm_CCQE_mb->GetBinContent(index,jndex) <<std::endl;
+			std::cout<<"Check normalized NUANCE CCQE for CCQE"<<std::endl; 
+			for(int index = 1; index<nb1+1 ; ++index){
+				for(int jndex = 1; jndex<nb2+1 ; ++jndex){
+					std::cout<<"weights Bin "<<index<<","<<jndex<<" has events "<<norm_CCQE_old_CCQE->GetBinContent(index,jndex) <<std::endl;
+				}
+			}
+			std::cout<<"Check normalized GENIE CCQE"<<std::endl; 
+			for(int index = 1; index<nb1+1 ; ++index){
+				for(int jndex = 1; jndex<nb2+1 ; ++jndex){
+					std::cout<<"weights Bin "<<index<<","<<jndex<<" has events "<<norm_CCQE_new->GetBinContent(index,jndex) <<std::endl;
+				}
+			}
+
+			std::cout<<"Check normalized GENIE MEC"<<std::endl; 
+			for(int index = 1; index<nb1+1 ; ++index){
+				for(int jndex = 1; jndex<nb2+1 ; ++jndex){
+					std::cout<<"weights Bin "<<index<<","<<jndex<<" has events "<<norm_MEC_new->GetBinContent(index,jndex) <<std::endl;
+				}
 			}
 		}
-		}
 
-		//STEP3.3: calculate weight of each event based on (ub CCQE+ ub MEC)/(mb CCQE);
-		TH2F* weight_2dhist = (TH2F*) norm_CCQEMEC_new->Clone("weights");
-
-		weight_2dhist->Divide(norm_CCQE_mb);
-
-		std::cout<<"Applying weight from normalized 2dhist: (CCQE+MEC)_new/(CCQE)_mb"<<std::endl;
-
+		//STEP3.3: calculate weight of each event based on (ub CCQE+ ub MEC)/(NUANCE CCQE);
 		//Add CCQE, MEC ratio respecively;
-		if(debug_message){
-		std::cout<<"Check non-scaled GENIE CCQE"<<std::endl; 
-		for(int index = 1; index<nb1+1 ; ++index){
-			for(int jndex = 1; jndex<nb2+1 ; ++jndex){
-				std::cout<<"weights Bin "<<index<<","<<jndex<<" has events "<<twodhist_CCQE_new->GetBinContent(index,jndex) <<std::endl;
-			}
-		}
-		}
-		twodhist_CCQE_new->Scale(1./twodhist_CCQE_new->Integral());
+		TH2F* CCQE_ratio = (TH2F*) norm_CCQE_new->Clone(tags[hndex]+"CCQE_ratio");//GENIE CCQE+MEC for ratio
+		TH2F* MEC_ratio = (TH2F*) norm_MEC_new->Clone(tags[hndex]+"MEC_ratio");//GENIE CCQE+MEC for ratio
+		TH2F* CCQEMEC_ratio = (TH2F*) norm_CCQEMEC_new->Clone(tags[hndex]+"CCQEMEC_ratio");//CCQEMEC ratio
 
-		if(debug_message){
-		std::cout<<"Check scaled GENIE CCQE"<<std::endl; 
-		for(int index = 1; index<nb1+1 ; ++index){
-			for(int jndex = 1; jndex<nb2+1 ; ++jndex){
-				std::cout<<"weights Bin "<<index<<","<<jndex<<" has events "<<twodhist_CCQE_new->GetBinContent(index,jndex) <<std::endl;
-			}
-		}
-		}
-		twodhist_CCQE_new->Divide(norm_CCQE_mb);
-		twodhist_MEC_new->Scale(1./twodhist_MEC_new->Integral());
-		twodhist_MEC_new->Divide(norm_CCQE_mb);
+		CCQE_ratio->Divide(norm_CCQE_old_CCQE);
+		MEC_ratio->Divide(norm_CCQE_old_MEC);
+		CCQEMEC_ratio->Divide(norm_CCQE_old_CCQEMEC);
 
 		if(debug_message){
 			std::cout<<"Check weights for CCQE to CCQE"<<std::endl; 
 			for(int index = 1; index<nb1+1 ; ++index){
 				for(int jndex = 1; jndex<nb2+1 ; ++jndex){
-					std::cout<<"weights Bin "<<index<<","<<jndex<<" has events "<<twodhist_CCQE_new->GetBinContent(index,jndex) <<std::endl;
+					std::cout<<"weights Bin "<<index<<","<<jndex<<" has events "<<CCQE_ratio->GetBinContent(index,jndex) <<std::endl;
 				}
 			}
-		}
-
-		if(debug_message){
 			std::cout<<"Check weights for CCQE to MEC"<<std::endl; 
 			for(int index = 1; index<nb1+1 ; ++index){
 				for(int jndex = 1; jndex<nb2+1 ; ++jndex){
-					std::cout<<"weights Bin "<<index<<","<<jndex<<" has events "<<twodhist_MEC_new->GetBinContent(index,jndex) <<std::endl;
+					std::cout<<"weights Bin "<<index<<","<<jndex<<" has events "<<MEC_ratio->GetBinContent(index,jndex) <<std::endl;
 				}
 			}
 		}
-		//STEP3.4: Apply weight; take this out;
-
-//		counts = 0;
-//		std::cout<<"Calculating the weight"<<std::endl;
-//		for(Long64_t index = 0; index<Nevents; ++index){//take action here;
-//			std::cout<<"\r"<<index<<" of "<< Nevents <<" finish";
-//			input_tree->GetEntry(index);
-//
-//			vector<float> many_weights;
-//			for(int jndex = 0; jndex < NFSP; ++jndex){
-//
-//				if(ibkgd ==1 && INNO == particle_type[hndex] && (IPFS[jndex]==fin_par[2*hndex]||IPFS[jndex]==fin_par[2*hndex+1])){//CCQE, nue/numu, e/mu
-//					TAxis *xaxis = weight_2dhist->GetXaxis();
-//					TAxis *yaxis = weight_2dhist->GetYaxis();
-//					Int_t xbin = xaxis->FindBin(sqrt(pow(PFSPP[jndex],2)+pow(lep_mass[hndex],2)));
-//					Int_t ybin = yaxis->FindBin(PFSPZ[jndex]);
-//					many_weights.push_back(weight_2dhist->GetBinContent(xbin,ybin));
-//				}
-//			}
-//
-//			weights[hndex] = accumulate(many_weights.begin(),many_weights.end(),0.0);
-//			if(weights[hndex] == 0) weights[hndex] = 1.0;//mcevent_weight;
-//			if(counts < 7) std::cout<<" Get a weight "<<weights[hndex]<<std::endl;
-//			counts++;
-//			out_tree->Fill();
-//		}
-//		output->cd();
-//		out_tree->Write();
-
-		std::cout<<"\nFinish writing "<< counts<<" non-zero weights."<<std::endl;
 
 		//STEP 4: configure and save 2dhistograms;
 
 		gROOT->SetBatch(kTRUE);//No drawing windows pop up
 		TCanvas *c1 = new TCanvas("c1","",900,400);
-		draw_axises(weight_2dhist,tags[hndex]+" (CCQE+MEC)_{GENIE3.0.6,normalized}/CCQE_{mb,normalized}");
-		c1->SaveAs(output_dir+"calc_"+tags[hndex]+"CCQEMECmbratio.pdf","pdf");
-
+		
+		//ratios
+		draw_axises(CCQEMEC_ratio,tags[hndex]+" (CCQE+MEC)_{GENIE3.0.6,normalized}/CCQE_{NUANCE,normalized}");
+		c1->SaveAs(output_dir+"calc_"+tags[hndex]+"CCQEMECratio.pdf","pdf");
 
 		c1->Clear();
-		draw_axises(twodhist_CCQE_new,tags[hndex]+"CCQE_{GENIE3.0.6}/CCQE_{mb,normalized}");
+		draw_axises(CCQE_ratio,tags[hndex]+" CCQE_{GENIE3.0.6,normalized}/CCQE_{NUANCE,normalized}");
 		c1->SaveAs(output_dir+"calc_"+tags[hndex]+"CCQEratio.pdf","pdf");
 
 		c1->Clear();
-		draw_axises(twodhist_MEC_new,tags[hndex]+"MEC_{GENIE3.0.6}/CCQE_{mb,normalized}");
+		draw_axises(MEC_ratio,tags[hndex]+" MEC_{GENIE3.0.6,normalized}/CCQE_{NUANCE,normalized}");
 		c1->SaveAs(output_dir+"calc_"+tags[hndex]+"MECratio.pdf","pdf");
 
-		c1->Clear();
-		draw_axises(twodhist_CCQE_mb,tags[hndex]+"CCQE_{mb}");
-		c1->SaveAs(output_dir+"calc_"+tags[hndex]+"twodhist_CCQE.pdf","pdf");
+		//2dhist of one sample
+		c1->Clear();//NUANCE
+		draw_axises(CCQE_old,tags[hndex]+" CCQE_{NUANCE}");
+		c1->SaveAs(output_dir+"calc_"+tags[hndex]+"CCQE_nuance.pdf","pdf");
 
 		c1->Clear();
-		draw_axises(norm_CCQE_mb,tags[hndex]+"Normalized CCQE_{mb}");
-		c1->SaveAs(output_dir+"calc_"+tags[hndex]+"norm_CCQE_mb.pdf","pdf");
+		draw_axises(norm_CCQE_old_CCQE,tags[hndex]+" CCQE_{NUANCE,normalized} for GENIE CCQE");
+		c1->SaveAs(output_dir+"calc_"+tags[hndex]+"norm_CCQE_nuance_for_CCQE.pdf","pdf");
 
 		c1->Clear();
+		draw_axises(norm_CCQE_old_MEC,tags[hndex]+" CCQE_{NUANCE,normalized} for GENIE MEC");
+		c1->SaveAs(output_dir+"calc_"+tags[hndex]+"norm_CCQE_nuance_for_MEC.pdf","pdf");
+
+		c1->Clear();
+		draw_axises(norm_CCQE_old_CCQEMEC,tags[hndex]+" CCQE_{NUANCE,normalized} for GENIE CCQE+MEC");
+		c1->SaveAs(output_dir+"calc_"+tags[hndex]+"norm_CCQE_nuance_for_CCQEMEC.pdf","pdf");
+
+		c1->Clear();//GENIE
+		draw_axises(norm_CCQE_new,tags[hndex]+" CCQE_{GENIE3.0.6,normalized}");
+		c1->SaveAs(output_dir+"calc_"+tags[hndex]+"norm_CCQE_genie3.pdf","pdf");
+
+		c1->Clear();
+		draw_axises(norm_MEC_new,tags[hndex]+" MEC_{GENIE3.0.6,normalized}");
+		c1->SaveAs(output_dir+"calc_"+tags[hndex]+"norm_MEC_genie3.pdf","pdf");
+
+		c1->Clear();//CCQEMEC
 		draw_axises(CCQEMEC_new,tags[hndex]+" (CCQE+MEC)_{GENIE3.0.6}");
 		c1->SaveAs(output_dir+"calc_"+tags[hndex]+"CCQEMEC_genie3.pdf","pdf");
 
 		c1->Clear();
-		draw_axises(norm_CCQEMEC_new,tags[hndex]+"Normalized (CCQE+MEC)_{GENIE3.0.6}");
+		draw_axises(norm_CCQEMEC_new,tags[hndex]+" (CCQE+MEC)_{GENIE3.0.6,normalized}");
 		c1->SaveAs(output_dir+"calc_"+tags[hndex]+"norm_CCQEMEC_genie3.pdf","pdf");
 
 		//draw weights in 1dhist;
@@ -289,9 +290,9 @@ int calculate2dweights(){
 
 		//save the 2d ratio;
 		save_weights_file->cd();
-		weight_2dhist->Write();
-		twodhist_CCQE_new->Write();
-		twodhist_MEC_new->Write();
+		CCQEMEC_ratio->Write();
+		CCQE_ratio->Write();
+		MEC_ratio->Write();
 
 //		output->Close();	
 		f1->Close();	
