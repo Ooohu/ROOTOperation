@@ -18,20 +18,6 @@ void newroot::Loop()
 //      root> t.Loop();       // Loop on all entries
 //
 
-//     This is the loop skeleton where:
-//    jentry is the global entry number in the chain
-//    ientry is the entry number in the current Tree
-//  Note that the argument to GetEntry must be:
-//    jentry for TChain::GetEntry
-//    ientry for TTree::GetEntry and TBranch::GetEntry
-//
-//       To read only selected branches, Insert statements like:
-// METHOD1:
-//    fChain->SetBranchStatus("*",0);  // disable all branches
-//    fChain->SetBranchStatus("branchname",1);  // activate branchname
-// METHOD2: replace line
-//    fChain->GetEntry(jentry);       //read all branches
-//by  b_branchname->GetEntry(ientry); //read only this branch
    if (fChain == 0) return;
 
 
@@ -39,7 +25,7 @@ void newroot::Loop()
 //configuration
 	TString dir = "./output_root/";//output directory
 	bool OM = true;//entry_marks[?] record what entries means new file;
-	//CHANGE line 214, 217!
+	//CHANGE line 284 for the correct throws; 
 	const int multithrows = 66;//66 = entry_marks.size() for OM; others, 1000
 	const int num_vars = 27;// has to be constant for the array size;
 	
@@ -104,59 +90,47 @@ void newroot::Loop()
 	};
 
 	
+	//Set Branches for outputs;
 	//a special one
 	int nthrows = 0;
 	out_tree->Branch("Nthrows", &nthrows, "Nthrows/I");
 
-	//1. map them
-//	std::map< TString, Float_t*> oFpvar;//output Float_t*
-//	Float_t test2[multithrows] = {0};
-//	Float_t* test = test2;
-//	out_tree->Branch("test", test, "test[Nthrows]/F");
-
-
-
-//	std::vector< Float_t*> ovar;
-	Float_t ovar[num_vars][multithrows] = {0};
-//	Float_t tempvars2[multithrows] = {0}; 
-//	ovar.push_back(tempvars2);//.resize(multithrows);
-//	out_tree->Branch( ovname[0], ovar[0], ovname[0] + "[Nthrows]/F");
+	Float_t ovars[num_vars][multithrows] = {0};
 
 	for(int index = 0; index < num_vars; ++index){
-		out_tree->Branch( ovname[index], ovar[index], ovname[index] + "[Nthrows]/F");
+		out_tree->Branch( ovname[index], ovars[index], ovname[index] + "[Nthrows]/F");
 	}
 
-	
-	//2. branch them
-//	for(auto & tempv: oFpvar){//see $ROOTSYS/tutorials/tree/tree2.C
-//		out_tree->Branch(tempv.first, tempv.second, tempv.first+"[Nthrows]/F");
-//	}
+	//Need a giant container to store values before feeding to the tree;
+	Long64_t nentries = (OM)? std::accumulate(marks.begin(),marks.end(),0) : fChain->GetEntriesFast();
+	int max_entry = (OM)? *max_element(marks.begin(), marks.end()) : nentries;
+	std::vector< std::vector< std::vector< Float_t > > > container( max_entry , 
+			std::vector< std::vector< Float_t > > ( num_vars, 
+				std::vector< Float_t >( multithrows, 0
+					)));
 
-   Long64_t nentries = (OM)? std::accumulate(marks.begin(),marks.end(),0) : fChain->GetEntriesFast();
-   int om_index = 0;//for OM
-   int om_jentry = 0;//for OM
-//   gSystem->RedirectOutput("/dev/null");
-   for (Long64_t jentry=0; jentry<nentries;jentry++) {//all entries
-	   if(jentry = 0) jentry = 945;
-	   bool keep_going = false;
+
+
+	int om_index = 0;//for OM, this keep track of the nth element of given vector;
+	int om_entries = 0;//for OM, this keep track of the nth element of given vector;
+
+
+	for (Long64_t jentry=0; jentry<nentries;jentry++) {//all entries
 //		   std::cout<<"\r Looping "<<std::setw(5)<<jentry<<"/"<<setw(10)<<nentries<<" throws "<<om_index;
-	   for(int om_index = 0; om_index < marks.size(); ++om_index){
-		   om_jentry = jentry+std::accumulate(marks.begin(),marks.begin()+om_index,0);//nth entry of each files;
-			Float target_wgt = 1;
+		  if(jentry == std::accumulate(marks.begin(),marks.begin()+om_index+1,0)){//nth entry of each files;
+			om_index++;
+			om_entries = 0;
+//			std::cout<<"This "<<jentry<<std::endl;
+		  }
+		  std::cout<<"\r Looping "<<std::setw(5)<<jentry<<"/"<<setw(5)<<nentries<<" throws "<<std::stw(3)<<om_index<<" subentries: "<<setw(4)<<om_entries;
 
-			if(jentry > marks[om_index]-1 && OM) target_wgt = 0;//it means entry> entry_in_file, so no need to fill this;
-			keep_going = true;
 //		   std::cout<<" At entries at "<<jentry<<" reset om_entries "<<om_jentry+1 <<" and finish throw: "<<om_index<<std::endl;
 
 
 		   gSystem->RedirectOutput("/dev/null");
-		   Long64_t ientry = LoadTree( (OM)? om_jentry: jentry);
-
-		   fChain->GetEntry( (OM)? om_jentry: jentry);
-
-		   om_jentry++;
+		   Long64_t ientry = LoadTree( jentry);
+		   fChain->GetEntry( jentry);
 		   gSystem->RedirectOutput(0,0);
-		   std::cout<<"\r Looping "<<std::setw(5)<<jentry<<"/"<<setw(5)<<nentries<<" throws "<<om_index;
 
 		   //------not important stuff;
 		   if (ientry < 0) break;
@@ -184,75 +158,146 @@ void newroot::Loop()
 		   }
 
 		   //------- not important above
-		   nthrows = multithrows;
+//		   nthrows = multithrows;
 
-		   int index = (OM)? om_index: 0;
-		   while(index < multithrows){
-			   //		   test[index] = TOneTrackChunk_data__E[0];
-			   //basics
-			   ovar[0][index] = TOneTrackChunk_data__X[0];
-			   ovar[1][index] = TOneTrackChunk_data__Y[0];
-			   ovar[2][index] = TOneTrackChunk_data__Z[0];
-			   ovar[3][index] = TOneTrackChunk_data__UX[0];
-			   ovar[4][index] = TOneTrackChunk_data__UY[0];
-			   ovar[5][index] = TOneTrackChunk_data__UZ[0];
-			   ovar[6][index] = TOneTrackChunk_data__E[0];
-			   ovar[7][index] = TOneTrackChunk_data__F[0];
-
-			   //derivated
-			   ovar[8][index] = sqrt( pow(ovar[0][index],2) + pow(ovar[1][index],2) + pow(ovar[2][index],2)); 
-
-			   Float_t Mlep = 0.511;//electron mass
-			   Float_t Mp = 938.27;//proton mass
-			   Float_t Mn = 939.56;//neutron mass
-
-			   ovar[9][index] = 0.5*(2.0*Mn* (Mlep+ ovar[6][index] ) + pow(Mp,2) - pow(Mn,2) - pow(Mlep,2)/(Mn - (Mlep+ ovar[6][index] ) + ovar[5][index] * sqrt( pow(Mlep+ ovar[6][index] ,2) - pow(Mlep, 2) )));
-			   std::cout<<"CHCK ENUQE "<<ovar[9][index]<< " separated value "<<ovar[6][index]<<","<<ovar[5][index]<<std::endl;
-
-			   Float_t UdotR = ovar[0][index]*ovar[3][index] + ovar[1][index]*ovar[4][index] + ovar[2][index]*ovar[5][index];
-			   ovar[10][index] = UdotR + sqrt(pow( 548.17,2) - (pow(ovar[8][index],2) + pow( UdotR, 2)));//RBOONE, radius of MiniBooNE 548.17 cm
-			   ovar[11][index] = - UdotR + sqrt(pow( 548.17,2) - (pow(ovar[8][index],2) + pow( UdotR, 2)));
-
-			   ovar[12][index] = TOneTrackChunk_data__F[1];
-
-			   int pionFixindex = (TTwoTrackChunk_data__fixedMass[0]< 10e-20)?  1:0;
-			   ovar[13][index] = TTwoTrackChunk_data__F[pionFixindex];
-
-			   int pionNoFixindex = (TTwoTrackChunk_data__fixedMass[0]< 10e-20)?  0:1;
-			   ovar[14][index] = TTwoTrackChunk_data__M[pionNoFixindex];
-
-			   ovar[15][index] = target_wgt;//TWeightDetailsChunk_data__totalweight[0];//CV
-
-			   for( int jndex  = 0; jndex < 11; ++jndex){ //different systematic weights
-				   ovar[16+jndex][index] = target_wgt;//TMulMatWeightsChunk_data__MultiWeight[jndex][index];
-			   }
-			   //		   ovar[27][index] = pow(ovar[8][index]/500.0,3);
-			   //
-			   //		   ovar[28][index] = ovar[12][index] - ovar[7][index];
-			   //
-			   //		   ovar[29][index] = ovar[13][index] - ovar[7][index];
-			   index++;
-			   if(OM) break;//just do it once for OM;
-		   }
-	   }
-	   if(!keep_going){
-//		   std::cout<<"END!" <<std::endl;
-		   break;
-	   }
-	   out_file->cd();
-	   out_tree->Fill();
+		   GrabVars(container,om_entries++, om_index, OM);
+//		   int index = (OM)? om_index: 0;
+//		   while(index < multithrows){
+//			   //		   test[index] = TOneTrackChunk_data__E[0];
+//			   //basics
+//			   ovar[0][index] = TOneTrackChunk_data__X[0];
+//			   ovar[1][index] = TOneTrackChunk_data__Y[0];
+//			   ovar[2][index] = TOneTrackChunk_data__Z[0];
+//			   ovar[3][index] = TOneTrackChunk_data__UX[0];
+//			   ovar[4][index] = TOneTrackChunk_data__UY[0];
+//			   ovar[5][index] = TOneTrackChunk_data__UZ[0];
+//			   ovar[6][index] = TOneTrackChunk_data__E[0];
+//			   ovar[7][index] = TOneTrackChunk_data__F[0];
+//
+//			   //derivated
+//			   ovar[8][index] = sqrt( pow(ovar[0][index],2) + pow(ovar[1][index],2) + pow(ovar[2][index],2)); 
+//
+//			   Float_t Mlep = 0.511;//electron mass
+//			   Float_t Mp = 938.27;//proton mass
+//			   Float_t Mn = 939.56;//neutron mass
+//
+//			   ovar[9][index] = 0.5*(2.0*Mn* (Mlep+ ovar[6][index] ) + pow(Mp,2) - pow(Mn,2) - pow(Mlep,2))/(Mn - (Mlep+ ovar[6][index] ) + ovar[5][index] * sqrt( pow(Mlep+ ovar[6][index] ,2) - pow(Mlep, 2) ));
+//
+//			   Float_t UdotR = ovar[0][index]*ovar[3][index] + ovar[1][index]*ovar[4][index] + ovar[2][index]*ovar[5][index] ;
+//			   ovar[10][index] = (ovar[8][index]<548.17)? UdotR + sqrt(pow( 548.17,2) - (pow(ovar[8][index],2) + pow( UdotR, 2))) : -9999;//RBOONE, radius of MiniBooNE 548.17 cm
+//			   ovar[11][index] = (ovar[8][index]<548.17)? - UdotR + sqrt(pow( 548.17,2) - (pow(ovar[8][index],2) + pow( UdotR, 2))): -9999;
+//
+//			   ovar[12][index] = TOneTrackChunk_data__F[1];
+//
+//			   int pionFixindex = (TTwoTrackChunk_data__fixedMass[0]< 10e-20)?  1:0;
+//			   ovar[13][index] = TTwoTrackChunk_data__F[pionFixindex];
+//
+//			   int pionNoFixindex = (TTwoTrackChunk_data__fixedMass[0]< 10e-20)?  0:1;
+//			   ovar[14][index] = TTwoTrackChunk_data__M[pionNoFixindex];
+//
+//			   ovar[15][index] = target_wgt;//TWeightDetailsChunk_data__totalweight[0];//CV
+//
+//			   for( int jndex  = 0; jndex < 11; ++jndex){ //different systematic weights
+//				   ovar[16+jndex][index] = target_wgt;//TMulMatWeightsChunk_data__MultiWeight[jndex][index];
+//			   }
+//
+//			   index++;
+//			   if(OM) break;//just do it once for OM;
+//		   }
 
    }//end of looping entries;
+	
+
+// vector<vector<int> > vec( n , vector<int> (m)); 
+//  vector<int> vect(n, 10);
+
+   cout<<"\nFinish the loop!"<<endl;
+
+	FillVars(nthrows, multithrows, ovars, container, out_tree);
+
 	out_file->cd(); 
 	out_tree->Write();
 	out_file->Close();
 
    //save them according to types:
-   cout<<"\nFinish!"<<endl;
 
 	TFile* check_file = TFile::Open(output, "READ");
 	TTree* check_tree = (TTree*) check_file->Get("TTiming");
 
 	std::cout<<"Write entires:"<<check_tree->GetEntries()<<std::endl;
 	check_file->Close();
+}
+
+/*
+ * Update the container that stores values of variables.
+ */
+
+void newroot::GrabVars(std::vector<std::vector< std::vector< Float_t> >> & container, int hndex, int index, bool its_OM){
+
+
+			   int target_wgt = 1;
+
+			   container[hndex][0][index] = TOneTrackChunk_data__X[0];
+			   container[hndex][1][index] = TOneTrackChunk_data__Y[0];
+			   container[hndex][2][index] = TOneTrackChunk_data__Z[0];
+			   container[hndex][3][index] = TOneTrackChunk_data__UX[0];
+			   container[hndex][4][index] = TOneTrackChunk_data__UY[0];
+			   container[hndex][5][index] = TOneTrackChunk_data__UZ[0];
+			   container[hndex][6][index] = TOneTrackChunk_data__E[0];
+			   container[hndex][7][index] = TOneTrackChunk_data__F[0];
+
+			   //derivated
+			   container[hndex][8][index] = sqrt( pow(container[hndex][0][index],2) + pow(container[hndex][1][index],2) + pow(container[hndex][2][index],2)); 
+
+			   Float_t Mlep = 0.511;//electron mass
+			   Float_t Mp = 938.27;//proton mass
+			   Float_t Mn = 939.56;//neutron mass
+
+			   container[hndex][9][index] = 0.5*(2.0*Mn* (Mlep+ container[hndex][6][index] ) + pow(Mp,2) - pow(Mn,2) - pow(Mlep,2))/(Mn - (Mlep+ container[hndex][6][index] ) + container[hndex][5][index] * sqrt( pow(Mlep+ container[hndex][6][index] ,2) - pow(Mlep, 2) ));
+
+			   Float_t UdotR = container[hndex][0][index]*container[hndex][3][index] + container[hndex][1][index]*container[hndex][4][index] + container[hndex][2][index]*container[hndex][5][index] ;
+			   container[hndex][10][index] = (container[hndex][8][index]<548.17)? UdotR + sqrt(pow( 548.17,2) - (pow(container[hndex][8][index],2) + pow( UdotR, 2))) : -9999;//RBOONE, radius of MiniBooNE 548.17 cm
+			   container[hndex][11][index] = (container[hndex][8][index]<548.17)? - UdotR + sqrt(pow( 548.17,2) - (pow(container[hndex][8][index],2) + pow( UdotR, 2))): -9999;
+
+			   container[hndex][12][index] = TOneTrackChunk_data__F[1];
+
+			   int pionFixindex = (TTwoTrackChunk_data__fixedMass[0]< 10e-20)?  1:0;
+			   container[hndex][13][index] = TTwoTrackChunk_data__F[pionFixindex];
+
+			   int pionNoFixindex = (TTwoTrackChunk_data__fixedMass[0]< 10e-20)?  0:1;
+			   container[hndex][14][index] = TTwoTrackChunk_data__M[pionNoFixindex];
+
+			   container[hndex][15][index] = (its_OM)? target_wgt : TWeightDetailsChunk_data__totalweight[0];//CV
+
+			   for( int jndex  = 0; jndex < 11; ++jndex){ //different systematic weights, 16~26
+				   container[hndex][16+jndex][index] = (its_OM)? target_wgt : TMulMatWeightsChunk_data__MultiWeight[jndex][index];
+			   }
+
+}
+
+
+
+
+
+/*
+ * Fill Variables to branches
+ */
+void newroot::FillVars(int &nthrows, int multithrows, Float_t ovars[][66], std::vector< std::vector< std::vector< Float_t > > > container, TTree* out_tree){
+
+	int num_entries = container.size();
+	int num_vars = container[0].size();
+	int length_var = (container[0][0]).size();
+
+	for(int index = 0; index < num_entries; ++index){//each entry
+		nthrows = multithrows;
+		for(int jndex = 0; jndex < num_vars; ++jndex){//each variable
+			for(int kndex = 0; kndex < length_var; ++kndex){//each element of the variable
+				ovars[jndex][kndex] = container[index][jndex][kndex];
+			}
+		}
+		std::cout<<"\r Filling "<<std::setw(5)<<index<<" entry ";
+
+		out_tree->Fill();
+	}
+	std::cout<<std::endl;
 }
