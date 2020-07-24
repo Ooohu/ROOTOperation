@@ -17,18 +17,18 @@ TFile *root2root(bool get=false, Int_t print=1){
 	TString output  = "2.root";
 
 	//fix variables; discard all the pointers, use vectors!
-	std::map< TString, Float_t> iFvar;
-	std::map< TString, Double_t> iIvar;//all pointers, so need another variable to tell the size of them;
+	std::map< TString, Float_t> iFvar;//input Float variable
+	std::map< TString, Double_t> iDvar;//all pointers, so need another variable to tell the size of them;
 	std::map< TString, Float_t> oFvar;
-	std::map< TString, Double_t> oIvar;
+	std::map< TString, Double_t> oDvar;//output Double variable
 
 	Double_t ientry = 0; 
 	Double_t oentry = 0;
 
 
 	//make a map for TSring & variable;
-	iIvar["entry"] = ientry;
-	oIvar["entry"] = oentry;
+	iDvar["entry"] = ientry;
+	oDvar["entry"] = oentry;
 	
 	
 	//read files
@@ -38,12 +38,12 @@ TFile *root2root(bool get=false, Int_t print=1){
 	TFile* out_file = TFile::Open(output, "RECREATE");
 	TTree* out_tree = new TTree("T", "test");
 
-	for(auto &x: iIvar){
+	for(auto &x: iDvar){
 		in_tree->SetBranchAddress(x.first, &x.second);
 	}
 
 
-	for(auto &x: oIvar){
+	for(auto &x: oDvar){
 		out_tree->Branch(x.first, &x.second,x.first+"/D");
 	}
 
@@ -53,8 +53,8 @@ TFile *root2root(bool get=false, Int_t print=1){
 	for(int index = 0; index < entries ; ++index){
 		in_tree->GetEntry(index);
 
-		(oIvar.begin())->second = (iIvar.begin())->second;
-		std::cout<<"input "<<(iIvar.begin())->second<<std::endl;
+		(oDvar.begin())->second = (iDvar.begin())->second;
+		std::cout<<"input "<<(iDvar.begin())->second<<std::endl;
 
 		out_tree->Fill();
 	}
