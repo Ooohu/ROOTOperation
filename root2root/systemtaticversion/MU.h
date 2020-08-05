@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
-// Thu May 28 07:46:05 2020 by ROOT version 6.06/08
-// from TTree MU/Created in /scratch/condor-tmp/rtthorn/reweighting/osc/may07_2_det_cocktail_allhad_osc_precuts_final_MM.root
-// found on file: may07_2_det_cocktail_allhad_osc_precuts_final_MM.root
+// Wed Jul 29 21:50:00 2020 by ROOT version 6.12/04
+// from TTree MiniBooNE/Created in /scratch/condor-tmp/rtthorn/reweighting/osc/may07_2_disc_cocktail_allhad.root
+// found on file: /scratch/klin/Systematics/original_files/may07_2_disc_cocktail_allhad.root
 //////////////////////////////////////////////////////////
 
 #ifndef newroot_h
@@ -22,149 +22,122 @@ public :
    Int_t           fCurrent; //!current Tree number in a TChain
 
 // Fixed size dimensions of array or collections stored in the TTree if any.
-   static const Int_t kMaxTHistory = 79;
-   static const Int_t kMaxTHistory_algo_name = 79;
-   static const Int_t kMaxTHistory_algo_inst = 79;
-   static const Int_t kMaxTHistory_chunk_name = 79;
-   static const Int_t kMaxTHistory_ext_name = 79;
-   static const Int_t kMaxTHistory_version = 79;
-   static const Int_t kMaxTHistory_node = 79;
-   static const Int_t kMaxTHistory_database = 79;
-   static const Int_t kMaxTHistory_inst_num = 79;
-   static const Int_t kMaxTHistory_timestamp = 79;
-   static const Int_t kMaxTHistory_rcpid = 79;
-   static const Int_t kMaxTHistory_chunkid = 79;
-   static const Int_t kMaxTHistory_parents = 79;
-   static const Int_t kMaxTHistory_tags = 79;
-   static const Int_t kMaxTMonteCarloEVNTChunk = 1;
-   static const Int_t kMaxTMonteCarloEVNTChunk_chunk_id = 1;
-   static const Int_t kMaxTMonteCarloEVNTChunk_name = 1;
-   static const Int_t kMaxTMonteCarloVETOChunk = 1;
-   static const Int_t kMaxTMonteCarloVETOChunk_chunk_id = 1;
-   static const Int_t kMaxTMonteCarloVETOChunk_name = 1;
-   static const Int_t kMaxTMonteCarloMUTRChunk = 1;
-   static const Int_t kMaxTMonteCarloMUTRChunk_chunk_id = 1;
-   static const Int_t kMaxTMonteCarloMUTRChunk_name = 1;
-   static const Int_t kMaxTMonteCarloINVIChunk = 1;
-   static const Int_t kMaxTMonteCarloINVIChunk_chunk_id = 1;
-   static const Int_t kMaxTMonteCarloINVIChunk_name = 1;
-   static const Int_t kMaxTMonteCarloNUANChunk = 1;
-   static const Int_t kMaxTMonteCarloNUANChunk_chunk_id = 1;
-   static const Int_t kMaxTMonteCarloNUANChunk_name = 1;
-   static const Int_t kMaxTMonteCarloBEAMChunk = 1;
-   static const Int_t kMaxTMonteCarloBEAMChunk_chunk_id = 1;
-   static const Int_t kMaxTMonteCarloBEAMChunk_name = 1;
-   static const Int_t kMaxTGlobalHeaderChunk = 2;
-   static const Int_t kMaxTGlobalHeaderChunk_chunk_id = 2;
-   static const Int_t kMaxTGlobalHeaderChunk_name = 2;
-   static const Int_t kMaxTGlobalTankHeaderChunk = 2;
-   static const Int_t kMaxTGlobalTankHeaderChunk_chunk_id = 2;
-   static const Int_t kMaxTGlobalTankHeaderChunk_name = 2;
-   static const Int_t kMaxTCalibratedDataChunk = 3;
-   static const Int_t kMaxTCalibratedDataChunk_chunk_id = 3;
-   static const Int_t kMaxTCalibratedDataChunk_name = 3;
-   static const Int_t kMaxTCrate13Chunk = 2;
-   static const Int_t kMaxTCrate13Chunk_chunk_id = 2;
-   static const Int_t kMaxTCrate13Chunk_name = 2;
-   static const Int_t kMaxTConnectTheHitsChunk = 2;
-   static const Int_t kMaxTConnectTheHitsChunk_chunk_id = 2;
-   static const Int_t kMaxTConnectTheHitsChunk_name = 2;
-   static const Int_t kMaxTMCRawEventChunk = 1;
-   static const Int_t kMaxTMCRawEventChunk_chunk_id = 1;
-   static const Int_t kMaxTMCRawEventChunk_name = 1;
-   static const Int_t kMaxTMCHitMatchChunk = 1;
-   static const Int_t kMaxTMCHitMatchChunk_chunk_id = 1;
-   static const Int_t kMaxTMCHitMatchChunk_name = 1;
-   static const Int_t kMaxTUncalibratedDataChunk = 1;
-   static const Int_t kMaxTUncalibratedDataChunk_chunk_id = 1;
-   static const Int_t kMaxTUncalibratedDataChunk_name = 1;
-   static const Int_t kMaxTVetoClusterChunk = 3;
-   static const Int_t kMaxTVetoClusterChunk_chunk_id = 3;
-   static const Int_t kMaxTVetoClusterChunk_name = 3;
-   static const Int_t kMaxTSplitEventChunk = 1;
-   static const Int_t kMaxTSplitEventChunk_chunk_id = 1;
-   static const Int_t kMaxTSplitEventChunk_name = 1;
-   static const Int_t kMaxTStancuFastChunk = 1;
-   static const Int_t kMaxTStancuFastChunk_chunk_id = 1;
-   static const Int_t kMaxTStancuFastChunk_name = 1;
-   static const Int_t kMaxTStancuFullChunk = 1;
-   static const Int_t kMaxTStancuFullChunk_chunk_id = 1;
-   static const Int_t kMaxTStancuFullChunk_name = 1;
-   static const Int_t kMaxTStancuFluxChunk = 1;
-   static const Int_t kMaxTStancuFluxChunk_chunk_id = 1;
-   static const Int_t kMaxTStancuFluxChunk_name = 1;
-   static const Int_t kMaxTStancuTrakChunk = 1;
-   static const Int_t kMaxTStancuTrakChunk_chunk_id = 1;
-   static const Int_t kMaxTStancuTrakChunk_name = 1;
-   static const Int_t kMaxTStancuMuvdChunk = 1;
-   static const Int_t kMaxTStancuMuvdChunk_chunk_id = 1;
-   static const Int_t kMaxTStancuMuvdChunk_name = 1;
-   static const Int_t kMaxTStancuPi0Chunk = 1;
-   static const Int_t kMaxTStancuPi0Chunk_chunk_id = 1;
-   static const Int_t kMaxTStancuPi0Chunk_name = 1;
-   static const Int_t kMaxTStancuVarsChunk = 1;
-   static const Int_t kMaxTStancuVarsChunk_chunk_id = 1;
-   static const Int_t kMaxTStancuVarsChunk_name = 1;
-   static const Int_t kMaxTStancuVarsTwoChunk = 1;
-   static const Int_t kMaxTStancuVarsTwoChunk_chunk_id = 1;
-   static const Int_t kMaxTStancuVarsTwoChunk_name = 1;
-   static const Int_t kMaxTVetoLinkingChunk = 1;
-   static const Int_t kMaxTVetoLinkingChunk_chunk_id = 1;
-   static const Int_t kMaxTVetoLinkingChunk_name = 1;
-   static const Int_t kMaxTCalibrateEnergyChunk = 1;
-   static const Int_t kMaxTCalibrateEnergyChunk_chunk_id = 1;
-   static const Int_t kMaxTCalibrateEnergyChunk_name = 1;
-   static const Int_t kMaxTInteractionPointChunk = 1;
-   static const Int_t kMaxTInteractionPointChunk_chunk_id = 1;
-   static const Int_t kMaxTInteractionPointChunk_name = 1;
-   static const Int_t kMaxTOneTrackChunk = 2;
-   static const Int_t kMaxTOneTrackChunk_chunk_id = 2;
-   static const Int_t kMaxTOneTrackChunk_name = 2;
-   static const Int_t kMaxTRoeFullChunk = 1;
-   static const Int_t kMaxTRoeFullChunk_chunk_id = 1;
-   static const Int_t kMaxTRoeFullChunk_name = 1;
-   static const Int_t kMaxTFittersChunk = 1;
-   static const Int_t kMaxTFittersChunk_chunk_id = 1;
-   static const Int_t kMaxTFittersChunk_name = 1;
-   static const Int_t kMaxTYangVarChunk = 1;
-   static const Int_t kMaxTYangVarChunk_chunk_id = 1;
-   static const Int_t kMaxTYangVarChunk_name = 1;
-   static const Int_t kMaxTPFitterChunk = 1;
-   static const Int_t kMaxTPFitterChunk_chunk_id = 1;
-   static const Int_t kMaxTPFitterChunk_name = 1;
-   static const Int_t kMaxTRoePiChunk = 1;
-   static const Int_t kMaxTRoePiChunk_chunk_id = 1;
-   static const Int_t kMaxTRoePiChunk_name = 1;
-   static const Int_t kMaxTFittersPi0Chunk = 1;
-   static const Int_t kMaxTFittersPi0Chunk_chunk_id = 1;
-   static const Int_t kMaxTFittersPi0Chunk_name = 1;
-   static const Int_t kMaxTParticleIDChunk = 4;
-   static const Int_t kMaxTParticleIDChunk_chunk_id = 4;
-   static const Int_t kMaxTParticleIDChunk_name = 4;
-   static const Int_t kMaxTTwoTrackChunk = 2;
-   static const Int_t kMaxTTwoTrackChunk_chunk_id = 2;
-   static const Int_t kMaxTTwoTrackChunk_name = 2;
-   static const Int_t kMaxTTwoTrackEndConditionsChunk = 2;
-   static const Int_t kMaxTTwoTrackEndConditionsChunk_chunk_id = 2;
-   static const Int_t kMaxTTwoTrackEndConditionsChunk_name = 2;
-   static const Int_t kMaxTTwoTrackInternalsChunk = 2;
-   static const Int_t kMaxTTwoTrackInternalsChunk_chunk_id = 2;
-   static const Int_t kMaxTTwoTrackInternalsChunk_name = 2;
-   static const Int_t kMaxTProtonChunk = 1;
-   static const Int_t kMaxTProtonChunk_chunk_id = 1;
-   static const Int_t kMaxTProtonChunk_name = 1;
-   static const Int_t kMaxTNeutronChunk = 1;
-   static const Int_t kMaxTNeutronChunk_chunk_id = 1;
-   static const Int_t kMaxTNeutronChunk_name = 1;
-   static const Int_t kMaxTReweightToCVChunk = 1;
-   static const Int_t kMaxTReweightToCVChunk_chunk_id = 1;
-   static const Int_t kMaxTReweightToCVChunk_name = 1;
-   static const Int_t kMaxTWeightDetailsChunk = 1;
-   static const Int_t kMaxTWeightDetailsChunk_chunk_id = 1;
-   static const Int_t kMaxTWeightDetailsChunk_name = 1;
-   static const Int_t kMaxTMulMatWeightsChunk = 12;
-   static const Int_t kMaxTMulMatWeightsChunk_chunk_id = 12;
-   static const Int_t kMaxTMulMatWeightsChunk_name = 12;
+   static constexpr Int_t kMaxTHistory = 66;
+   static constexpr Int_t kMaxTHistory_algo_name = 66;
+   static constexpr Int_t kMaxTHistory_algo_inst = 66;
+   static constexpr Int_t kMaxTHistory_chunk_name = 66;
+   static constexpr Int_t kMaxTHistory_ext_name = 66;
+   static constexpr Int_t kMaxTHistory_version = 66;
+   static constexpr Int_t kMaxTHistory_node = 66;
+   static constexpr Int_t kMaxTHistory_database = 66;
+   static constexpr Int_t kMaxTHistory_inst_num = 66;
+   static constexpr Int_t kMaxTHistory_timestamp = 66;
+   static constexpr Int_t kMaxTHistory_rcpid = 66;
+   static constexpr Int_t kMaxTHistory_chunkid = 66;
+   static constexpr Int_t kMaxTHistory_parents = 66;
+   static constexpr Int_t kMaxTHistory_tags = 66;
+   static constexpr Int_t kMaxTMonteCarloEVNTChunk = 1;
+   static constexpr Int_t kMaxTMonteCarloEVNTChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTMonteCarloEVNTChunk_name = 1;
+   static constexpr Int_t kMaxTMonteCarloVETOChunk = 1;
+   static constexpr Int_t kMaxTMonteCarloVETOChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTMonteCarloVETOChunk_name = 1;
+   static constexpr Int_t kMaxTMonteCarloMUTRChunk = 1;
+   static constexpr Int_t kMaxTMonteCarloMUTRChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTMonteCarloMUTRChunk_name = 1;
+   static constexpr Int_t kMaxTMonteCarloINVIChunk = 1;
+   static constexpr Int_t kMaxTMonteCarloINVIChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTMonteCarloINVIChunk_name = 1;
+   static constexpr Int_t kMaxTMonteCarloNUANChunk = 1;
+   static constexpr Int_t kMaxTMonteCarloNUANChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTMonteCarloNUANChunk_name = 1;
+   static constexpr Int_t kMaxTMonteCarloBEAMChunk = 1;
+   static constexpr Int_t kMaxTMonteCarloBEAMChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTMonteCarloBEAMChunk_name = 1;
+   static constexpr Int_t kMaxTGlobalHeaderChunk = 2;
+   static constexpr Int_t kMaxTGlobalHeaderChunk_chunk_id = 2;
+   static constexpr Int_t kMaxTGlobalHeaderChunk_name = 2;
+   static constexpr Int_t kMaxTGlobalTankHeaderChunk = 2;
+   static constexpr Int_t kMaxTGlobalTankHeaderChunk_chunk_id = 2;
+   static constexpr Int_t kMaxTGlobalTankHeaderChunk_name = 2;
+   static constexpr Int_t kMaxTCrate13Chunk = 2;
+   static constexpr Int_t kMaxTCrate13Chunk_chunk_id = 2;
+   static constexpr Int_t kMaxTCrate13Chunk_name = 2;
+   static constexpr Int_t kMaxTMCRawEventChunk = 1;
+   static constexpr Int_t kMaxTMCRawEventChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTMCRawEventChunk_name = 1;
+   static constexpr Int_t kMaxTMCHitMatchChunk = 1;
+   static constexpr Int_t kMaxTMCHitMatchChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTMCHitMatchChunk_name = 1;
+   static constexpr Int_t kMaxTUncalibratedDataChunk = 1;
+   static constexpr Int_t kMaxTUncalibratedDataChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTUncalibratedDataChunk_name = 1;
+   static constexpr Int_t kMaxTVetoClusterChunk = 3;
+   static constexpr Int_t kMaxTVetoClusterChunk_chunk_id = 3;
+   static constexpr Int_t kMaxTVetoClusterChunk_name = 3;
+   static constexpr Int_t kMaxTSplitEventChunk = 1;
+   static constexpr Int_t kMaxTSplitEventChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTSplitEventChunk_name = 1;
+   static constexpr Int_t kMaxTStancuFastChunk = 1;
+   static constexpr Int_t kMaxTStancuFastChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTStancuFastChunk_name = 1;
+   static constexpr Int_t kMaxTStancuFullChunk = 1;
+   static constexpr Int_t kMaxTStancuFullChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTStancuFullChunk_name = 1;
+   static constexpr Int_t kMaxTStancuFluxChunk = 1;
+   static constexpr Int_t kMaxTStancuFluxChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTStancuFluxChunk_name = 1;
+   static constexpr Int_t kMaxTStancuTrakChunk = 1;
+   static constexpr Int_t kMaxTStancuTrakChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTStancuTrakChunk_name = 1;
+   static constexpr Int_t kMaxTStancuMuvdChunk = 1;
+   static constexpr Int_t kMaxTStancuMuvdChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTStancuMuvdChunk_name = 1;
+   static constexpr Int_t kMaxTStancuPi0Chunk = 1;
+   static constexpr Int_t kMaxTStancuPi0Chunk_chunk_id = 1;
+   static constexpr Int_t kMaxTStancuPi0Chunk_name = 1;
+   static constexpr Int_t kMaxTStancuVarsChunk = 1;
+   static constexpr Int_t kMaxTStancuVarsChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTStancuVarsChunk_name = 1;
+   static constexpr Int_t kMaxTStancuVarsTwoChunk = 1;
+   static constexpr Int_t kMaxTStancuVarsTwoChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTStancuVarsTwoChunk_name = 1;
+   static constexpr Int_t kMaxTCalibrateEnergyChunk = 1;
+   static constexpr Int_t kMaxTCalibrateEnergyChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTCalibrateEnergyChunk_name = 1;
+   static constexpr Int_t kMaxTInteractionPointChunk = 1;
+   static constexpr Int_t kMaxTInteractionPointChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTInteractionPointChunk_name = 1;
+   static constexpr Int_t kMaxTOneTrackChunk = 2;
+   static constexpr Int_t kMaxTOneTrackChunk_chunk_id = 2;
+   static constexpr Int_t kMaxTOneTrackChunk_name = 2;
+   static constexpr Int_t kMaxTParticleIDChunk = 4;
+   static constexpr Int_t kMaxTParticleIDChunk_chunk_id = 4;
+   static constexpr Int_t kMaxTParticleIDChunk_name = 4;
+   static constexpr Int_t kMaxTTwoTrackChunk = 2;
+   static constexpr Int_t kMaxTTwoTrackChunk_chunk_id = 2;
+   static constexpr Int_t kMaxTTwoTrackChunk_name = 2;
+   static constexpr Int_t kMaxTTwoTrackEndConditionsChunk = 2;
+   static constexpr Int_t kMaxTTwoTrackEndConditionsChunk_chunk_id = 2;
+   static constexpr Int_t kMaxTTwoTrackEndConditionsChunk_name = 2;
+   static constexpr Int_t kMaxTTwoTrackInternalsChunk = 2;
+   static constexpr Int_t kMaxTTwoTrackInternalsChunk_chunk_id = 2;
+   static constexpr Int_t kMaxTTwoTrackInternalsChunk_name = 2;
+   static constexpr Int_t kMaxTProtonChunk = 1;
+   static constexpr Int_t kMaxTProtonChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTProtonChunk_name = 1;
+   static constexpr Int_t kMaxTNeutronChunk = 1;
+   static constexpr Int_t kMaxTNeutronChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTNeutronChunk_name = 1;
+   static constexpr Int_t kMaxTVetoLinkingChunk = 1;
+   static constexpr Int_t kMaxTVetoLinkingChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTVetoLinkingChunk_name = 1;
+   static constexpr Int_t kMaxTReweightToCVChunk = 1;
+   static constexpr Int_t kMaxTReweightToCVChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTReweightToCVChunk_name = 1;
+   static constexpr Int_t kMaxTWeightDetailsChunk = 1;
+   static constexpr Int_t kMaxTWeightDetailsChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTWeightDetailsChunk_name = 1;
 
    // Declaration of leaf types
    Int_t           THistory_;
@@ -353,18 +326,6 @@ public :
    Int_t           TGlobalTankHeaderChunk_data__NUM_UNCAL_HITS[kMaxTGlobalTankHeaderChunk];   //[TGlobalTankHeaderChunk_]
    Int_t           TGlobalTankHeaderChunk_data__RATE[kMaxTGlobalTankHeaderChunk];   //[TGlobalTankHeaderChunk_]
    string          TGlobalTankHeaderChunk_name_[kMaxTGlobalTankHeaderChunk];
-   Int_t           TCalibratedDataChunk_;
-   Int_t           TCalibratedDataChunk_chunk_id_[kMaxTCalibratedDataChunk];   //[TCalibratedDataChunk_]
-   UInt_t          TCalibratedDataChunk_data__fUniqueID[kMaxTCalibratedDataChunk];   //[TCalibratedDataChunk_]
-   UInt_t          TCalibratedDataChunk_data__fBits[kMaxTCalibratedDataChunk];   //[TCalibratedDataChunk_]
-   Int_t           TCalibratedDataChunk_data__Hits[kMaxTCalibratedDataChunk];   //[TCalibratedDataChunk_]
-   Int_t          *TCalibratedDataChunk_data__PMT[kMaxTCalibratedDataChunk];   //[TCalibratedDataChunk_data__Hits]
-   Float_t        *TCalibratedDataChunk_data__Q[kMaxTCalibratedDataChunk];   //[TCalibratedDataChunk_data__Hits]
-   Float_t        *TCalibratedDataChunk_data__notruncQ[kMaxTCalibratedDataChunk];   //[TCalibratedDataChunk_data__Hits]
-   Float_t        *TCalibratedDataChunk_data__T[kMaxTCalibratedDataChunk];   //[TCalibratedDataChunk_data__Hits]
-   Float_t         TCalibratedDataChunk_data__Tmin[kMaxTCalibratedDataChunk];   //[TCalibratedDataChunk_]
-   Float_t         TCalibratedDataChunk_data__Tmax[kMaxTCalibratedDataChunk];   //[TCalibratedDataChunk_]
-   string          TCalibratedDataChunk_name_[kMaxTCalibratedDataChunk];
    Int_t           TCrate13Chunk_;
    Int_t           TCrate13Chunk_chunk_id_[kMaxTCrate13Chunk];   //[TCrate13Chunk_]
    UInt_t          TCrate13Chunk_data__fUniqueID[kMaxTCrate13Chunk];   //[TCrate13Chunk_]
@@ -402,15 +363,6 @@ public :
    Float_t         TCrate13Chunk_data__trig_e4_t[kMaxTCrate13Chunk][20];   //[TCrate13Chunk_]
    Float_t         TCrate13Chunk_data__trig_e4_q[kMaxTCrate13Chunk][20];   //[TCrate13Chunk_]
    string          TCrate13Chunk_name_[kMaxTCrate13Chunk];
-   Int_t           TConnectTheHitsChunk_;
-   Int_t           TConnectTheHitsChunk_chunk_id_[kMaxTConnectTheHitsChunk];   //[TConnectTheHitsChunk_]
-   UInt_t          TConnectTheHitsChunk_data__fUniqueID[kMaxTConnectTheHitsChunk];   //[TConnectTheHitsChunk_]
-   UInt_t          TConnectTheHitsChunk_data__fBits[kMaxTConnectTheHitsChunk];   //[TConnectTheHitsChunk_]
-   Int_t           TConnectTheHitsChunk_data__Hits[kMaxTConnectTheHitsChunk];   //[TConnectTheHitsChunk_]
-   Int_t          *TConnectTheHitsChunk_data__Index[kMaxTConnectTheHitsChunk];   //[TConnectTheHitsChunk_data__Hits]
-   Int_t          *TConnectTheHitsChunk_data__Flag[kMaxTConnectTheHitsChunk];   //[TConnectTheHitsChunk_data__Hits]
-   Int_t          *TConnectTheHitsChunk_data__Offset[kMaxTConnectTheHitsChunk];   //[TConnectTheHitsChunk_data__Hits]
-   string          TConnectTheHitsChunk_name_[kMaxTConnectTheHitsChunk];
    Int_t           TMCRawEventChunk_;
    Int_t           TMCRawEventChunk_chunk_id_[kMaxTMCRawEventChunk];   //[TMCRawEventChunk_]
    UInt_t          TMCRawEventChunk_data__fUniqueID[kMaxTMCRawEventChunk];   //[TMCRawEventChunk_]
@@ -856,20 +808,6 @@ public :
    Float_t         TStancuVarsTwoChunk_data__tim_qrec[kMaxTStancuVarsTwoChunk][10];   //[TStancuVarsTwoChunk_]
    Float_t         TStancuVarsTwoChunk_data__tim_mu[kMaxTStancuVarsTwoChunk][10];   //[TStancuVarsTwoChunk_]
    string          TStancuVarsTwoChunk_name_[kMaxTStancuVarsTwoChunk];
-   Int_t           TVetoLinkingChunk_;
-   Int_t           TVetoLinkingChunk_chunk_id_[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
-   UInt_t          TVetoLinkingChunk_data__fUniqueID[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
-   UInt_t          TVetoLinkingChunk_data__fBits[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
-   Float_t         TVetoLinkingChunk_data__EnDl[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
-   Float_t         TVetoLinkingChunk_data__ExDl[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
-   Float_t         TVetoLinkingChunk_data__EnSigma[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
-   Float_t         TVetoLinkingChunk_data__ExSigma[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
-   Float_t         TVetoLinkingChunk_data__EnDt[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
-   Float_t         TVetoLinkingChunk_data__ExDt[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
-   Int_t           TVetoLinkingChunk_data__NC[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
-   Int_t           TVetoLinkingChunk_data__Enter[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
-   Int_t           TVetoLinkingChunk_data__Exit[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
-   string          TVetoLinkingChunk_name_[kMaxTVetoLinkingChunk];
    Int_t           TCalibrateEnergyChunk_;
    Int_t           TCalibrateEnergyChunk_chunk_id_[kMaxTCalibrateEnergyChunk];   //[TCalibrateEnergyChunk_]
    UInt_t          TCalibrateEnergyChunk_data__fUniqueID[kMaxTCalibrateEnergyChunk];   //[TCalibrateEnergyChunk_]
@@ -917,180 +855,6 @@ public :
    Float_t         TOneTrackChunk_data__relativeSci[kMaxTOneTrackChunk];   //[TOneTrackChunk_]
    Float_t         TOneTrackChunk_data__F[kMaxTOneTrackChunk];   //[TOneTrackChunk_]
    string          TOneTrackChunk_name_[kMaxTOneTrackChunk];
-   Int_t           TRoeFullChunk_;
-   Int_t           TRoeFullChunk_chunk_id_[kMaxTRoeFullChunk];   //[TRoeFullChunk_]
-   UInt_t          TRoeFullChunk_data__fUniqueID[kMaxTRoeFullChunk];   //[TRoeFullChunk_]
-   UInt_t          TRoeFullChunk_data__fBits[kMaxTRoeFullChunk];   //[TRoeFullChunk_]
-   Float_t         TRoeFullChunk_data__rvec[kMaxTRoeFullChunk][3];   //[TRoeFullChunk_]
-   Float_t         TRoeFullChunk_data__time[kMaxTRoeFullChunk];   //[TRoeFullChunk_]
-   Float_t         TRoeFullChunk_data__dircos[kMaxTRoeFullChunk][3];   //[TRoeFullChunk_]
-   Float_t         TRoeFullChunk_data__length[kMaxTRoeFullChunk];   //[TRoeFullChunk_]
-   Float_t         TRoeFullChunk_data__rvec_v[kMaxTRoeFullChunk][3];   //[TRoeFullChunk_]
-   Float_t         TRoeFullChunk_data__time_v[kMaxTRoeFullChunk];   //[TRoeFullChunk_]
-   Float_t         TRoeFullChunk_data__charge_infit[kMaxTRoeFullChunk];   //[TRoeFullChunk_]
-   Float_t         TRoeFullChunk_data__charge_wgt_infit[kMaxTRoeFullChunk];   //[TRoeFullChunk_]
-   Float_t         TRoeFullChunk_data__chisq_a_infit[kMaxTRoeFullChunk];   //[TRoeFullChunk_]
-   Float_t         TRoeFullChunk_data__chisq_r_infit[kMaxTRoeFullChunk];   //[TRoeFullChunk_]
-   Float_t         TRoeFullChunk_data__weight_total[kMaxTRoeFullChunk];   //[TRoeFullChunk_]
-   Float_t         TRoeFullChunk_data__chisq_avg[kMaxTRoeFullChunk];   //[TRoeFullChunk_]
-   Float_t         TRoeFullChunk_data__rtowall[kMaxTRoeFullChunk];   //[TRoeFullChunk_]
-   Float_t         TRoeFullChunk_data__Energy[kMaxTRoeFullChunk];   //[TRoeFullChunk_]
-   Int_t           TRoeFullChunk_data__numhits_infit[kMaxTRoeFullChunk];   //[TRoeFullChunk_]
-   Float_t         TRoeFullChunk_data__errors[kMaxTRoeFullChunk][7][7];   //[TRoeFullChunk_]
-   Float_t         TRoeFullChunk_data__EnergyMU[kMaxTRoeFullChunk];   //[TRoeFullChunk_]
-   Float_t         TRoeFullChunk_data__lengthMU[kMaxTRoeFullChunk];   //[TRoeFullChunk_]
-   Float_t         TRoeFullChunk_data__chg_length_nue[kMaxTRoeFullChunk];   //[TRoeFullChunk_]
-   Float_t         TRoeFullChunk_data__numlowt_nue[kMaxTRoeFullChunk][10];   //[TRoeFullChunk_]
-   string          TRoeFullChunk_name_[kMaxTRoeFullChunk];
-   Int_t           TFittersChunk_;
-   Int_t           TFittersChunk_chunk_id_[kMaxTFittersChunk];   //[TFittersChunk_]
-   UInt_t          TFittersChunk_data__fUniqueID[kMaxTFittersChunk];   //[TFittersChunk_]
-   UInt_t          TFittersChunk_data__fBits[kMaxTFittersChunk];   //[TFittersChunk_]
-   Char_t          TFittersChunk_data__id[kMaxTFittersChunk][20];   //[TFittersChunk_]
-   Float_t         TFittersChunk_data__x[kMaxTFittersChunk];   //[TFittersChunk_]
-   Float_t         TFittersChunk_data__y[kMaxTFittersChunk];   //[TFittersChunk_]
-   Float_t         TFittersChunk_data__z[kMaxTFittersChunk];   //[TFittersChunk_]
-   Float_t         TFittersChunk_data__t[kMaxTFittersChunk];   //[TFittersChunk_]
-   Float_t         TFittersChunk_data__ux[kMaxTFittersChunk];   //[TFittersChunk_]
-   Float_t         TFittersChunk_data__uy[kMaxTFittersChunk];   //[TFittersChunk_]
-   Float_t         TFittersChunk_data__uz[kMaxTFittersChunk];   //[TFittersChunk_]
-   Float_t         TFittersChunk_data__r3[kMaxTFittersChunk];   //[TFittersChunk_]
-   Float_t         TFittersChunk_data__e[kMaxTFittersChunk];   //[TFittersChunk_]
-   Float_t         TFittersChunk_data__trklen[kMaxTFittersChunk];   //[TFittersChunk_]
-   Float_t         TFittersChunk_data__emu[kMaxTFittersChunk];   //[TFittersChunk_]
-   Float_t         TFittersChunk_data__trklenmu[kMaxTFittersChunk];   //[TFittersChunk_]
-   Float_t         TFittersChunk_data__goodfit[kMaxTFittersChunk];   //[TFittersChunk_]
-   Float_t         TFittersChunk_data__errors[kMaxTFittersChunk][10][10];   //[TFittersChunk_]
-   string          TFittersChunk_name_[kMaxTFittersChunk];
-   Int_t           TYangVarChunk_;
-   Int_t           TYangVarChunk_chunk_id_[kMaxTYangVarChunk];   //[TYangVarChunk_]
-   UInt_t          TYangVarChunk_data__fUniqueID[kMaxTYangVarChunk];   //[TYangVarChunk_]
-   UInt_t          TYangVarChunk_data__fBits[kMaxTYangVarChunk];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__cx[kMaxTYangVarChunk];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__cy[kMaxTYangVarChunk];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__cz[kMaxTYangVarChunk];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__ux[kMaxTYangVarChunk];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__uy[kMaxTYangVarChunk];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__uz[kMaxTYangVarChunk];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__time[kMaxTYangVarChunk];   //[TYangVarChunk_]
-   Int_t           TYangVarChunk_data__tot_hit[kMaxTYangVarChunk];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__tot_q[kMaxTYangVarChunk];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__length[kMaxTYangVarChunk];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__pid_hit[kMaxTYangVarChunk][100];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__pid_charge[kMaxTYangVarChunk][100];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__pid_dtime[kMaxTYangVarChunk][100];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__pid_tchi[kMaxTYangVarChunk][100];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__pid_qtchi[kMaxTYangVarChunk][100];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__pid_hitrs[kMaxTYangVarChunk][100];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__pid_qrs[kMaxTYangVarChunk][100];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__pid_dtimers[kMaxTYangVarChunk][100];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__pid_tchirs[kMaxTYangVarChunk][100];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__pid_dtime_hit[kMaxTYangVarChunk][100];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__pid_dtime_charge[kMaxTYangVarChunk][100];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__pid_dtime_tchi[kMaxTYangVarChunk][100];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__pid_dtime_qtchi[kMaxTYangVarChunk][100];   //[TYangVarChunk_]
-   Float_t         TYangVarChunk_data__pid_chi2[kMaxTYangVarChunk][100];   //[TYangVarChunk_]
-   string          TYangVarChunk_name_[kMaxTYangVarChunk];
-   Int_t           TPFitterChunk_;
-   Int_t           TPFitterChunk_chunk_id_[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   UInt_t          TPFitterChunk_data__fUniqueID[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   UInt_t          TPFitterChunk_data__fBits[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__mu_x[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__mu_y[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__mu_z[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__mu_ux[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__mu_uy[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__mu_uz[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__mu_T[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__mu_E[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__mu_distToMeanCer[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__mu_F[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__e_x[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__e_y[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__e_z[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__e_ux[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__e_uy[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__e_uz[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__e_T[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__e_E[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__e_distToMeanCer[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__e_F[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pi_T[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pi_M[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pi_Cos0p[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pi_E1[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pi_E2[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pi_distToMeanCer1[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pi_distToMeanCer2[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pi_S1[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pi_S2[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pi_Fqqq[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pi_Fttt[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pi_F[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pifix_T[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pifix_M[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pifix_Cos0p[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pifix_E1[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pifix_E2[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pifix_distToMeanCer1[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pifix_distToMeanCer2[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pifix_S1[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pifix_S2[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pifix_Fqqq[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pifix_Fttt[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   Float_t         TPFitterChunk_data__pifix_F[kMaxTPFitterChunk];   //[TPFitterChunk_]
-   string          TPFitterChunk_name_[kMaxTPFitterChunk];
-   Int_t           TRoePiChunk_;
-   Int_t           TRoePiChunk_chunk_id_[kMaxTRoePiChunk];   //[TRoePiChunk_]
-   UInt_t          TRoePiChunk_data__fUniqueID[kMaxTRoePiChunk];   //[TRoePiChunk_]
-   UInt_t          TRoePiChunk_data__fBits[kMaxTRoePiChunk];   //[TRoePiChunk_]
-   Float_t         TRoePiChunk_data__rvec_v[kMaxTRoePiChunk][3];   //[TRoePiChunk_]
-   Float_t         TRoePiChunk_data__time_v[kMaxTRoePiChunk];   //[TRoePiChunk_]
-   Float_t         TRoePiChunk_data__shiftg1[kMaxTRoePiChunk];   //[TRoePiChunk_]
-   Float_t         TRoePiChunk_data__shiftg2[kMaxTRoePiChunk];   //[TRoePiChunk_]
-   Float_t         TRoePiChunk_data__dircosg1[kMaxTRoePiChunk][3];   //[TRoePiChunk_]
-   Float_t         TRoePiChunk_data__dircosg2[kMaxTRoePiChunk][3];   //[TRoePiChunk_]
-   Float_t         TRoePiChunk_data__chge_g1[kMaxTRoePiChunk];   //[TRoePiChunk_]
-   Float_t         TRoePiChunk_data__chge_g2[kMaxTRoePiChunk];   //[TRoePiChunk_]
-   Float_t         TRoePiChunk_data__chgew_g1[kMaxTRoePiChunk];   //[TRoePiChunk_]
-   Float_t         TRoePiChunk_data__chgew_g2[kMaxTRoePiChunk];   //[TRoePiChunk_]
-   Float_t         TRoePiChunk_data__Eg1[kMaxTRoePiChunk];   //[TRoePiChunk_]
-   Float_t         TRoePiChunk_data__Eg2[kMaxTRoePiChunk];   //[TRoePiChunk_]
-   Float_t         TRoePiChunk_data__pi0mass[kMaxTRoePiChunk];   //[TRoePiChunk_]
-   Float_t         TRoePiChunk_data__errors[kMaxTRoePiChunk][12][12];   //[TRoePiChunk_]
-   Float_t         TRoePiChunk_data__cosang1[kMaxTRoePiChunk];   //[TRoePiChunk_]
-   string          TRoePiChunk_name_[kMaxTRoePiChunk];
-   Int_t           TFittersPi0Chunk_;
-   Int_t           TFittersPi0Chunk_chunk_id_[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   UInt_t          TFittersPi0Chunk_data__fUniqueID[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   UInt_t          TFittersPi0Chunk_data__fBits[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   Char_t          TFittersPi0Chunk_data__id[kMaxTFittersPi0Chunk][20];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__x[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__y[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__z[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__t[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__mass[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__angle[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__eg1[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__eg2[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__shift1[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__shift2[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__ux1[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__uy1[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__uz1[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__ux2[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__uy2[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__uz2[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__qgamma1[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__qgamma2[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__errors[kMaxTFittersPi0Chunk][20][20];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__cosang1[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__Newpi[kMaxTFittersPi0Chunk][50];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__chg_length_g1[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__chg_length_g2[kMaxTFittersPi0Chunk];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__numlowt_g1[kMaxTFittersPi0Chunk][10];   //[TFittersPi0Chunk_]
-   Float_t         TFittersPi0Chunk_data__numlowt_g2[kMaxTFittersPi0Chunk][10];   //[TFittersPi0Chunk_]
-   string          TFittersPi0Chunk_name_[kMaxTFittersPi0Chunk];
    Int_t           TParticleIDChunk_;
    Int_t           TParticleIDChunk_chunk_id_[kMaxTParticleIDChunk];   //[TParticleIDChunk_]
    UInt_t          TParticleIDChunk_data__fUniqueID[kMaxTParticleIDChunk];   //[TParticleIDChunk_]
@@ -1209,6 +973,20 @@ public :
    Float_t         TNeutronChunk_data__TLLK[kMaxTNeutronChunk];   //[TNeutronChunk_]
    Float_t         TNeutronChunk_data__QLLK[kMaxTNeutronChunk];   //[TNeutronChunk_]
    string          TNeutronChunk_name_[kMaxTNeutronChunk];
+   Int_t           TVetoLinkingChunk_;
+   Int_t           TVetoLinkingChunk_chunk_id_[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
+   UInt_t          TVetoLinkingChunk_data__fUniqueID[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
+   UInt_t          TVetoLinkingChunk_data__fBits[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
+   Float_t         TVetoLinkingChunk_data__EnDl[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
+   Float_t         TVetoLinkingChunk_data__ExDl[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
+   Float_t         TVetoLinkingChunk_data__EnSigma[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
+   Float_t         TVetoLinkingChunk_data__ExSigma[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
+   Float_t         TVetoLinkingChunk_data__EnDt[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
+   Float_t         TVetoLinkingChunk_data__ExDt[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
+   Int_t           TVetoLinkingChunk_data__NC[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
+   Int_t           TVetoLinkingChunk_data__Enter[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
+   Int_t           TVetoLinkingChunk_data__Exit[kMaxTVetoLinkingChunk];   //[TVetoLinkingChunk_]
+   string          TVetoLinkingChunk_name_[kMaxTVetoLinkingChunk];
    Int_t           TReweightToCVChunk_;
    Int_t           TReweightToCVChunk_chunk_id_[kMaxTReweightToCVChunk];   //[TReweightToCVChunk_]
    UInt_t          TReweightToCVChunk_data__fUniqueID[kMaxTReweightToCVChunk];   //[TReweightToCVChunk_]
@@ -1248,17 +1026,6 @@ public :
    Float_t         TWeightDetailsChunk_data__absorber_wgt[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
    Float_t         TWeightDetailsChunk_data__totalweight[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
    string          TWeightDetailsChunk_name_[kMaxTWeightDetailsChunk];
-   Int_t           TMulMatWeightsChunk_;
-   Int_t           TMulMatWeightsChunk_chunk_id_[kMaxTMulMatWeightsChunk];   //[TMulMatWeightsChunk_]
-   UInt_t          TMulMatWeightsChunk_data__fUniqueID[kMaxTMulMatWeightsChunk];   //[TMulMatWeightsChunk_]
-   UInt_t          TMulMatWeightsChunk_data__fBits[kMaxTMulMatWeightsChunk];   //[TMulMatWeightsChunk_]
-   Float_t         TMulMatWeightsChunk_data__CVWeight[kMaxTMulMatWeightsChunk];   //[TMulMatWeightsChunk_]
-   Int_t           TMulMatWeightsChunk_data__NumSysts[kMaxTMulMatWeightsChunk];   //[TMulMatWeightsChunk_]
-   Float_t        *TMulMatWeightsChunk_data__PosUniWeight[kMaxTMulMatWeightsChunk];   //[TMulMatWeightsChunk_data__NumSysts]
-   Float_t        *TMulMatWeightsChunk_data__NegUniWeight[kMaxTMulMatWeightsChunk];   //[TMulMatWeightsChunk_data__NumSysts]
-   Int_t           TMulMatWeightsChunk_data__NumMultisims[kMaxTMulMatWeightsChunk];   //[TMulMatWeightsChunk_]
-   Float_t        *TMulMatWeightsChunk_data__MultiWeight[kMaxTMulMatWeightsChunk];   //[TMulMatWeightsChunk_data__NumMultisims]
-   string          TMulMatWeightsChunk_name_[kMaxTMulMatWeightsChunk];
 
    // List of branches
    TBranch        *b_THistory_;   //!
@@ -1447,18 +1214,6 @@ public :
    TBranch        *b_TGlobalTankHeaderChunk_data__NUM_UNCAL_HITS;   //!
    TBranch        *b_TGlobalTankHeaderChunk_data__RATE;   //!
    TBranch        *b_TGlobalTankHeaderChunk_name_;   //!
-   TBranch        *b_TCalibratedDataChunk_;   //!
-   TBranch        *b_TCalibratedDataChunk_chunk_id_;   //!
-   TBranch        *b_TCalibratedDataChunk_data__fUniqueID;   //!
-   TBranch        *b_TCalibratedDataChunk_data__fBits;   //!
-   TBranch        *b_TCalibratedDataChunk_data__Hits;   //!
-   TBranch        *b_TCalibratedDataChunk_data__PMT;   //!
-   TBranch        *b_TCalibratedDataChunk_data__Q;   //!
-   TBranch        *b_TCalibratedDataChunk_data__notruncQ;   //!
-   TBranch        *b_TCalibratedDataChunk_data__T;   //!
-   TBranch        *b_TCalibratedDataChunk_data__Tmin;   //!
-   TBranch        *b_TCalibratedDataChunk_data__Tmax;   //!
-   TBranch        *b_TCalibratedDataChunk_name_;   //!
    TBranch        *b_TCrate13Chunk_;   //!
    TBranch        *b_TCrate13Chunk_chunk_id_;   //!
    TBranch        *b_TCrate13Chunk_data__fUniqueID;   //!
@@ -1496,15 +1251,6 @@ public :
    TBranch        *b_TCrate13Chunk_data__trig_e4_t;   //!
    TBranch        *b_TCrate13Chunk_data__trig_e4_q;   //!
    TBranch        *b_TCrate13Chunk_name_;   //!
-   TBranch        *b_TConnectTheHitsChunk_;   //!
-   TBranch        *b_TConnectTheHitsChunk_chunk_id_;   //!
-   TBranch        *b_TConnectTheHitsChunk_data__fUniqueID;   //!
-   TBranch        *b_TConnectTheHitsChunk_data__fBits;   //!
-   TBranch        *b_TConnectTheHitsChunk_data__Hits;   //!
-   TBranch        *b_TConnectTheHitsChunk_data__Index;   //!
-   TBranch        *b_TConnectTheHitsChunk_data__Flag;   //!
-   TBranch        *b_TConnectTheHitsChunk_data__Offset;   //!
-   TBranch        *b_TConnectTheHitsChunk_name_;   //!
    TBranch        *b_TMCRawEventChunk_;   //!
    TBranch        *b_TMCRawEventChunk_chunk_id_;   //!
    TBranch        *b_TMCRawEventChunk_data__fUniqueID;   //!
@@ -1950,20 +1696,6 @@ public :
    TBranch        *b_TStancuVarsTwoChunk_data__tim_qrec;   //!
    TBranch        *b_TStancuVarsTwoChunk_data__tim_mu;   //!
    TBranch        *b_TStancuVarsTwoChunk_name_;   //!
-   TBranch        *b_TVetoLinkingChunk_;   //!
-   TBranch        *b_TVetoLinkingChunk_chunk_id_;   //!
-   TBranch        *b_TVetoLinkingChunk_data__fUniqueID;   //!
-   TBranch        *b_TVetoLinkingChunk_data__fBits;   //!
-   TBranch        *b_TVetoLinkingChunk_data__EnDl;   //!
-   TBranch        *b_TVetoLinkingChunk_data__ExDl;   //!
-   TBranch        *b_TVetoLinkingChunk_data__EnSigma;   //!
-   TBranch        *b_TVetoLinkingChunk_data__ExSigma;   //!
-   TBranch        *b_TVetoLinkingChunk_data__EnDt;   //!
-   TBranch        *b_TVetoLinkingChunk_data__ExDt;   //!
-   TBranch        *b_TVetoLinkingChunk_data__NC;   //!
-   TBranch        *b_TVetoLinkingChunk_data__Enter;   //!
-   TBranch        *b_TVetoLinkingChunk_data__Exit;   //!
-   TBranch        *b_TVetoLinkingChunk_name_;   //!
    TBranch        *b_TCalibrateEnergyChunk_;   //!
    TBranch        *b_TCalibrateEnergyChunk_chunk_id_;   //!
    TBranch        *b_TCalibrateEnergyChunk_data__fUniqueID;   //!
@@ -2011,180 +1743,6 @@ public :
    TBranch        *b_TOneTrackChunk_data__relativeSci;   //!
    TBranch        *b_TOneTrackChunk_data__F;   //!
    TBranch        *b_TOneTrackChunk_name_;   //!
-   TBranch        *b_TRoeFullChunk_;   //!
-   TBranch        *b_TRoeFullChunk_chunk_id_;   //!
-   TBranch        *b_TRoeFullChunk_data__fUniqueID;   //!
-   TBranch        *b_TRoeFullChunk_data__fBits;   //!
-   TBranch        *b_TRoeFullChunk_data__rvec;   //!
-   TBranch        *b_TRoeFullChunk_data__time;   //!
-   TBranch        *b_TRoeFullChunk_data__dircos;   //!
-   TBranch        *b_TRoeFullChunk_data__length;   //!
-   TBranch        *b_TRoeFullChunk_data__rvec_v;   //!
-   TBranch        *b_TRoeFullChunk_data__time_v;   //!
-   TBranch        *b_TRoeFullChunk_data__charge_infit;   //!
-   TBranch        *b_TRoeFullChunk_data__charge_wgt_infit;   //!
-   TBranch        *b_TRoeFullChunk_data__chisq_a_infit;   //!
-   TBranch        *b_TRoeFullChunk_data__chisq_r_infit;   //!
-   TBranch        *b_TRoeFullChunk_data__weight_total;   //!
-   TBranch        *b_TRoeFullChunk_data__chisq_avg;   //!
-   TBranch        *b_TRoeFullChunk_data__rtowall;   //!
-   TBranch        *b_TRoeFullChunk_data__Energy;   //!
-   TBranch        *b_TRoeFullChunk_data__numhits_infit;   //!
-   TBranch        *b_TRoeFullChunk_data__errors;   //!
-   TBranch        *b_TRoeFullChunk_data__EnergyMU;   //!
-   TBranch        *b_TRoeFullChunk_data__lengthMU;   //!
-   TBranch        *b_TRoeFullChunk_data__chg_length_nue;   //!
-   TBranch        *b_TRoeFullChunk_data__numlowt_nue;   //!
-   TBranch        *b_TRoeFullChunk_name_;   //!
-   TBranch        *b_TFittersChunk_;   //!
-   TBranch        *b_TFittersChunk_chunk_id_;   //!
-   TBranch        *b_TFittersChunk_data__fUniqueID;   //!
-   TBranch        *b_TFittersChunk_data__fBits;   //!
-   TBranch        *b_TFittersChunk_data__id;   //!
-   TBranch        *b_TFittersChunk_data__x;   //!
-   TBranch        *b_TFittersChunk_data__y;   //!
-   TBranch        *b_TFittersChunk_data__z;   //!
-   TBranch        *b_TFittersChunk_data__t;   //!
-   TBranch        *b_TFittersChunk_data__ux;   //!
-   TBranch        *b_TFittersChunk_data__uy;   //!
-   TBranch        *b_TFittersChunk_data__uz;   //!
-   TBranch        *b_TFittersChunk_data__r3;   //!
-   TBranch        *b_TFittersChunk_data__e;   //!
-   TBranch        *b_TFittersChunk_data__trklen;   //!
-   TBranch        *b_TFittersChunk_data__emu;   //!
-   TBranch        *b_TFittersChunk_data__trklenmu;   //!
-   TBranch        *b_TFittersChunk_data__goodfit;   //!
-   TBranch        *b_TFittersChunk_data__errors;   //!
-   TBranch        *b_TFittersChunk_name_;   //!
-   TBranch        *b_TYangVarChunk_;   //!
-   TBranch        *b_TYangVarChunk_chunk_id_;   //!
-   TBranch        *b_TYangVarChunk_data__fUniqueID;   //!
-   TBranch        *b_TYangVarChunk_data__fBits;   //!
-   TBranch        *b_TYangVarChunk_data__cx;   //!
-   TBranch        *b_TYangVarChunk_data__cy;   //!
-   TBranch        *b_TYangVarChunk_data__cz;   //!
-   TBranch        *b_TYangVarChunk_data__ux;   //!
-   TBranch        *b_TYangVarChunk_data__uy;   //!
-   TBranch        *b_TYangVarChunk_data__uz;   //!
-   TBranch        *b_TYangVarChunk_data__time;   //!
-   TBranch        *b_TYangVarChunk_data__tot_hit;   //!
-   TBranch        *b_TYangVarChunk_data__tot_q;   //!
-   TBranch        *b_TYangVarChunk_data__length;   //!
-   TBranch        *b_TYangVarChunk_data__pid_hit;   //!
-   TBranch        *b_TYangVarChunk_data__pid_charge;   //!
-   TBranch        *b_TYangVarChunk_data__pid_dtime;   //!
-   TBranch        *b_TYangVarChunk_data__pid_tchi;   //!
-   TBranch        *b_TYangVarChunk_data__pid_qtchi;   //!
-   TBranch        *b_TYangVarChunk_data__pid_hitrs;   //!
-   TBranch        *b_TYangVarChunk_data__pid_qrs;   //!
-   TBranch        *b_TYangVarChunk_data__pid_dtimers;   //!
-   TBranch        *b_TYangVarChunk_data__pid_tchirs;   //!
-   TBranch        *b_TYangVarChunk_data__pid_dtime_hit;   //!
-   TBranch        *b_TYangVarChunk_data__pid_dtime_charge;   //!
-   TBranch        *b_TYangVarChunk_data__pid_dtime_tchi;   //!
-   TBranch        *b_TYangVarChunk_data__pid_dtime_qtchi;   //!
-   TBranch        *b_TYangVarChunk_data__pid_chi2;   //!
-   TBranch        *b_TYangVarChunk_name_;   //!
-   TBranch        *b_TPFitterChunk_;   //!
-   TBranch        *b_TPFitterChunk_chunk_id_;   //!
-   TBranch        *b_TPFitterChunk_data__fUniqueID;   //!
-   TBranch        *b_TPFitterChunk_data__fBits;   //!
-   TBranch        *b_TPFitterChunk_data__mu_x;   //!
-   TBranch        *b_TPFitterChunk_data__mu_y;   //!
-   TBranch        *b_TPFitterChunk_data__mu_z;   //!
-   TBranch        *b_TPFitterChunk_data__mu_ux;   //!
-   TBranch        *b_TPFitterChunk_data__mu_uy;   //!
-   TBranch        *b_TPFitterChunk_data__mu_uz;   //!
-   TBranch        *b_TPFitterChunk_data__mu_T;   //!
-   TBranch        *b_TPFitterChunk_data__mu_E;   //!
-   TBranch        *b_TPFitterChunk_data__mu_distToMeanCer;   //!
-   TBranch        *b_TPFitterChunk_data__mu_F;   //!
-   TBranch        *b_TPFitterChunk_data__e_x;   //!
-   TBranch        *b_TPFitterChunk_data__e_y;   //!
-   TBranch        *b_TPFitterChunk_data__e_z;   //!
-   TBranch        *b_TPFitterChunk_data__e_ux;   //!
-   TBranch        *b_TPFitterChunk_data__e_uy;   //!
-   TBranch        *b_TPFitterChunk_data__e_uz;   //!
-   TBranch        *b_TPFitterChunk_data__e_T;   //!
-   TBranch        *b_TPFitterChunk_data__e_E;   //!
-   TBranch        *b_TPFitterChunk_data__e_distToMeanCer;   //!
-   TBranch        *b_TPFitterChunk_data__e_F;   //!
-   TBranch        *b_TPFitterChunk_data__pi_T;   //!
-   TBranch        *b_TPFitterChunk_data__pi_M;   //!
-   TBranch        *b_TPFitterChunk_data__pi_Cos0p;   //!
-   TBranch        *b_TPFitterChunk_data__pi_E1;   //!
-   TBranch        *b_TPFitterChunk_data__pi_E2;   //!
-   TBranch        *b_TPFitterChunk_data__pi_distToMeanCer1;   //!
-   TBranch        *b_TPFitterChunk_data__pi_distToMeanCer2;   //!
-   TBranch        *b_TPFitterChunk_data__pi_S1;   //!
-   TBranch        *b_TPFitterChunk_data__pi_S2;   //!
-   TBranch        *b_TPFitterChunk_data__pi_Fqqq;   //!
-   TBranch        *b_TPFitterChunk_data__pi_Fttt;   //!
-   TBranch        *b_TPFitterChunk_data__pi_F;   //!
-   TBranch        *b_TPFitterChunk_data__pifix_T;   //!
-   TBranch        *b_TPFitterChunk_data__pifix_M;   //!
-   TBranch        *b_TPFitterChunk_data__pifix_Cos0p;   //!
-   TBranch        *b_TPFitterChunk_data__pifix_E1;   //!
-   TBranch        *b_TPFitterChunk_data__pifix_E2;   //!
-   TBranch        *b_TPFitterChunk_data__pifix_distToMeanCer1;   //!
-   TBranch        *b_TPFitterChunk_data__pifix_distToMeanCer2;   //!
-   TBranch        *b_TPFitterChunk_data__pifix_S1;   //!
-   TBranch        *b_TPFitterChunk_data__pifix_S2;   //!
-   TBranch        *b_TPFitterChunk_data__pifix_Fqqq;   //!
-   TBranch        *b_TPFitterChunk_data__pifix_Fttt;   //!
-   TBranch        *b_TPFitterChunk_data__pifix_F;   //!
-   TBranch        *b_TPFitterChunk_name_;   //!
-   TBranch        *b_TRoePiChunk_;   //!
-   TBranch        *b_TRoePiChunk_chunk_id_;   //!
-   TBranch        *b_TRoePiChunk_data__fUniqueID;   //!
-   TBranch        *b_TRoePiChunk_data__fBits;   //!
-   TBranch        *b_TRoePiChunk_data__rvec_v;   //!
-   TBranch        *b_TRoePiChunk_data__time_v;   //!
-   TBranch        *b_TRoePiChunk_data__shiftg1;   //!
-   TBranch        *b_TRoePiChunk_data__shiftg2;   //!
-   TBranch        *b_TRoePiChunk_data__dircosg1;   //!
-   TBranch        *b_TRoePiChunk_data__dircosg2;   //!
-   TBranch        *b_TRoePiChunk_data__chge_g1;   //!
-   TBranch        *b_TRoePiChunk_data__chge_g2;   //!
-   TBranch        *b_TRoePiChunk_data__chgew_g1;   //!
-   TBranch        *b_TRoePiChunk_data__chgew_g2;   //!
-   TBranch        *b_TRoePiChunk_data__Eg1;   //!
-   TBranch        *b_TRoePiChunk_data__Eg2;   //!
-   TBranch        *b_TRoePiChunk_data__pi0mass;   //!
-   TBranch        *b_TRoePiChunk_data__errors;   //!
-   TBranch        *b_TRoePiChunk_data__cosang1;   //!
-   TBranch        *b_TRoePiChunk_name_;   //!
-   TBranch        *b_TFittersPi0Chunk_;   //!
-   TBranch        *b_TFittersPi0Chunk_chunk_id_;   //!
-   TBranch        *b_TFittersPi0Chunk_data__fUniqueID;   //!
-   TBranch        *b_TFittersPi0Chunk_data__fBits;   //!
-   TBranch        *b_TFittersPi0Chunk_data__id;   //!
-   TBranch        *b_TFittersPi0Chunk_data__x;   //!
-   TBranch        *b_TFittersPi0Chunk_data__y;   //!
-   TBranch        *b_TFittersPi0Chunk_data__z;   //!
-   TBranch        *b_TFittersPi0Chunk_data__t;   //!
-   TBranch        *b_TFittersPi0Chunk_data__mass;   //!
-   TBranch        *b_TFittersPi0Chunk_data__angle;   //!
-   TBranch        *b_TFittersPi0Chunk_data__eg1;   //!
-   TBranch        *b_TFittersPi0Chunk_data__eg2;   //!
-   TBranch        *b_TFittersPi0Chunk_data__shift1;   //!
-   TBranch        *b_TFittersPi0Chunk_data__shift2;   //!
-   TBranch        *b_TFittersPi0Chunk_data__ux1;   //!
-   TBranch        *b_TFittersPi0Chunk_data__uy1;   //!
-   TBranch        *b_TFittersPi0Chunk_data__uz1;   //!
-   TBranch        *b_TFittersPi0Chunk_data__ux2;   //!
-   TBranch        *b_TFittersPi0Chunk_data__uy2;   //!
-   TBranch        *b_TFittersPi0Chunk_data__uz2;   //!
-   TBranch        *b_TFittersPi0Chunk_data__qgamma1;   //!
-   TBranch        *b_TFittersPi0Chunk_data__qgamma2;   //!
-   TBranch        *b_TFittersPi0Chunk_data__errors;   //!
-   TBranch        *b_TFittersPi0Chunk_data__cosang1;   //!
-   TBranch        *b_TFittersPi0Chunk_data__Newpi;   //!
-   TBranch        *b_TFittersPi0Chunk_data__chg_length_g1;   //!
-   TBranch        *b_TFittersPi0Chunk_data__chg_length_g2;   //!
-   TBranch        *b_TFittersPi0Chunk_data__numlowt_g1;   //!
-   TBranch        *b_TFittersPi0Chunk_data__numlowt_g2;   //!
-   TBranch        *b_TFittersPi0Chunk_name_;   //!
    TBranch        *b_TParticleIDChunk_;   //!
    TBranch        *b_TParticleIDChunk_chunk_id_;   //!
    TBranch        *b_TParticleIDChunk_data__fUniqueID;   //!
@@ -2303,6 +1861,20 @@ public :
    TBranch        *b_TNeutronChunk_data__TLLK;   //!
    TBranch        *b_TNeutronChunk_data__QLLK;   //!
    TBranch        *b_TNeutronChunk_name_;   //!
+   TBranch        *b_TVetoLinkingChunk_;   //!
+   TBranch        *b_TVetoLinkingChunk_chunk_id_;   //!
+   TBranch        *b_TVetoLinkingChunk_data__fUniqueID;   //!
+   TBranch        *b_TVetoLinkingChunk_data__fBits;   //!
+   TBranch        *b_TVetoLinkingChunk_data__EnDl;   //!
+   TBranch        *b_TVetoLinkingChunk_data__ExDl;   //!
+   TBranch        *b_TVetoLinkingChunk_data__EnSigma;   //!
+   TBranch        *b_TVetoLinkingChunk_data__ExSigma;   //!
+   TBranch        *b_TVetoLinkingChunk_data__EnDt;   //!
+   TBranch        *b_TVetoLinkingChunk_data__ExDt;   //!
+   TBranch        *b_TVetoLinkingChunk_data__NC;   //!
+   TBranch        *b_TVetoLinkingChunk_data__Enter;   //!
+   TBranch        *b_TVetoLinkingChunk_data__Exit;   //!
+   TBranch        *b_TVetoLinkingChunk_name_;   //!
    TBranch        *b_TReweightToCVChunk_;   //!
    TBranch        *b_TReweightToCVChunk_chunk_id_;   //!
    TBranch        *b_TReweightToCVChunk_data__fUniqueID;   //!
@@ -2342,17 +1914,6 @@ public :
    TBranch        *b_TWeightDetailsChunk_data__absorber_wgt;   //!
    TBranch        *b_TWeightDetailsChunk_data__totalweight;   //!
    TBranch        *b_TWeightDetailsChunk_name_;   //!
-   TBranch        *b_TMulMatWeightsChunk_;   //!
-   TBranch        *b_TMulMatWeightsChunk_chunk_id_;   //!
-   TBranch        *b_TMulMatWeightsChunk_data__fUniqueID;   //!
-   TBranch        *b_TMulMatWeightsChunk_data__fBits;   //!
-   TBranch        *b_TMulMatWeightsChunk_data__CVWeight;   //!
-   TBranch        *b_TMulMatWeightsChunk_data__NumSysts;   //!
-   TBranch        *b_TMulMatWeightsChunk_data__PosUniWeight;   //!
-   TBranch        *b_TMulMatWeightsChunk_data__NegUniWeight;   //!
-   TBranch        *b_TMulMatWeightsChunk_data__NumMultisims;   //!
-   TBranch        *b_TMulMatWeightsChunk_data__MultiWeight;   //!
-   TBranch        *b_TMulMatWeightsChunk_name_;   //!
 
    newroot(TTree *tree=0);
    virtual ~newroot();
@@ -2363,6 +1924,13 @@ public :
    virtual void     Loop();
    virtual Bool_t   Notify();
    virtual void     Show(Long64_t entry = -1);
+
+   static const Int_t kMaxTMulMatWeightsChunk = 12;
+   Float_t        *TMulMatWeightsChunk_data__MultiWeight[kMaxTMulMatWeightsChunk];   //[TMulMatWeightsChunk_data__NumMultisims]
+   std::vector< int > entry_marks;
+   void GrabVars(std::vector<std::vector< std::vector< Float_t> > > & container, int hndex, int index, bool its_OM, bool its_Multisim);
+   void FillVars(int &nthrows, int multithrows, Float_t ovars[][1], std::vector< std::vector< std::vector< Float_t > > > container, TTree* out_tree);
+   int GetNpi0();
 };
 
 #endif
@@ -2373,18 +1941,11 @@ newroot::newroot(TTree *tree) : fChain(0)
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    std::vector< TString> file_lists = {
-//	   "/scratch/klin/Systematics/Multism/07det_07dirt_CV.root",//Unism & Multism CV files
-	   "/scratch/klin/Systematics/07May/may07_2_det_cocktail_allhad_osc_precuts_final_MM.root",//07det
-	   "/scratch/klin/Systematics/07May/may07_2_disc_cocktail_allhad.root",//07disc
-	   "/scratch/klin/Systematics/07May/may07_2_qtcorr_cocktail_allhad.root",//07qtcorr
-	   "/scratch/klin/Systematics/07May/may07_2_dirt_cocktail_allhad_MM.root",//07dirt
-	   "/scratch/condor-tmp/rtthorn/reweighting/osc/may07_2_det_coktail_nubar_allhad_osc_precuts_final_MM_pi0YieldOnly.root",//test, 07det
-//	   "/scratch/klin/Systematics/06May/OpticalModel_CV.root",
-//	   "/scratch/condor-tmp/zarko/data_area/numode/May06_Multisim/May06_Cocktail_NuePreCuts/*/Likelihood_Final_Full_Dirtcut/",//CHECK how to count ##
+	   "/scratch/klin/Systematics/original_files/may07_2_disc_cocktail_allhad.root",//07disc
+	   "/scratch/klin/Systematics/original_files/may07_2_qtcorr_cocktail_allhad.root",//07qtcorr
+//	   "/scratch/klin/Systematics/06May/OpticalModel_CV.root",//06 Optical Model, sneak this in; no, this will try to set branch to empty address
 	   ""};
-   TString cur_file = file_lists[4]; 
-
-   bool one_throw_one_file = false;
+   TString cur_file = file_lists[0]; 
 
    if (tree == 0) {
       TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject(cur_file);
@@ -2394,8 +1955,7 @@ newroot::newroot(TTree *tree) : fChain(0)
       }
       f->GetObject("MiniBooNE",tree);
 
-   }
-   Init(tree);
+   }   Init(tree);
 }
 
 newroot::~newroot()
@@ -2474,13 +2034,6 @@ void newroot::Init(TTree *tree)
    for(int i=0; i<kMaxTGlobalTankHeaderChunk; ++i) TGlobalTankHeaderChunk_data__BCAST_CMD[i] = 0;
    for(int i=0; i<kMaxTGlobalTankHeaderChunk; ++i) TGlobalTankHeaderChunk_data__BCAST_DIAG[i] = 0;
    for(int i=0; i<kMaxTGlobalTankHeaderChunk; ++i) TGlobalTankHeaderChunk_data__BCAST_LAT[i] = 0;
-   for(int i=0; i<kMaxTCalibratedDataChunk; ++i) TCalibratedDataChunk_data__PMT[i] = 0;
-   for(int i=0; i<kMaxTCalibratedDataChunk; ++i) TCalibratedDataChunk_data__Q[i] = 0;
-   for(int i=0; i<kMaxTCalibratedDataChunk; ++i) TCalibratedDataChunk_data__notruncQ[i] = 0;
-   for(int i=0; i<kMaxTCalibratedDataChunk; ++i) TCalibratedDataChunk_data__T[i] = 0;
-   for(int i=0; i<kMaxTConnectTheHitsChunk; ++i) TConnectTheHitsChunk_data__Index[i] = 0;
-   for(int i=0; i<kMaxTConnectTheHitsChunk; ++i) TConnectTheHitsChunk_data__Flag[i] = 0;
-   for(int i=0; i<kMaxTConnectTheHitsChunk; ++i) TConnectTheHitsChunk_data__Offset[i] = 0;
    for(int i=0; i<kMaxTMCRawEventChunk; ++i) TMCRawEventChunk_data__ipfs[i] = 0;
    for(int i=0; i<kMaxTMCRawEventChunk; ++i) TMCRawEventChunk_data__nhttcer[i] = 0;
    for(int i=0; i<kMaxTMCRawEventChunk; ++i) TMCRawEventChunk_data__nhttVcer[i] = 0;
@@ -2534,9 +2087,6 @@ void newroot::Init(TTree *tree)
    for(int i=0; i<kMaxTTwoTrackInternalsChunk; ++i) TTwoTrackInternalsChunk_data__endThet2[i] = 0;
    for(int i=0; i<kMaxTTwoTrackInternalsChunk; ++i) TTwoTrackInternalsChunk_data__endF[i] = 0;
    for(int i=0; i<kMaxTTwoTrackInternalsChunk; ++i) TTwoTrackInternalsChunk_data__skipped[i] = 0;
-   for(int i=0; i<kMaxTMulMatWeightsChunk; ++i) TMulMatWeightsChunk_data__PosUniWeight[i] = 0;
-   for(int i=0; i<kMaxTMulMatWeightsChunk; ++i) TMulMatWeightsChunk_data__NegUniWeight[i] = 0;
-   for(int i=0; i<kMaxTMulMatWeightsChunk; ++i) TMulMatWeightsChunk_data__MultiWeight[i] = 0;
 
    // Set branch addresses and branch pointers
    if (!tree) return;
@@ -2730,18 +2280,6 @@ void newroot::Init(TTree *tree)
    fChain->SetBranchAddress("TGlobalTankHeaderChunk.data_.NUM_UNCAL_HITS", TGlobalTankHeaderChunk_data__NUM_UNCAL_HITS, &b_TGlobalTankHeaderChunk_data__NUM_UNCAL_HITS);
    fChain->SetBranchAddress("TGlobalTankHeaderChunk.data_.RATE", TGlobalTankHeaderChunk_data__RATE, &b_TGlobalTankHeaderChunk_data__RATE);
    fChain->SetBranchAddress("TGlobalTankHeaderChunk.name_", TGlobalTankHeaderChunk_name_, &b_TGlobalTankHeaderChunk_name_);
-   fChain->SetBranchAddress("TCalibratedDataChunk", &TCalibratedDataChunk_, &b_TCalibratedDataChunk_);
-   fChain->SetBranchAddress("TCalibratedDataChunk.chunk_id_", TCalibratedDataChunk_chunk_id_, &b_TCalibratedDataChunk_chunk_id_);
-   fChain->SetBranchAddress("TCalibratedDataChunk.data_.fUniqueID", TCalibratedDataChunk_data__fUniqueID, &b_TCalibratedDataChunk_data__fUniqueID);
-   fChain->SetBranchAddress("TCalibratedDataChunk.data_.fBits", TCalibratedDataChunk_data__fBits, &b_TCalibratedDataChunk_data__fBits);
-   fChain->SetBranchAddress("TCalibratedDataChunk.data_.Hits", TCalibratedDataChunk_data__Hits, &b_TCalibratedDataChunk_data__Hits);
-   fChain->SetBranchAddress("TCalibratedDataChunk.data_.PMT", TCalibratedDataChunk_data__PMT, &b_TCalibratedDataChunk_data__PMT);
-   fChain->SetBranchAddress("TCalibratedDataChunk.data_.Q", TCalibratedDataChunk_data__Q, &b_TCalibratedDataChunk_data__Q);
-   fChain->SetBranchAddress("TCalibratedDataChunk.data_.notruncQ", TCalibratedDataChunk_data__notruncQ, &b_TCalibratedDataChunk_data__notruncQ);
-   fChain->SetBranchAddress("TCalibratedDataChunk.data_.T", TCalibratedDataChunk_data__T, &b_TCalibratedDataChunk_data__T);
-   fChain->SetBranchAddress("TCalibratedDataChunk.data_.Tmin", TCalibratedDataChunk_data__Tmin, &b_TCalibratedDataChunk_data__Tmin);
-   fChain->SetBranchAddress("TCalibratedDataChunk.data_.Tmax", TCalibratedDataChunk_data__Tmax, &b_TCalibratedDataChunk_data__Tmax);
-   fChain->SetBranchAddress("TCalibratedDataChunk.name_", TCalibratedDataChunk_name_, &b_TCalibratedDataChunk_name_);
    fChain->SetBranchAddress("TCrate13Chunk", &TCrate13Chunk_, &b_TCrate13Chunk_);
    fChain->SetBranchAddress("TCrate13Chunk.chunk_id_", TCrate13Chunk_chunk_id_, &b_TCrate13Chunk_chunk_id_);
    fChain->SetBranchAddress("TCrate13Chunk.data_.fUniqueID", TCrate13Chunk_data__fUniqueID, &b_TCrate13Chunk_data__fUniqueID);
@@ -2779,15 +2317,6 @@ void newroot::Init(TTree *tree)
    fChain->SetBranchAddress("TCrate13Chunk.data_.trig_e4_t[20]", TCrate13Chunk_data__trig_e4_t, &b_TCrate13Chunk_data__trig_e4_t);
    fChain->SetBranchAddress("TCrate13Chunk.data_.trig_e4_q[20]", TCrate13Chunk_data__trig_e4_q, &b_TCrate13Chunk_data__trig_e4_q);
    fChain->SetBranchAddress("TCrate13Chunk.name_", TCrate13Chunk_name_, &b_TCrate13Chunk_name_);
-   fChain->SetBranchAddress("TConnectTheHitsChunk", &TConnectTheHitsChunk_, &b_TConnectTheHitsChunk_);
-   fChain->SetBranchAddress("TConnectTheHitsChunk.chunk_id_", TConnectTheHitsChunk_chunk_id_, &b_TConnectTheHitsChunk_chunk_id_);
-   fChain->SetBranchAddress("TConnectTheHitsChunk.data_.fUniqueID", TConnectTheHitsChunk_data__fUniqueID, &b_TConnectTheHitsChunk_data__fUniqueID);
-   fChain->SetBranchAddress("TConnectTheHitsChunk.data_.fBits", TConnectTheHitsChunk_data__fBits, &b_TConnectTheHitsChunk_data__fBits);
-   fChain->SetBranchAddress("TConnectTheHitsChunk.data_.Hits", TConnectTheHitsChunk_data__Hits, &b_TConnectTheHitsChunk_data__Hits);
-   fChain->SetBranchAddress("TConnectTheHitsChunk.data_.Index", TConnectTheHitsChunk_data__Index, &b_TConnectTheHitsChunk_data__Index);
-   fChain->SetBranchAddress("TConnectTheHitsChunk.data_.Flag", TConnectTheHitsChunk_data__Flag, &b_TConnectTheHitsChunk_data__Flag);
-   fChain->SetBranchAddress("TConnectTheHitsChunk.data_.Offset", TConnectTheHitsChunk_data__Offset, &b_TConnectTheHitsChunk_data__Offset);
-   fChain->SetBranchAddress("TConnectTheHitsChunk.name_", TConnectTheHitsChunk_name_, &b_TConnectTheHitsChunk_name_);
    fChain->SetBranchAddress("TMCRawEventChunk", &TMCRawEventChunk_, &b_TMCRawEventChunk_);
    fChain->SetBranchAddress("TMCRawEventChunk.chunk_id_", TMCRawEventChunk_chunk_id_, &b_TMCRawEventChunk_chunk_id_);
    fChain->SetBranchAddress("TMCRawEventChunk.data_.fUniqueID", TMCRawEventChunk_data__fUniqueID, &b_TMCRawEventChunk_data__fUniqueID);
@@ -3233,20 +2762,6 @@ void newroot::Init(TTree *tree)
    fChain->SetBranchAddress("TStancuVarsTwoChunk.data_.tim_qrec[10]", TStancuVarsTwoChunk_data__tim_qrec, &b_TStancuVarsTwoChunk_data__tim_qrec);
    fChain->SetBranchAddress("TStancuVarsTwoChunk.data_.tim_mu[10]", TStancuVarsTwoChunk_data__tim_mu, &b_TStancuVarsTwoChunk_data__tim_mu);
    fChain->SetBranchAddress("TStancuVarsTwoChunk.name_", TStancuVarsTwoChunk_name_, &b_TStancuVarsTwoChunk_name_);
-   fChain->SetBranchAddress("TVetoLinkingChunk", &TVetoLinkingChunk_, &b_TVetoLinkingChunk_);
-   fChain->SetBranchAddress("TVetoLinkingChunk.chunk_id_", TVetoLinkingChunk_chunk_id_, &b_TVetoLinkingChunk_chunk_id_);
-   fChain->SetBranchAddress("TVetoLinkingChunk.data_.fUniqueID", TVetoLinkingChunk_data__fUniqueID, &b_TVetoLinkingChunk_data__fUniqueID);
-   fChain->SetBranchAddress("TVetoLinkingChunk.data_.fBits", TVetoLinkingChunk_data__fBits, &b_TVetoLinkingChunk_data__fBits);
-   fChain->SetBranchAddress("TVetoLinkingChunk.data_.EnDl", TVetoLinkingChunk_data__EnDl, &b_TVetoLinkingChunk_data__EnDl);
-   fChain->SetBranchAddress("TVetoLinkingChunk.data_.ExDl", TVetoLinkingChunk_data__ExDl, &b_TVetoLinkingChunk_data__ExDl);
-   fChain->SetBranchAddress("TVetoLinkingChunk.data_.EnSigma", TVetoLinkingChunk_data__EnSigma, &b_TVetoLinkingChunk_data__EnSigma);
-   fChain->SetBranchAddress("TVetoLinkingChunk.data_.ExSigma", TVetoLinkingChunk_data__ExSigma, &b_TVetoLinkingChunk_data__ExSigma);
-   fChain->SetBranchAddress("TVetoLinkingChunk.data_.EnDt", TVetoLinkingChunk_data__EnDt, &b_TVetoLinkingChunk_data__EnDt);
-   fChain->SetBranchAddress("TVetoLinkingChunk.data_.ExDt", TVetoLinkingChunk_data__ExDt, &b_TVetoLinkingChunk_data__ExDt);
-   fChain->SetBranchAddress("TVetoLinkingChunk.data_.NC", TVetoLinkingChunk_data__NC, &b_TVetoLinkingChunk_data__NC);
-   fChain->SetBranchAddress("TVetoLinkingChunk.data_.Enter", TVetoLinkingChunk_data__Enter, &b_TVetoLinkingChunk_data__Enter);
-   fChain->SetBranchAddress("TVetoLinkingChunk.data_.Exit", TVetoLinkingChunk_data__Exit, &b_TVetoLinkingChunk_data__Exit);
-   fChain->SetBranchAddress("TVetoLinkingChunk.name_", TVetoLinkingChunk_name_, &b_TVetoLinkingChunk_name_);
    fChain->SetBranchAddress("TCalibrateEnergyChunk", &TCalibrateEnergyChunk_, &b_TCalibrateEnergyChunk_);
    fChain->SetBranchAddress("TCalibrateEnergyChunk.chunk_id_", TCalibrateEnergyChunk_chunk_id_, &b_TCalibrateEnergyChunk_chunk_id_);
    fChain->SetBranchAddress("TCalibrateEnergyChunk.data_.fUniqueID", TCalibrateEnergyChunk_data__fUniqueID, &b_TCalibrateEnergyChunk_data__fUniqueID);
@@ -3294,180 +2809,6 @@ void newroot::Init(TTree *tree)
    fChain->SetBranchAddress("TOneTrackChunk.data_.relativeSci", TOneTrackChunk_data__relativeSci, &b_TOneTrackChunk_data__relativeSci);
    fChain->SetBranchAddress("TOneTrackChunk.data_.F", TOneTrackChunk_data__F, &b_TOneTrackChunk_data__F);
    fChain->SetBranchAddress("TOneTrackChunk.name_", TOneTrackChunk_name_, &b_TOneTrackChunk_name_);
-   fChain->SetBranchAddress("TRoeFullChunk", &TRoeFullChunk_, &b_TRoeFullChunk_);
-   fChain->SetBranchAddress("TRoeFullChunk.chunk_id_", TRoeFullChunk_chunk_id_, &b_TRoeFullChunk_chunk_id_);
-   fChain->SetBranchAddress("TRoeFullChunk.data_.fUniqueID", TRoeFullChunk_data__fUniqueID, &b_TRoeFullChunk_data__fUniqueID);
-   fChain->SetBranchAddress("TRoeFullChunk.data_.fBits", TRoeFullChunk_data__fBits, &b_TRoeFullChunk_data__fBits);
-   fChain->SetBranchAddress("TRoeFullChunk.data_.rvec[3]", TRoeFullChunk_data__rvec, &b_TRoeFullChunk_data__rvec);
-   fChain->SetBranchAddress("TRoeFullChunk.data_.time", TRoeFullChunk_data__time, &b_TRoeFullChunk_data__time);
-   fChain->SetBranchAddress("TRoeFullChunk.data_.dircos[3]", TRoeFullChunk_data__dircos, &b_TRoeFullChunk_data__dircos);
-   fChain->SetBranchAddress("TRoeFullChunk.data_.length", TRoeFullChunk_data__length, &b_TRoeFullChunk_data__length);
-   fChain->SetBranchAddress("TRoeFullChunk.data_.rvec_v[3]", TRoeFullChunk_data__rvec_v, &b_TRoeFullChunk_data__rvec_v);
-   fChain->SetBranchAddress("TRoeFullChunk.data_.time_v", TRoeFullChunk_data__time_v, &b_TRoeFullChunk_data__time_v);
-   fChain->SetBranchAddress("TRoeFullChunk.data_.charge_infit", TRoeFullChunk_data__charge_infit, &b_TRoeFullChunk_data__charge_infit);
-   fChain->SetBranchAddress("TRoeFullChunk.data_.charge_wgt_infit", TRoeFullChunk_data__charge_wgt_infit, &b_TRoeFullChunk_data__charge_wgt_infit);
-   fChain->SetBranchAddress("TRoeFullChunk.data_.chisq_a_infit", TRoeFullChunk_data__chisq_a_infit, &b_TRoeFullChunk_data__chisq_a_infit);
-   fChain->SetBranchAddress("TRoeFullChunk.data_.chisq_r_infit", TRoeFullChunk_data__chisq_r_infit, &b_TRoeFullChunk_data__chisq_r_infit);
-   fChain->SetBranchAddress("TRoeFullChunk.data_.weight_total", TRoeFullChunk_data__weight_total, &b_TRoeFullChunk_data__weight_total);
-   fChain->SetBranchAddress("TRoeFullChunk.data_.chisq_avg", TRoeFullChunk_data__chisq_avg, &b_TRoeFullChunk_data__chisq_avg);
-   fChain->SetBranchAddress("TRoeFullChunk.data_.rtowall", TRoeFullChunk_data__rtowall, &b_TRoeFullChunk_data__rtowall);
-   fChain->SetBranchAddress("TRoeFullChunk.data_.Energy", TRoeFullChunk_data__Energy, &b_TRoeFullChunk_data__Energy);
-   fChain->SetBranchAddress("TRoeFullChunk.data_.numhits_infit", TRoeFullChunk_data__numhits_infit, &b_TRoeFullChunk_data__numhits_infit);
-   fChain->SetBranchAddress("TRoeFullChunk.data_.errors[7][7]", TRoeFullChunk_data__errors, &b_TRoeFullChunk_data__errors);
-   fChain->SetBranchAddress("TRoeFullChunk.data_.EnergyMU", TRoeFullChunk_data__EnergyMU, &b_TRoeFullChunk_data__EnergyMU);
-   fChain->SetBranchAddress("TRoeFullChunk.data_.lengthMU", TRoeFullChunk_data__lengthMU, &b_TRoeFullChunk_data__lengthMU);
-   fChain->SetBranchAddress("TRoeFullChunk.data_.chg_length_nue", TRoeFullChunk_data__chg_length_nue, &b_TRoeFullChunk_data__chg_length_nue);
-   fChain->SetBranchAddress("TRoeFullChunk.data_.numlowt_nue[10]", TRoeFullChunk_data__numlowt_nue, &b_TRoeFullChunk_data__numlowt_nue);
-   fChain->SetBranchAddress("TRoeFullChunk.name_", TRoeFullChunk_name_, &b_TRoeFullChunk_name_);
-   fChain->SetBranchAddress("TFittersChunk", &TFittersChunk_, &b_TFittersChunk_);
-   fChain->SetBranchAddress("TFittersChunk.chunk_id_", TFittersChunk_chunk_id_, &b_TFittersChunk_chunk_id_);
-   fChain->SetBranchAddress("TFittersChunk.data_.fUniqueID", TFittersChunk_data__fUniqueID, &b_TFittersChunk_data__fUniqueID);
-   fChain->SetBranchAddress("TFittersChunk.data_.fBits", TFittersChunk_data__fBits, &b_TFittersChunk_data__fBits);
-   fChain->SetBranchAddress("TFittersChunk.data_.id[20]", TFittersChunk_data__id, &b_TFittersChunk_data__id);
-   fChain->SetBranchAddress("TFittersChunk.data_.x", TFittersChunk_data__x, &b_TFittersChunk_data__x);
-   fChain->SetBranchAddress("TFittersChunk.data_.y", TFittersChunk_data__y, &b_TFittersChunk_data__y);
-   fChain->SetBranchAddress("TFittersChunk.data_.z", TFittersChunk_data__z, &b_TFittersChunk_data__z);
-   fChain->SetBranchAddress("TFittersChunk.data_.t", TFittersChunk_data__t, &b_TFittersChunk_data__t);
-   fChain->SetBranchAddress("TFittersChunk.data_.ux", TFittersChunk_data__ux, &b_TFittersChunk_data__ux);
-   fChain->SetBranchAddress("TFittersChunk.data_.uy", TFittersChunk_data__uy, &b_TFittersChunk_data__uy);
-   fChain->SetBranchAddress("TFittersChunk.data_.uz", TFittersChunk_data__uz, &b_TFittersChunk_data__uz);
-   fChain->SetBranchAddress("TFittersChunk.data_.r3", TFittersChunk_data__r3, &b_TFittersChunk_data__r3);
-   fChain->SetBranchAddress("TFittersChunk.data_.e", TFittersChunk_data__e, &b_TFittersChunk_data__e);
-   fChain->SetBranchAddress("TFittersChunk.data_.trklen", TFittersChunk_data__trklen, &b_TFittersChunk_data__trklen);
-   fChain->SetBranchAddress("TFittersChunk.data_.emu", TFittersChunk_data__emu, &b_TFittersChunk_data__emu);
-   fChain->SetBranchAddress("TFittersChunk.data_.trklenmu", TFittersChunk_data__trklenmu, &b_TFittersChunk_data__trklenmu);
-   fChain->SetBranchAddress("TFittersChunk.data_.goodfit", TFittersChunk_data__goodfit, &b_TFittersChunk_data__goodfit);
-   fChain->SetBranchAddress("TFittersChunk.data_.errors[10][10]", TFittersChunk_data__errors, &b_TFittersChunk_data__errors);
-   fChain->SetBranchAddress("TFittersChunk.name_", TFittersChunk_name_, &b_TFittersChunk_name_);
-   fChain->SetBranchAddress("TYangVarChunk", &TYangVarChunk_, &b_TYangVarChunk_);
-   fChain->SetBranchAddress("TYangVarChunk.chunk_id_", TYangVarChunk_chunk_id_, &b_TYangVarChunk_chunk_id_);
-   fChain->SetBranchAddress("TYangVarChunk.data_.fUniqueID", TYangVarChunk_data__fUniqueID, &b_TYangVarChunk_data__fUniqueID);
-   fChain->SetBranchAddress("TYangVarChunk.data_.fBits", TYangVarChunk_data__fBits, &b_TYangVarChunk_data__fBits);
-   fChain->SetBranchAddress("TYangVarChunk.data_.cx", TYangVarChunk_data__cx, &b_TYangVarChunk_data__cx);
-   fChain->SetBranchAddress("TYangVarChunk.data_.cy", TYangVarChunk_data__cy, &b_TYangVarChunk_data__cy);
-   fChain->SetBranchAddress("TYangVarChunk.data_.cz", TYangVarChunk_data__cz, &b_TYangVarChunk_data__cz);
-   fChain->SetBranchAddress("TYangVarChunk.data_.ux", TYangVarChunk_data__ux, &b_TYangVarChunk_data__ux);
-   fChain->SetBranchAddress("TYangVarChunk.data_.uy", TYangVarChunk_data__uy, &b_TYangVarChunk_data__uy);
-   fChain->SetBranchAddress("TYangVarChunk.data_.uz", TYangVarChunk_data__uz, &b_TYangVarChunk_data__uz);
-   fChain->SetBranchAddress("TYangVarChunk.data_.time", TYangVarChunk_data__time, &b_TYangVarChunk_data__time);
-   fChain->SetBranchAddress("TYangVarChunk.data_.tot_hit", TYangVarChunk_data__tot_hit, &b_TYangVarChunk_data__tot_hit);
-   fChain->SetBranchAddress("TYangVarChunk.data_.tot_q", TYangVarChunk_data__tot_q, &b_TYangVarChunk_data__tot_q);
-   fChain->SetBranchAddress("TYangVarChunk.data_.length", TYangVarChunk_data__length, &b_TYangVarChunk_data__length);
-   fChain->SetBranchAddress("TYangVarChunk.data_.pid_hit[100]", TYangVarChunk_data__pid_hit, &b_TYangVarChunk_data__pid_hit);
-   fChain->SetBranchAddress("TYangVarChunk.data_.pid_charge[100]", TYangVarChunk_data__pid_charge, &b_TYangVarChunk_data__pid_charge);
-   fChain->SetBranchAddress("TYangVarChunk.data_.pid_dtime[100]", TYangVarChunk_data__pid_dtime, &b_TYangVarChunk_data__pid_dtime);
-   fChain->SetBranchAddress("TYangVarChunk.data_.pid_tchi[100]", TYangVarChunk_data__pid_tchi, &b_TYangVarChunk_data__pid_tchi);
-   fChain->SetBranchAddress("TYangVarChunk.data_.pid_qtchi[100]", TYangVarChunk_data__pid_qtchi, &b_TYangVarChunk_data__pid_qtchi);
-   fChain->SetBranchAddress("TYangVarChunk.data_.pid_hitrs[100]", TYangVarChunk_data__pid_hitrs, &b_TYangVarChunk_data__pid_hitrs);
-   fChain->SetBranchAddress("TYangVarChunk.data_.pid_qrs[100]", TYangVarChunk_data__pid_qrs, &b_TYangVarChunk_data__pid_qrs);
-   fChain->SetBranchAddress("TYangVarChunk.data_.pid_dtimers[100]", TYangVarChunk_data__pid_dtimers, &b_TYangVarChunk_data__pid_dtimers);
-   fChain->SetBranchAddress("TYangVarChunk.data_.pid_tchirs[100]", TYangVarChunk_data__pid_tchirs, &b_TYangVarChunk_data__pid_tchirs);
-   fChain->SetBranchAddress("TYangVarChunk.data_.pid_dtime_hit[100]", TYangVarChunk_data__pid_dtime_hit, &b_TYangVarChunk_data__pid_dtime_hit);
-   fChain->SetBranchAddress("TYangVarChunk.data_.pid_dtime_charge[100]", TYangVarChunk_data__pid_dtime_charge, &b_TYangVarChunk_data__pid_dtime_charge);
-   fChain->SetBranchAddress("TYangVarChunk.data_.pid_dtime_tchi[100]", TYangVarChunk_data__pid_dtime_tchi, &b_TYangVarChunk_data__pid_dtime_tchi);
-   fChain->SetBranchAddress("TYangVarChunk.data_.pid_dtime_qtchi[100]", TYangVarChunk_data__pid_dtime_qtchi, &b_TYangVarChunk_data__pid_dtime_qtchi);
-   fChain->SetBranchAddress("TYangVarChunk.data_.pid_chi2[100]", TYangVarChunk_data__pid_chi2, &b_TYangVarChunk_data__pid_chi2);
-   fChain->SetBranchAddress("TYangVarChunk.name_", TYangVarChunk_name_, &b_TYangVarChunk_name_);
-   fChain->SetBranchAddress("TPFitterChunk", &TPFitterChunk_, &b_TPFitterChunk_);
-   fChain->SetBranchAddress("TPFitterChunk.chunk_id_", TPFitterChunk_chunk_id_, &b_TPFitterChunk_chunk_id_);
-   fChain->SetBranchAddress("TPFitterChunk.data_.fUniqueID", TPFitterChunk_data__fUniqueID, &b_TPFitterChunk_data__fUniqueID);
-   fChain->SetBranchAddress("TPFitterChunk.data_.fBits", TPFitterChunk_data__fBits, &b_TPFitterChunk_data__fBits);
-   fChain->SetBranchAddress("TPFitterChunk.data_.mu_x", TPFitterChunk_data__mu_x, &b_TPFitterChunk_data__mu_x);
-   fChain->SetBranchAddress("TPFitterChunk.data_.mu_y", TPFitterChunk_data__mu_y, &b_TPFitterChunk_data__mu_y);
-   fChain->SetBranchAddress("TPFitterChunk.data_.mu_z", TPFitterChunk_data__mu_z, &b_TPFitterChunk_data__mu_z);
-   fChain->SetBranchAddress("TPFitterChunk.data_.mu_ux", TPFitterChunk_data__mu_ux, &b_TPFitterChunk_data__mu_ux);
-   fChain->SetBranchAddress("TPFitterChunk.data_.mu_uy", TPFitterChunk_data__mu_uy, &b_TPFitterChunk_data__mu_uy);
-   fChain->SetBranchAddress("TPFitterChunk.data_.mu_uz", TPFitterChunk_data__mu_uz, &b_TPFitterChunk_data__mu_uz);
-   fChain->SetBranchAddress("TPFitterChunk.data_.mu_T", TPFitterChunk_data__mu_T, &b_TPFitterChunk_data__mu_T);
-   fChain->SetBranchAddress("TPFitterChunk.data_.mu_E", TPFitterChunk_data__mu_E, &b_TPFitterChunk_data__mu_E);
-   fChain->SetBranchAddress("TPFitterChunk.data_.mu_distToMeanCer", TPFitterChunk_data__mu_distToMeanCer, &b_TPFitterChunk_data__mu_distToMeanCer);
-   fChain->SetBranchAddress("TPFitterChunk.data_.mu_F", TPFitterChunk_data__mu_F, &b_TPFitterChunk_data__mu_F);
-   fChain->SetBranchAddress("TPFitterChunk.data_.e_x", TPFitterChunk_data__e_x, &b_TPFitterChunk_data__e_x);
-   fChain->SetBranchAddress("TPFitterChunk.data_.e_y", TPFitterChunk_data__e_y, &b_TPFitterChunk_data__e_y);
-   fChain->SetBranchAddress("TPFitterChunk.data_.e_z", TPFitterChunk_data__e_z, &b_TPFitterChunk_data__e_z);
-   fChain->SetBranchAddress("TPFitterChunk.data_.e_ux", TPFitterChunk_data__e_ux, &b_TPFitterChunk_data__e_ux);
-   fChain->SetBranchAddress("TPFitterChunk.data_.e_uy", TPFitterChunk_data__e_uy, &b_TPFitterChunk_data__e_uy);
-   fChain->SetBranchAddress("TPFitterChunk.data_.e_uz", TPFitterChunk_data__e_uz, &b_TPFitterChunk_data__e_uz);
-   fChain->SetBranchAddress("TPFitterChunk.data_.e_T", TPFitterChunk_data__e_T, &b_TPFitterChunk_data__e_T);
-   fChain->SetBranchAddress("TPFitterChunk.data_.e_E", TPFitterChunk_data__e_E, &b_TPFitterChunk_data__e_E);
-   fChain->SetBranchAddress("TPFitterChunk.data_.e_distToMeanCer", TPFitterChunk_data__e_distToMeanCer, &b_TPFitterChunk_data__e_distToMeanCer);
-   fChain->SetBranchAddress("TPFitterChunk.data_.e_F", TPFitterChunk_data__e_F, &b_TPFitterChunk_data__e_F);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pi_T", TPFitterChunk_data__pi_T, &b_TPFitterChunk_data__pi_T);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pi_M", TPFitterChunk_data__pi_M, &b_TPFitterChunk_data__pi_M);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pi_Cos0p", TPFitterChunk_data__pi_Cos0p, &b_TPFitterChunk_data__pi_Cos0p);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pi_E1", TPFitterChunk_data__pi_E1, &b_TPFitterChunk_data__pi_E1);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pi_E2", TPFitterChunk_data__pi_E2, &b_TPFitterChunk_data__pi_E2);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pi_distToMeanCer1", TPFitterChunk_data__pi_distToMeanCer1, &b_TPFitterChunk_data__pi_distToMeanCer1);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pi_distToMeanCer2", TPFitterChunk_data__pi_distToMeanCer2, &b_TPFitterChunk_data__pi_distToMeanCer2);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pi_S1", TPFitterChunk_data__pi_S1, &b_TPFitterChunk_data__pi_S1);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pi_S2", TPFitterChunk_data__pi_S2, &b_TPFitterChunk_data__pi_S2);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pi_Fqqq", TPFitterChunk_data__pi_Fqqq, &b_TPFitterChunk_data__pi_Fqqq);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pi_Fttt", TPFitterChunk_data__pi_Fttt, &b_TPFitterChunk_data__pi_Fttt);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pi_F", TPFitterChunk_data__pi_F, &b_TPFitterChunk_data__pi_F);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pifix_T", TPFitterChunk_data__pifix_T, &b_TPFitterChunk_data__pifix_T);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pifix_M", TPFitterChunk_data__pifix_M, &b_TPFitterChunk_data__pifix_M);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pifix_Cos0p", TPFitterChunk_data__pifix_Cos0p, &b_TPFitterChunk_data__pifix_Cos0p);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pifix_E1", TPFitterChunk_data__pifix_E1, &b_TPFitterChunk_data__pifix_E1);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pifix_E2", TPFitterChunk_data__pifix_E2, &b_TPFitterChunk_data__pifix_E2);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pifix_distToMeanCer1", TPFitterChunk_data__pifix_distToMeanCer1, &b_TPFitterChunk_data__pifix_distToMeanCer1);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pifix_distToMeanCer2", TPFitterChunk_data__pifix_distToMeanCer2, &b_TPFitterChunk_data__pifix_distToMeanCer2);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pifix_S1", TPFitterChunk_data__pifix_S1, &b_TPFitterChunk_data__pifix_S1);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pifix_S2", TPFitterChunk_data__pifix_S2, &b_TPFitterChunk_data__pifix_S2);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pifix_Fqqq", TPFitterChunk_data__pifix_Fqqq, &b_TPFitterChunk_data__pifix_Fqqq);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pifix_Fttt", TPFitterChunk_data__pifix_Fttt, &b_TPFitterChunk_data__pifix_Fttt);
-   fChain->SetBranchAddress("TPFitterChunk.data_.pifix_F", TPFitterChunk_data__pifix_F, &b_TPFitterChunk_data__pifix_F);
-   fChain->SetBranchAddress("TPFitterChunk.name_", TPFitterChunk_name_, &b_TPFitterChunk_name_);
-   fChain->SetBranchAddress("TRoePiChunk", &TRoePiChunk_, &b_TRoePiChunk_);
-   fChain->SetBranchAddress("TRoePiChunk.chunk_id_", TRoePiChunk_chunk_id_, &b_TRoePiChunk_chunk_id_);
-   fChain->SetBranchAddress("TRoePiChunk.data_.fUniqueID", TRoePiChunk_data__fUniqueID, &b_TRoePiChunk_data__fUniqueID);
-   fChain->SetBranchAddress("TRoePiChunk.data_.fBits", TRoePiChunk_data__fBits, &b_TRoePiChunk_data__fBits);
-   fChain->SetBranchAddress("TRoePiChunk.data_.rvec_v[3]", TRoePiChunk_data__rvec_v, &b_TRoePiChunk_data__rvec_v);
-   fChain->SetBranchAddress("TRoePiChunk.data_.time_v", TRoePiChunk_data__time_v, &b_TRoePiChunk_data__time_v);
-   fChain->SetBranchAddress("TRoePiChunk.data_.shiftg1", TRoePiChunk_data__shiftg1, &b_TRoePiChunk_data__shiftg1);
-   fChain->SetBranchAddress("TRoePiChunk.data_.shiftg2", TRoePiChunk_data__shiftg2, &b_TRoePiChunk_data__shiftg2);
-   fChain->SetBranchAddress("TRoePiChunk.data_.dircosg1[3]", TRoePiChunk_data__dircosg1, &b_TRoePiChunk_data__dircosg1);
-   fChain->SetBranchAddress("TRoePiChunk.data_.dircosg2[3]", TRoePiChunk_data__dircosg2, &b_TRoePiChunk_data__dircosg2);
-   fChain->SetBranchAddress("TRoePiChunk.data_.chge_g1", TRoePiChunk_data__chge_g1, &b_TRoePiChunk_data__chge_g1);
-   fChain->SetBranchAddress("TRoePiChunk.data_.chge_g2", TRoePiChunk_data__chge_g2, &b_TRoePiChunk_data__chge_g2);
-   fChain->SetBranchAddress("TRoePiChunk.data_.chgew_g1", TRoePiChunk_data__chgew_g1, &b_TRoePiChunk_data__chgew_g1);
-   fChain->SetBranchAddress("TRoePiChunk.data_.chgew_g2", TRoePiChunk_data__chgew_g2, &b_TRoePiChunk_data__chgew_g2);
-   fChain->SetBranchAddress("TRoePiChunk.data_.Eg1", TRoePiChunk_data__Eg1, &b_TRoePiChunk_data__Eg1);
-   fChain->SetBranchAddress("TRoePiChunk.data_.Eg2", TRoePiChunk_data__Eg2, &b_TRoePiChunk_data__Eg2);
-   fChain->SetBranchAddress("TRoePiChunk.data_.pi0mass", TRoePiChunk_data__pi0mass, &b_TRoePiChunk_data__pi0mass);
-   fChain->SetBranchAddress("TRoePiChunk.data_.errors[12][12]", TRoePiChunk_data__errors, &b_TRoePiChunk_data__errors);
-   fChain->SetBranchAddress("TRoePiChunk.data_.cosang1", TRoePiChunk_data__cosang1, &b_TRoePiChunk_data__cosang1);
-   fChain->SetBranchAddress("TRoePiChunk.name_", TRoePiChunk_name_, &b_TRoePiChunk_name_);
-   fChain->SetBranchAddress("TFittersPi0Chunk", &TFittersPi0Chunk_, &b_TFittersPi0Chunk_);
-   fChain->SetBranchAddress("TFittersPi0Chunk.chunk_id_", TFittersPi0Chunk_chunk_id_, &b_TFittersPi0Chunk_chunk_id_);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.fUniqueID", TFittersPi0Chunk_data__fUniqueID, &b_TFittersPi0Chunk_data__fUniqueID);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.fBits", TFittersPi0Chunk_data__fBits, &b_TFittersPi0Chunk_data__fBits);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.id[20]", TFittersPi0Chunk_data__id, &b_TFittersPi0Chunk_data__id);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.x", TFittersPi0Chunk_data__x, &b_TFittersPi0Chunk_data__x);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.y", TFittersPi0Chunk_data__y, &b_TFittersPi0Chunk_data__y);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.z", TFittersPi0Chunk_data__z, &b_TFittersPi0Chunk_data__z);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.t", TFittersPi0Chunk_data__t, &b_TFittersPi0Chunk_data__t);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.mass", TFittersPi0Chunk_data__mass, &b_TFittersPi0Chunk_data__mass);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.angle", TFittersPi0Chunk_data__angle, &b_TFittersPi0Chunk_data__angle);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.eg1", TFittersPi0Chunk_data__eg1, &b_TFittersPi0Chunk_data__eg1);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.eg2", TFittersPi0Chunk_data__eg2, &b_TFittersPi0Chunk_data__eg2);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.shift1", TFittersPi0Chunk_data__shift1, &b_TFittersPi0Chunk_data__shift1);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.shift2", TFittersPi0Chunk_data__shift2, &b_TFittersPi0Chunk_data__shift2);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.ux1", TFittersPi0Chunk_data__ux1, &b_TFittersPi0Chunk_data__ux1);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.uy1", TFittersPi0Chunk_data__uy1, &b_TFittersPi0Chunk_data__uy1);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.uz1", TFittersPi0Chunk_data__uz1, &b_TFittersPi0Chunk_data__uz1);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.ux2", TFittersPi0Chunk_data__ux2, &b_TFittersPi0Chunk_data__ux2);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.uy2", TFittersPi0Chunk_data__uy2, &b_TFittersPi0Chunk_data__uy2);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.uz2", TFittersPi0Chunk_data__uz2, &b_TFittersPi0Chunk_data__uz2);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.qgamma1", TFittersPi0Chunk_data__qgamma1, &b_TFittersPi0Chunk_data__qgamma1);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.qgamma2", TFittersPi0Chunk_data__qgamma2, &b_TFittersPi0Chunk_data__qgamma2);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.errors[20][20]", TFittersPi0Chunk_data__errors, &b_TFittersPi0Chunk_data__errors);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.cosang1", TFittersPi0Chunk_data__cosang1, &b_TFittersPi0Chunk_data__cosang1);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.Newpi[50]", TFittersPi0Chunk_data__Newpi, &b_TFittersPi0Chunk_data__Newpi);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.chg_length_g1", TFittersPi0Chunk_data__chg_length_g1, &b_TFittersPi0Chunk_data__chg_length_g1);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.chg_length_g2", TFittersPi0Chunk_data__chg_length_g2, &b_TFittersPi0Chunk_data__chg_length_g2);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.numlowt_g1[10]", TFittersPi0Chunk_data__numlowt_g1, &b_TFittersPi0Chunk_data__numlowt_g1);
-   fChain->SetBranchAddress("TFittersPi0Chunk.data_.numlowt_g2[10]", TFittersPi0Chunk_data__numlowt_g2, &b_TFittersPi0Chunk_data__numlowt_g2);
-   fChain->SetBranchAddress("TFittersPi0Chunk.name_", TFittersPi0Chunk_name_, &b_TFittersPi0Chunk_name_);
    fChain->SetBranchAddress("TParticleIDChunk", &TParticleIDChunk_, &b_TParticleIDChunk_);
    fChain->SetBranchAddress("TParticleIDChunk.chunk_id_", TParticleIDChunk_chunk_id_, &b_TParticleIDChunk_chunk_id_);
    fChain->SetBranchAddress("TParticleIDChunk.data_.fUniqueID", TParticleIDChunk_data__fUniqueID, &b_TParticleIDChunk_data__fUniqueID);
@@ -3586,6 +2927,20 @@ void newroot::Init(TTree *tree)
    fChain->SetBranchAddress("TNeutronChunk.data_.TLLK", TNeutronChunk_data__TLLK, &b_TNeutronChunk_data__TLLK);
    fChain->SetBranchAddress("TNeutronChunk.data_.QLLK", TNeutronChunk_data__QLLK, &b_TNeutronChunk_data__QLLK);
    fChain->SetBranchAddress("TNeutronChunk.name_", TNeutronChunk_name_, &b_TNeutronChunk_name_);
+   fChain->SetBranchAddress("TVetoLinkingChunk", &TVetoLinkingChunk_, &b_TVetoLinkingChunk_);
+   fChain->SetBranchAddress("TVetoLinkingChunk.chunk_id_", TVetoLinkingChunk_chunk_id_, &b_TVetoLinkingChunk_chunk_id_);
+   fChain->SetBranchAddress("TVetoLinkingChunk.data_.fUniqueID", TVetoLinkingChunk_data__fUniqueID, &b_TVetoLinkingChunk_data__fUniqueID);
+   fChain->SetBranchAddress("TVetoLinkingChunk.data_.fBits", TVetoLinkingChunk_data__fBits, &b_TVetoLinkingChunk_data__fBits);
+   fChain->SetBranchAddress("TVetoLinkingChunk.data_.EnDl", TVetoLinkingChunk_data__EnDl, &b_TVetoLinkingChunk_data__EnDl);
+   fChain->SetBranchAddress("TVetoLinkingChunk.data_.ExDl", TVetoLinkingChunk_data__ExDl, &b_TVetoLinkingChunk_data__ExDl);
+   fChain->SetBranchAddress("TVetoLinkingChunk.data_.EnSigma", TVetoLinkingChunk_data__EnSigma, &b_TVetoLinkingChunk_data__EnSigma);
+   fChain->SetBranchAddress("TVetoLinkingChunk.data_.ExSigma", TVetoLinkingChunk_data__ExSigma, &b_TVetoLinkingChunk_data__ExSigma);
+   fChain->SetBranchAddress("TVetoLinkingChunk.data_.EnDt", TVetoLinkingChunk_data__EnDt, &b_TVetoLinkingChunk_data__EnDt);
+   fChain->SetBranchAddress("TVetoLinkingChunk.data_.ExDt", TVetoLinkingChunk_data__ExDt, &b_TVetoLinkingChunk_data__ExDt);
+   fChain->SetBranchAddress("TVetoLinkingChunk.data_.NC", TVetoLinkingChunk_data__NC, &b_TVetoLinkingChunk_data__NC);
+   fChain->SetBranchAddress("TVetoLinkingChunk.data_.Enter", TVetoLinkingChunk_data__Enter, &b_TVetoLinkingChunk_data__Enter);
+   fChain->SetBranchAddress("TVetoLinkingChunk.data_.Exit", TVetoLinkingChunk_data__Exit, &b_TVetoLinkingChunk_data__Exit);
+   fChain->SetBranchAddress("TVetoLinkingChunk.name_", TVetoLinkingChunk_name_, &b_TVetoLinkingChunk_name_);
    fChain->SetBranchAddress("TReweightToCVChunk", &TReweightToCVChunk_, &b_TReweightToCVChunk_);
    fChain->SetBranchAddress("TReweightToCVChunk.chunk_id_", TReweightToCVChunk_chunk_id_, &b_TReweightToCVChunk_chunk_id_);
    fChain->SetBranchAddress("TReweightToCVChunk.data_.fUniqueID", TReweightToCVChunk_data__fUniqueID, &b_TReweightToCVChunk_data__fUniqueID);
@@ -3625,17 +2980,6 @@ void newroot::Init(TTree *tree)
    fChain->SetBranchAddress("TWeightDetailsChunk.data_.absorber_wgt", TWeightDetailsChunk_data__absorber_wgt, &b_TWeightDetailsChunk_data__absorber_wgt);
    fChain->SetBranchAddress("TWeightDetailsChunk.data_.totalweight", TWeightDetailsChunk_data__totalweight, &b_TWeightDetailsChunk_data__totalweight);
    fChain->SetBranchAddress("TWeightDetailsChunk.name_", TWeightDetailsChunk_name_, &b_TWeightDetailsChunk_name_);
-   fChain->SetBranchAddress("TMulMatWeightsChunk", &TMulMatWeightsChunk_, &b_TMulMatWeightsChunk_);
-   fChain->SetBranchAddress("TMulMatWeightsChunk.chunk_id_", TMulMatWeightsChunk_chunk_id_, &b_TMulMatWeightsChunk_chunk_id_);
-   fChain->SetBranchAddress("TMulMatWeightsChunk.data_.fUniqueID", TMulMatWeightsChunk_data__fUniqueID, &b_TMulMatWeightsChunk_data__fUniqueID);
-   fChain->SetBranchAddress("TMulMatWeightsChunk.data_.fBits", TMulMatWeightsChunk_data__fBits, &b_TMulMatWeightsChunk_data__fBits);
-   fChain->SetBranchAddress("TMulMatWeightsChunk.data_.CVWeight", TMulMatWeightsChunk_data__CVWeight, &b_TMulMatWeightsChunk_data__CVWeight);
-   fChain->SetBranchAddress("TMulMatWeightsChunk.data_.NumSysts", TMulMatWeightsChunk_data__NumSysts, &b_TMulMatWeightsChunk_data__NumSysts);
-   fChain->SetBranchAddress("TMulMatWeightsChunk.data_.PosUniWeight", TMulMatWeightsChunk_data__PosUniWeight, &b_TMulMatWeightsChunk_data__PosUniWeight);
-   fChain->SetBranchAddress("TMulMatWeightsChunk.data_.NegUniWeight", TMulMatWeightsChunk_data__NegUniWeight, &b_TMulMatWeightsChunk_data__NegUniWeight);
-   fChain->SetBranchAddress("TMulMatWeightsChunk.data_.NumMultisims", TMulMatWeightsChunk_data__NumMultisims, &b_TMulMatWeightsChunk_data__NumMultisims);
-   fChain->SetBranchAddress("TMulMatWeightsChunk.data_.MultiWeight", TMulMatWeightsChunk_data__MultiWeight, &b_TMulMatWeightsChunk_data__MultiWeight);
-   fChain->SetBranchAddress("TMulMatWeightsChunk.name_", TMulMatWeightsChunk_name_, &b_TMulMatWeightsChunk_name_);
    Notify();
 }
 
@@ -3657,7 +3001,7 @@ void newroot::Show(Long64_t entry)
    if (!fChain) return;
    fChain->Show(entry);
 }
-Int_t ne1root::Cut(Long64_t entry)
+Int_t newroot::Cut(Long64_t entry)
 {
 // This function may be called from Loop.
 // returns  1 if entry is accepted.

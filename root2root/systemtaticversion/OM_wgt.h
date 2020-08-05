@@ -2005,7 +2005,17 @@ public :
    virtual void     Loop();
    virtual Bool_t   Notify();
    virtual void     Show(Long64_t entry = -1);
+
+
+
+   static const Int_t kMaxTWeightDetailsChunk = 1;
+   static const Int_t kMaxTMulMatWeightsChunk = 12;
+   Float_t         TWeightDetailsChunk_data__totalweight[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   Float_t        *TMulMatWeightsChunk_data__MultiWeight[kMaxTMulMatWeightsChunk];   //[TMulMatWeightsChunk_data__NumMultisims]
    std::vector< int > entry_marks;
+   void GrabVars(std::vector<std::vector< std::vector< Float_t> > > & container, int hndex, int index, bool its_OM, bool its_Multisim);
+   void FillVars(int &nthrows, int multithrows, Float_t ovars[][66], std::vector< std::vector< std::vector< Float_t > > > container, TTree* out_tree);
+   int GetNpi0();
 };
 
 #endif
@@ -2041,7 +2051,7 @@ newroot::newroot(TTree *tree) : fChain(0)
 			   if(current_file_name.Contains(".")) continue;
 			   TChain temp_file("MiniBooNE");
 			   temp_file.AddFile(cur_file+Onefile->GetName()+exact_f_name);
-			   std::cout<<temp_file.GetEntries()<<std::endl;
+//			   std::cout<<temp_file.GetEntries()<<std::endl;
 			   entry_marks.push_back(temp_file.GetEntries());
 
 
