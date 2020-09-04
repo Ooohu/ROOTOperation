@@ -20,28 +20,26 @@ void newroot::Loop()
 
    if (fChain == 0) return;
 
-
-
 //configuration
 	TString dir = "./output_root/";//output directory
-	bool OMwgt = true;//fill in weighs with 1
+	bool OMwgt = false;//fill in weighs with 1,, to be deleted, useless
 	bool Multiwgt = false;//read weights from TMultiWeight Chunk, if true;
-	bool multifiles = true;//reset entry at some specific entries, if true;
-	//CHANGE line 246 for the correct throws; 
-	const int multithrows = 66;//66 = entry_marks.size() for OM; others, 1000
-	const int num_vars = 35;// has to be constant for the array size;
+	bool multifiles = false;//reset entry at some specific entries, if true;
+	//CHANGE line 353 for the correct throws; 
+	const int multithrows = 1;//67 = entry_marks.size() for OM; others, 1000
+	const int num_vars = 46;// has to be constant for the array size;
 	
 	//set output info.
 	std::vector<TString > list = {
-		"07DetBkgMC.root",//0
-		"07DISCBkgMC.root",
-		"07QTCORRBkgMC.root",
-		"07Dirt.root",//3
-		"06OM_BkgMC.root",
-		"06OM_CV.root",//5
+		"may07DetDirtNueMC.root",//0
+		"may07DetNueMC.root",//1
+		"may07DISCNueMC.root",
+		"may07QTCORRNueMC.root",
+		"may06OM_NueMCCV.root",//4
+		"may06OM_NueMC.root",
 	};
-
 	TString outputname = list[4];
+
 
 	TString output = dir + outputname;
 	std::cout<<" Create file "<<output<<std::endl;
@@ -67,31 +65,42 @@ void newroot::Loop()
 		"el.EnuQE",//9
 		"el.RtoWallB",//10
 		"el.RtoWallF",//11
-		"mu.F",//12
-		"piFix.F",//13
-		"piNoFix.M",//14
+		"mu.X",//0+12
+		"mu.Y",//1+12
+		"mu.Z",//2+12
+		"mu.UX",//3+12
+		"mu.UY",//4+12
+		"mu.UZ",//5+12
+		"mu.E",//6+12
+		"mu.F",//7+12
+		"mu.R",//8+12, Float_t*
+		"mu.EnuQE",//9+12
+		"mu.RtoWallB",//10+12
+		"mu.RtoWallF",//11+12
+		"piFix.F",//13+11
+		"piNoFix.M",//14+11
 		//and systematic stuff
-		"CV",//15
-		"Dirt",//26, sw 0
-		"Pi0Yield",//25, sw 9
-		"Hadronic",//24, sw 8
-		"CCQECCpi",//23, sw 7
-		"XSec",//22, sw 6
-		"BeamUnisims",//21, sw 5
-		"KmProd",//17, sw 1
-		"K0Prod",//18, sw 2
-		"KpProd",//16, sw 0
-		"PimProd_RawAboutSW",//20, sw 4
-		"PipProd_RawAboutSW",//19, sw 10
+		"CV",//26
+		"Dirt",//27, sw 0
+		"Pi0Yield",//28, sw 1
+		"Hadronic",//29, sw 2
+		"CCQECCpi",//30, sw 3
+		"XSec",// sw 4
+		"BeamUnisims",// sw 5
+		"KmProd",// sw 6
+		"K0Prod",// sw 7
+		"KpProd",// sw 8
+		"PimProd_RawAboutSW",// sw 9
+		"PipProd_RawAboutSW",// sw 10
 		//additional variables
-		"nuleng",
+		"nuleng",//38
 		"enugen",
 		"inno",
-		"parid",//30
+		"nuchan",
+		"parid",//42
 		"isdirt",
 		"ispi0",
-		"nuchan",
-		"backgroundType",
+		"backgroundType",//45
 	};
 
 	
@@ -160,10 +169,10 @@ void newroot::Loop()
 			   //cout<<"Skip No TOneTrackChunk2"<<endl;
 			   continue;
 		   }
-		   if(OMwgt){
-			   GrabVars(container,om_entries, om_index, OMwgt, Multiwgt);
+		   if(multifiles){
+			   GrabVars(container,om_entries, om_index, OMwgt, Multiwgt);//one entry one throw
 		   } else{
-				for(int temp_index = 0; temp_index< multithrows; ++temp_index){
+				for(int temp_index = 0; temp_index< multithrows; ++temp_index){//one entry multiple throws;
 					GrabVars(container,om_entries, temp_index, OMwgt, Multiwgt);
 			   }
 		   }
@@ -193,58 +202,81 @@ void newroot::Loop()
 
 /*
  * Update the container that stores values of variables.
+ * hndex - entry#;
+ * index - throw#;
  */
-
-void newroot::GrabVars(std::vector<std::vector< std::vector< Float_t> >> & container, int hndex, int index, bool its_OM, bool its_Multisim){
-
+void newroot::GrabVars(std::vector<std::vector< std::vector< Float_t> >> & container, int entryndex, int throwndex, bool its_OM, bool its_Multisim){
 
 			   int target_wgt = 1;
+			   double adjusted_wgt = 1;//might not need this now;
+			   std::vector<int> e_mu_index(2);//for e,mu now;
+			   size_t num_tracks = 2;
+			   for(size_t index = 0; index < num_tracks; ++index){//figure out e_mu_index;
+					if(TOneTrackChunk_data__trackType[index] == 1) e_mu_index[0] = index;//trackType 1 is the code for e
+					if(TOneTrackChunk_data__trackType[index] == 2) e_mu_index[1] = index;//trackType 2 is the code for mu
+			   }
 
-			   container[hndex][0][index] = TOneTrackChunk_data__X[0];
-			   container[hndex][1][index] = TOneTrackChunk_data__Y[0];
-			   container[hndex][2][index] = TOneTrackChunk_data__Z[0];
-			   container[hndex][3][index] = TOneTrackChunk_data__UX[0];
-			   container[hndex][4][index] = TOneTrackChunk_data__UY[0];
-			   container[hndex][5][index] = TOneTrackChunk_data__UZ[0];
-			   container[hndex][6][index] = TOneTrackChunk_data__E[0];
-			   container[hndex][7][index] = TOneTrackChunk_data__F[0];
-
-			   //derivated
-			   container[hndex][8][index] = sqrt( pow(container[hndex][0][index],2) + pow(container[hndex][1][index],2) + pow(container[hndex][2][index],2)); 
-
-			   Float_t Mlep = 0.511;//electron mass
+			   if(e_mu_index[0] == e_mu_index[1] ){ 
+					std::cerr<<"trackType throwndex are not identified!"<<std::endl;
+					exit(EXIT_FAILURE);
+			   }
+			 
+			   //Some  constants;
+			   int varsAset = 11; //el. & mu. has 12 variables each
+			   std::vector<Float_t> Mlep = {0.511,105.7};//electron mass
 			   Float_t Mp = 938.27;//proton mass
 			   Float_t Mn = 939.56;//neutron mass
+			   Float_t mbRadius = 548.17;//radius of the MiniBooNE;
+//el. & mu. variables;
+			   for(int lndex = 0; lndex < 2; ++lndex){//same parameter sets for el. and mu.;
+				   int undex = e_mu_index[lndex];//e_mu_index[0] stands for electron;
+				   int ofset = lndex*varsAset;//offset the throwndex for el. and mu.;
+				   container[entryndex][0+ofset][throwndex] = TOneTrackChunk_data__X[undex];
+				   container[entryndex][1+ofset][throwndex] = TOneTrackChunk_data__Y[undex];
+				   container[entryndex][2+ofset][throwndex] = TOneTrackChunk_data__Z[undex];
+				   container[entryndex][3+ofset][throwndex] = TOneTrackChunk_data__UX[undex];
+				   container[entryndex][4+ofset][throwndex] = TOneTrackChunk_data__UY[undex];
+				   container[entryndex][5+ofset][throwndex] = TOneTrackChunk_data__UZ[undex];
+				   container[entryndex][6+ofset][throwndex] = TOneTrackChunk_data__E[undex];
+				   container[entryndex][7+ofset][throwndex] = TOneTrackChunk_data__F[undex];
+				   //derivated R
+				   container[entryndex][8+ofset][throwndex] = sqrt( pow( TOneTrackChunk_data__X[undex],2) + pow( TOneTrackChunk_data__Y[undex],2) + pow( TOneTrackChunk_data__Z[undex],2)); 
 
-			   container[hndex][9][index] = 0.5*(2.0*Mn* (Mlep+ container[hndex][6][index] ) + pow(Mp,2) - pow(Mn,2) - pow(Mlep,2))/(Mn - (Mlep+ container[hndex][6][index] ) + container[hndex][5][index] * sqrt( pow(Mlep+ container[hndex][6][index] ,2) - pow(Mlep, 2) ));
+					// EnuQE
+				   container[entryndex][9+ofset][throwndex] = 0.5*(2.0*Mn* (Mlep[lndex]+ TOneTrackChunk_data__E[undex] ) + pow(Mp,2) - pow(Mn,2) - pow(Mlep[lndex],2))/(Mn - (Mlep[lndex]+ TOneTrackChunk_data__E[undex] ) + TOneTrackChunk_data__UZ[undex] * sqrt( pow(Mlep[lndex]+ TOneTrackChunk_data__E[undex] ,2) - pow(Mlep[lndex], 2) ));
 
-			   Float_t UdotR = container[hndex][0][index]*container[hndex][3][index] + container[hndex][1][index]*container[hndex][4][index] + container[hndex][2][index]*container[hndex][5][index] ;
-			   container[hndex][10][index] = (container[hndex][8][index]<548.17)? UdotR + sqrt(pow( 548.17,2) - (pow(container[hndex][8][index],2) + pow( UdotR, 2))) : -9999;//RBOONE, radius of MiniBooNE 548.17 cm
-			   container[hndex][11][index] = (container[hndex][8][index]<548.17)? - UdotR + sqrt(pow( 548.17,2) - (pow(container[hndex][8][index],2) + pow( UdotR, 2))): -9999;
+				   //RtoWall aid
+				   Float_t UdotR = TOneTrackChunk_data__X[undex]*TOneTrackChunk_data__UX[undex] 
+								 + TOneTrackChunk_data__Y[undex]*TOneTrackChunk_data__UY[undex] 
+								 + TOneTrackChunk_data__Z[undex]*TOneTrackChunk_data__UZ[undex] ;
+				//RtoWallB
+				   container[entryndex][10+ofset][throwndex] = (container[entryndex][8+ofset][throwndex]<mbRadius)? 
+				   UdotR + sqrt(pow( mbRadius,2) - pow(container[entryndex][8+ofset][throwndex],2) + pow( UdotR, 2)) 
+				   : -9999;
 
-			   container[hndex][12][index] = TOneTrackChunk_data__F[1];
+				//RtoWallF
+				   container[entryndex][11+ofset][throwndex] = (container[entryndex][8+ofset][throwndex]<mbRadius)? 
+				   - UdotR + sqrt(pow( mbRadius,2) - pow(container[entryndex][8+ofset][throwndex],2) + pow( UdotR, 2))
+				   : -9999;
+			   }//the followings are unique variables
 
+				//Pion stuff;
 			   int pionFixindex = (TTwoTrackChunk_data__fixedMass[0]< 10e-20)?  1:0;
-			   container[hndex][13][index] = TTwoTrackChunk_data__F[pionFixindex];
+			   container[entryndex][24][throwndex] = TTwoTrackChunk_data__F[pionFixindex];
 
 			   int pionNoFixindex = (TTwoTrackChunk_data__fixedMass[0]< 10e-20)?  0:1;
-			   container[hndex][14][index] = TTwoTrackChunk_data__M[pionNoFixindex];
+			   container[entryndex][25][throwndex] = TTwoTrackChunk_data__M[pionNoFixindex];
 
-			   container[hndex][15][index] = (its_OM)? target_wgt : TWeightDetailsChunk_data__totalweight[0];//CV
+			   
+			   //Systematics comes as the following; started with 26
+			   container[entryndex][26][throwndex] = TWeightDetailsChunk_data__totalweight[0]*adjusted_wgt;//CV
+			   if(container[entryndex][26][throwndex]>29) container[entryndex][26][throwndex] = 0;
 
 			   for( int jndex  = 0; jndex < 11; ++jndex){ //different systematic weights, 16~26
-				   container[hndex][16+jndex][index] = (its_OM)? target_wgt : ((its_Multisim)? TMulMatWeightsChunk_data__MultiWeight[jndex][index]: 0);
+				   container[entryndex][27+jndex][throwndex] = (its_Multisim)? TMulMatWeightsChunk_data__MultiWeight[jndex][throwndex]*adjusted_wgt: 0;
 			   }
 			
-
-//		"nuleng"
-//		"enugen"
-//		"inno",
-//		"nuchan",
-//		"parid",
-//		"isdirt",
-//		"ispi0",
-//		"backgroundType",
+//MCTruth stuff, started with 38
 			   Float_t vrtX = TMonteCarloEVNTChunk_data__VRTX[0][0][0];
 			   Float_t vrtY = TMonteCarloEVNTChunk_data__VRTX[0][0][1];
 			   Float_t vrtZ = TMonteCarloEVNTChunk_data__VRTX[0][0][2];
@@ -252,43 +284,42 @@ void newroot::GrabVars(std::vector<std::vector< std::vector< Float_t> >> & conta
 			   Float_t ini_posY = TMonteCarloBEAMChunk_data__ini_pos[0][0][1]; 
 			   Float_t ini_posZ = TMonteCarloBEAMChunk_data__ini_pos[0][0][2]; 
 
-			   container[hndex][27][index] = sqrt( pow( vrtX + 0 - ini_posX, 2) +
+			   //I guess we only need first particle [0][nth particle][?];
+			   //nuleng
+			   container[entryndex][38][throwndex] = sqrt( pow( vrtX + 0 - ini_posX, 2) +
 													pow( vrtY + 189.614 - ini_posY, 2) +
-													pow( vrtZ + 54173.1 - ini_posZ, 2) ) *1.0E-5; //nuleng
+													pow( vrtZ + 54173.1 - ini_posZ, 2) ) *1.0E-5;
 
-			   container[hndex][28][index] = TMonteCarloEVNTChunk_data__PNEU[0][3];//enugen
-			   container[hndex][29][index] = TMonteCarloEVNTChunk_data__INNO[0];//inno
-			   container[hndex][30][index] = TMonteCarloEVNTChunk_data__EVWT[0];//nuchan
+			   container[entryndex][39][throwndex] = TMonteCarloEVNTChunk_data__PNEU[0][3];//enugen
+			   container[entryndex][40][throwndex] = TMonteCarloEVNTChunk_data__INNO[0];//inno
+			   container[entryndex][41][throwndex] = TMonteCarloEVNTChunk_data__EVWT[0];//nuchan
 
 			   //parid: parent id
 			   int parent_npart = TMonteCarloBEAMChunk_data__npart[0] - 1;
-			   container[hndex][31][index] = TMonteCarloBEAMChunk_data__id[0][parent_npart-1];
-			   while(container[hndex][31][index] ==14 && parent_npart>=3){
+			   container[entryndex][42][throwndex] = TMonteCarloBEAMChunk_data__id[0][parent_npart-1];
+			   while(container[entryndex][42][throwndex] ==14 && parent_npart>=3){
 				   parent_npart -= 1;
-				   container[hndex][31][index] =  TMonteCarloBEAMChunk_data__id[0][parent_npart-1];
+				   container[entryndex][42][throwndex] =  TMonteCarloBEAMChunk_data__id[0][parent_npart-1];
 			   }
 				
-				//check if it is dirt, 
+				//isdirt?
 			   bool isdirt = false;
-			   if( sqrt(pow(vrtX,2) + pow(vrtY,2) + pow(vrtZ,2)) > 610.6) isdirt = true;
-			   container[hndex][32][index] = (isdirt)? 1: 0 ;//isdirt
+			   if( sqrt(pow(vrtX,2) + pow(vrtY,2) + pow(vrtZ,2)) > 610.6) isdirt = true;//610.6 
+			   container[entryndex][43][throwndex] = (isdirt)? 1: 0 ;//isdirt
 
 			   //ispi0?
-			   container[hndex][33][index] = (GetNpi0() >0)? 1 : 0 ;
+			   container[entryndex][44][throwndex] = (GetNpi0() >0)? 1 : 0 ;
 
 			   //backgroundType
-			   Float_t type = 11;
+			   Float_t type = 11;//unknown, if none of the following condition satisfied;
 			   if(isdirt){ // dirt
 				   type = 8;
-
-			   }else if(container[hndex][33][index]> 0){//pi0
+			   }else if(container[entryndex][44][throwndex] == 1){//check itspi0, yes -  it is pi0
 				   type = 9;
-
-			   } else if( container[hndex][30][index]  == 94 ){//delta
+			   } else if( container[entryndex][41][throwndex]  == 94 ){//check nuchan, yes - it is delta
 				   type = 10;
-
-			   } else if (container[hndex][29][index] == 3 || container[hndex][29][index] == 4){
-					switch((int) container[hndex][31][index]){//parent id
+			   } else if (container[entryndex][40][throwndex] == 3 || container[entryndex][40][throwndex] == 4){//check inno, yes - it is nue/nuebar
+					switch((int) container[entryndex][42][throwndex]){//parent id
 					case 8:
 						type = 1;//kPiPlus
 						break;
@@ -313,7 +344,7 @@ void newroot::GrabVars(std::vector<std::vector< std::vector< Float_t> >> & conta
 					};//1~7 type, for parent id: 8~12,5,6,13
 			   }
 
-			   container[hndex][34][index] = type;
+			   container[entryndex][45][throwndex] = type;
 
 }
 
@@ -321,7 +352,7 @@ void newroot::GrabVars(std::vector<std::vector< std::vector< Float_t> >> & conta
 /*
  * Fill Variables to branches
  */
-void newroot::FillVars(int &nthrows, int multithrows, Float_t ovars[][66], std::vector< std::vector< std::vector< Float_t > > > container, TTree* out_tree){
+void newroot::FillVars(int &nthrows, int multithrows, Float_t ovars[][1], std::vector< std::vector< std::vector< Float_t > > > container, TTree* out_tree){
 
 	int num_entries = container.size();
 	int num_vars = container[0].size();

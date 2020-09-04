@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
-// Fri Jun 19 21:52:20 2020 by ROOT version 6.12/04
-// from TTree MiniBooNE/Created in /scratch/condor-tmp/sbrice/May06_Cocktail_NuePreCuts/./Likelihood_Final_Full_Dirtcut/may06_cocktail_nueprecuts_likelihood_final_full_dirtcut_0.root
-// found on file: /scratch/klin/Systematics/06May/OpticalModel_CV.root
+// Thu Sep  3 09:37:23 2020 by ROOT version 6.12/04
+// from TTree MiniBooNE/Created in ./may06_om_reweighted.root
+// found on file: /scratch/condor-tmp/klin/systematics/prepareSystematicsFile/staged_Sep3_2020/may06_om_reweighted.root
 //////////////////////////////////////////////////////////
 
 #ifndef newroot_h
@@ -22,20 +22,20 @@ public :
    Int_t           fCurrent; //!current Tree number in a TChain
 
 // Fixed size dimensions of array or collections stored in the TTree if any.
-   static constexpr Int_t kMaxTHistory = 169;
-   static constexpr Int_t kMaxTHistory_algo_name = 169;
-   static constexpr Int_t kMaxTHistory_algo_inst = 169;
-   static constexpr Int_t kMaxTHistory_chunk_name = 169;
-   static constexpr Int_t kMaxTHistory_ext_name = 169;
-   static constexpr Int_t kMaxTHistory_version = 169;
-   static constexpr Int_t kMaxTHistory_node = 169;
-   static constexpr Int_t kMaxTHistory_database = 169;
-   static constexpr Int_t kMaxTHistory_inst_num = 169;
-   static constexpr Int_t kMaxTHistory_timestamp = 169;
-   static constexpr Int_t kMaxTHistory_rcpid = 169;
-   static constexpr Int_t kMaxTHistory_chunkid = 169;
-   static constexpr Int_t kMaxTHistory_parents = 169;
-   static constexpr Int_t kMaxTHistory_tags = 169;
+   static constexpr Int_t kMaxTHistory = 171;
+   static constexpr Int_t kMaxTHistory_algo_name = 171;
+   static constexpr Int_t kMaxTHistory_algo_inst = 171;
+   static constexpr Int_t kMaxTHistory_chunk_name = 171;
+   static constexpr Int_t kMaxTHistory_ext_name = 171;
+   static constexpr Int_t kMaxTHistory_version = 171;
+   static constexpr Int_t kMaxTHistory_node = 171;
+   static constexpr Int_t kMaxTHistory_database = 171;
+   static constexpr Int_t kMaxTHistory_inst_num = 171;
+   static constexpr Int_t kMaxTHistory_timestamp = 171;
+   static constexpr Int_t kMaxTHistory_rcpid = 171;
+   static constexpr Int_t kMaxTHistory_chunkid = 171;
+   static constexpr Int_t kMaxTHistory_parents = 171;
+   static constexpr Int_t kMaxTHistory_tags = 171;
    static constexpr Int_t kMaxTMonteCarloEVNTChunk = 1;
    static constexpr Int_t kMaxTMonteCarloEVNTChunk_chunk_id = 1;
    static constexpr Int_t kMaxTMonteCarloEVNTChunk_name = 1;
@@ -147,6 +147,12 @@ public :
    static constexpr Int_t kMaxTBacklightExcessLiteChunk = 2;
    static constexpr Int_t kMaxTBacklightExcessLiteChunk_chunk_id = 2;
    static constexpr Int_t kMaxTBacklightExcessLiteChunk_name = 2;
+   static constexpr Int_t kMaxTReweightToCVChunk = 1;
+   static constexpr Int_t kMaxTReweightToCVChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTReweightToCVChunk_name = 1;
+   static constexpr Int_t kMaxTWeightDetailsChunk = 1;
+   static constexpr Int_t kMaxTWeightDetailsChunk_chunk_id = 1;
+   static constexpr Int_t kMaxTWeightDetailsChunk_name = 1;
 
    // Declaration of leaf types
    Int_t           THistory_;
@@ -1053,6 +1059,45 @@ public :
    Float_t         TBacklightExcessLiteChunk_data__bl[kMaxTBacklightExcessLiteChunk];   //[TBacklightExcessLiteChunk_]
    Int_t           TBacklightExcessLiteChunk_data__tracktype[kMaxTBacklightExcessLiteChunk];   //[TBacklightExcessLiteChunk_]
    string          TBacklightExcessLiteChunk_name_[kMaxTBacklightExcessLiteChunk];
+   Int_t           TReweightToCVChunk_;
+   Int_t           TReweightToCVChunk_chunk_id_[kMaxTReweightToCVChunk];   //[TReweightToCVChunk_]
+   UInt_t          TReweightToCVChunk_data__fUniqueID[kMaxTReweightToCVChunk];   //[TReweightToCVChunk_]
+   UInt_t          TReweightToCVChunk_data__fBits[kMaxTReweightToCVChunk];   //[TReweightToCVChunk_]
+   Float_t         TReweightToCVChunk_data__radius[kMaxTReweightToCVChunk][3];   //[TReweightToCVChunk_]
+   Float_t         TReweightToCVChunk_data__ppi0[kMaxTReweightToCVChunk];   //[TReweightToCVChunk_]
+   Int_t           TReweightToCVChunk_data__nuanceChannel[kMaxTReweightToCVChunk];   //[TReweightToCVChunk_]
+   Int_t           TReweightToCVChunk_data__nuType[kMaxTReweightToCVChunk];   //[TReweightToCVChunk_]
+   Float_t         TReweightToCVChunk_data__enu[kMaxTReweightToCVChunk];   //[TReweightToCVChunk_]
+   Int_t           TReweightToCVChunk_data__parentId[kMaxTReweightToCVChunk];   //[TReweightToCVChunk_]
+   Float_t         TReweightToCVChunk_data__pParent[kMaxTReweightToCVChunk][3];   //[TReweightToCVChunk_]
+   Float_t         TReweightToCVChunk_data__xsecweight[kMaxTReweightToCVChunk];   //[TReweightToCVChunk_]
+   Float_t         TReweightToCVChunk_data__fluxweight[kMaxTReweightToCVChunk];   //[TReweightToCVChunk_]
+   string          TReweightToCVChunk_name_[kMaxTReweightToCVChunk];
+   Int_t           TWeightDetailsChunk_;
+   Int_t           TWeightDetailsChunk_chunk_id_[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   UInt_t          TWeightDetailsChunk_data__fUniqueID[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   UInt_t          TWeightDetailsChunk_data__fBits[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   Float_t         TWeightDetailsChunk_data__resangle_wgt[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   Float_t         TWeightDetailsChunk_data__dirt_wgt[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   Float_t         TWeightDetailsChunk_data__pi0mom_wgt[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   Float_t         TWeightDetailsChunk_data__deltamom_wgt[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   Float_t         TWeightDetailsChunk_data__raddelta_wgt[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   Float_t         TWeightDetailsChunk_data__pi0coh_wgt[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   Float_t         TWeightDetailsChunk_data__pi0res_wgt[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   Float_t         TWeightDetailsChunk_data__nuance_wgt[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   Float_t         TWeightDetailsChunk_data__multpi0_wgt[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   Float_t         TWeightDetailsChunk_data__multdelta_wgt[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   Float_t         TWeightDetailsChunk_data__pipflux_wgt[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   Float_t         TWeightDetailsChunk_data__pimflux_wgt[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   Float_t         TWeightDetailsChunk_data__kpflux_wgt[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   Float_t         TWeightDetailsChunk_data__kmflux_wgt[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   Float_t         TWeightDetailsChunk_data__k0flux_wgt[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   Float_t         TWeightDetailsChunk_data__histo_wgt[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   Float_t         TWeightDetailsChunk_data__npip_wgt[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   Float_t         TWeightDetailsChunk_data__npim_wgt[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   Float_t         TWeightDetailsChunk_data__absorber_wgt[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   Float_t         TWeightDetailsChunk_data__totalweight[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
+   string          TWeightDetailsChunk_name_[kMaxTWeightDetailsChunk];
 
    // List of branches
    TBranch        *b_THistory_;   //!
@@ -1959,6 +2004,45 @@ public :
    TBranch        *b_TBacklightExcessLiteChunk_data__bl;   //!
    TBranch        *b_TBacklightExcessLiteChunk_data__tracktype;   //!
    TBranch        *b_TBacklightExcessLiteChunk_name_;   //!
+   TBranch        *b_TReweightToCVChunk_;   //!
+   TBranch        *b_TReweightToCVChunk_chunk_id_;   //!
+   TBranch        *b_TReweightToCVChunk_data__fUniqueID;   //!
+   TBranch        *b_TReweightToCVChunk_data__fBits;   //!
+   TBranch        *b_TReweightToCVChunk_data__radius;   //!
+   TBranch        *b_TReweightToCVChunk_data__ppi0;   //!
+   TBranch        *b_TReweightToCVChunk_data__nuanceChannel;   //!
+   TBranch        *b_TReweightToCVChunk_data__nuType;   //!
+   TBranch        *b_TReweightToCVChunk_data__enu;   //!
+   TBranch        *b_TReweightToCVChunk_data__parentId;   //!
+   TBranch        *b_TReweightToCVChunk_data__pParent;   //!
+   TBranch        *b_TReweightToCVChunk_data__xsecweight;   //!
+   TBranch        *b_TReweightToCVChunk_data__fluxweight;   //!
+   TBranch        *b_TReweightToCVChunk_name_;   //!
+   TBranch        *b_TWeightDetailsChunk_;   //!
+   TBranch        *b_TWeightDetailsChunk_chunk_id_;   //!
+   TBranch        *b_TWeightDetailsChunk_data__fUniqueID;   //!
+   TBranch        *b_TWeightDetailsChunk_data__fBits;   //!
+   TBranch        *b_TWeightDetailsChunk_data__resangle_wgt;   //!
+   TBranch        *b_TWeightDetailsChunk_data__dirt_wgt;   //!
+   TBranch        *b_TWeightDetailsChunk_data__pi0mom_wgt;   //!
+   TBranch        *b_TWeightDetailsChunk_data__deltamom_wgt;   //!
+   TBranch        *b_TWeightDetailsChunk_data__raddelta_wgt;   //!
+   TBranch        *b_TWeightDetailsChunk_data__pi0coh_wgt;   //!
+   TBranch        *b_TWeightDetailsChunk_data__pi0res_wgt;   //!
+   TBranch        *b_TWeightDetailsChunk_data__nuance_wgt;   //!
+   TBranch        *b_TWeightDetailsChunk_data__multpi0_wgt;   //!
+   TBranch        *b_TWeightDetailsChunk_data__multdelta_wgt;   //!
+   TBranch        *b_TWeightDetailsChunk_data__pipflux_wgt;   //!
+   TBranch        *b_TWeightDetailsChunk_data__pimflux_wgt;   //!
+   TBranch        *b_TWeightDetailsChunk_data__kpflux_wgt;   //!
+   TBranch        *b_TWeightDetailsChunk_data__kmflux_wgt;   //!
+   TBranch        *b_TWeightDetailsChunk_data__k0flux_wgt;   //!
+   TBranch        *b_TWeightDetailsChunk_data__histo_wgt;   //!
+   TBranch        *b_TWeightDetailsChunk_data__npip_wgt;   //!
+   TBranch        *b_TWeightDetailsChunk_data__npim_wgt;   //!
+   TBranch        *b_TWeightDetailsChunk_data__absorber_wgt;   //!
+   TBranch        *b_TWeightDetailsChunk_data__totalweight;   //!
+   TBranch        *b_TWeightDetailsChunk_name_;   //!
 
    newroot(TTree *tree=0);
    virtual ~newroot();
@@ -1970,9 +2054,8 @@ public :
    virtual Bool_t   Notify();
    virtual void     Show(Long64_t entry = -1);
 
-   static const Int_t kMaxTWeightDetailsChunk = 1;
+
    static const Int_t kMaxTMulMatWeightsChunk = 12;
-    Float_t         TWeightDetailsChunk_data__totalweight[kMaxTWeightDetailsChunk];   //[TWeightDetailsChunk_]
    Float_t        *TMulMatWeightsChunk_data__MultiWeight[kMaxTMulMatWeightsChunk];   //[TMulMatWeightsChunk_data__NumMultisims]
    std::vector< int > entry_marks;
    void GrabVars(std::vector<std::vector< std::vector< Float_t> > > & container, int hndex, int index, bool its_OM, bool its_Multisim);
@@ -1987,21 +2070,14 @@ newroot::newroot(TTree *tree) : fChain(0)
 {
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
-   std::vector< TString> file_lists = {
-	   "/scratch/klin/Systematics/06May/OpticalModel_CV.root"};
-
-   TString cur_file = file_lists[0]; 
-//TChain MultiFiles2 ("MiniBooNE");
-
    if (tree == 0) {
-		   TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject(cur_file);
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/scratch/condor-tmp/klin/systematics/prepareSystematicsFile/staged_Sep3_2020/may06_om_reweighted.root");
+      if (!f || !f->IsOpen()) {
+         f = new TFile("/scratch/condor-tmp/klin/systematics/prepareSystematicsFile/staged_Sep3_2020/may06_om_reweighted.root");
+      }
+      f->GetObject("MiniBooNE",tree);
 
-		   if (!f || !f->IsOpen()) {
-			   f = new TFile(cur_file);
-		   }
-		   f->GetObject("MiniBooNE",tree);
    }
-   std::cout<<"\nCHECK Total number: "<<tree->GetEntries()<<std::endl;
    Init(tree);
 }
 
@@ -3036,6 +3112,45 @@ void newroot::Init(TTree *tree)
    fChain->SetBranchAddress("TBacklightExcessLiteChunk.data_.bl", TBacklightExcessLiteChunk_data__bl, &b_TBacklightExcessLiteChunk_data__bl);
    fChain->SetBranchAddress("TBacklightExcessLiteChunk.data_.tracktype", TBacklightExcessLiteChunk_data__tracktype, &b_TBacklightExcessLiteChunk_data__tracktype);
    fChain->SetBranchAddress("TBacklightExcessLiteChunk.name_", TBacklightExcessLiteChunk_name_, &b_TBacklightExcessLiteChunk_name_);
+   fChain->SetBranchAddress("TReweightToCVChunk", &TReweightToCVChunk_, &b_TReweightToCVChunk_);
+   fChain->SetBranchAddress("TReweightToCVChunk.chunk_id_", TReweightToCVChunk_chunk_id_, &b_TReweightToCVChunk_chunk_id_);
+   fChain->SetBranchAddress("TReweightToCVChunk.data_.fUniqueID", TReweightToCVChunk_data__fUniqueID, &b_TReweightToCVChunk_data__fUniqueID);
+   fChain->SetBranchAddress("TReweightToCVChunk.data_.fBits", TReweightToCVChunk_data__fBits, &b_TReweightToCVChunk_data__fBits);
+   fChain->SetBranchAddress("TReweightToCVChunk.data_.radius[3]", TReweightToCVChunk_data__radius, &b_TReweightToCVChunk_data__radius);
+   fChain->SetBranchAddress("TReweightToCVChunk.data_.ppi0", TReweightToCVChunk_data__ppi0, &b_TReweightToCVChunk_data__ppi0);
+   fChain->SetBranchAddress("TReweightToCVChunk.data_.nuanceChannel", TReweightToCVChunk_data__nuanceChannel, &b_TReweightToCVChunk_data__nuanceChannel);
+   fChain->SetBranchAddress("TReweightToCVChunk.data_.nuType", TReweightToCVChunk_data__nuType, &b_TReweightToCVChunk_data__nuType);
+   fChain->SetBranchAddress("TReweightToCVChunk.data_.enu", TReweightToCVChunk_data__enu, &b_TReweightToCVChunk_data__enu);
+   fChain->SetBranchAddress("TReweightToCVChunk.data_.parentId", TReweightToCVChunk_data__parentId, &b_TReweightToCVChunk_data__parentId);
+   fChain->SetBranchAddress("TReweightToCVChunk.data_.pParent[3]", TReweightToCVChunk_data__pParent, &b_TReweightToCVChunk_data__pParent);
+   fChain->SetBranchAddress("TReweightToCVChunk.data_.xsecweight", TReweightToCVChunk_data__xsecweight, &b_TReweightToCVChunk_data__xsecweight);
+   fChain->SetBranchAddress("TReweightToCVChunk.data_.fluxweight", TReweightToCVChunk_data__fluxweight, &b_TReweightToCVChunk_data__fluxweight);
+   fChain->SetBranchAddress("TReweightToCVChunk.name_", TReweightToCVChunk_name_, &b_TReweightToCVChunk_name_);
+   fChain->SetBranchAddress("TWeightDetailsChunk", &TWeightDetailsChunk_, &b_TWeightDetailsChunk_);
+   fChain->SetBranchAddress("TWeightDetailsChunk.chunk_id_", TWeightDetailsChunk_chunk_id_, &b_TWeightDetailsChunk_chunk_id_);
+   fChain->SetBranchAddress("TWeightDetailsChunk.data_.fUniqueID", TWeightDetailsChunk_data__fUniqueID, &b_TWeightDetailsChunk_data__fUniqueID);
+   fChain->SetBranchAddress("TWeightDetailsChunk.data_.fBits", TWeightDetailsChunk_data__fBits, &b_TWeightDetailsChunk_data__fBits);
+   fChain->SetBranchAddress("TWeightDetailsChunk.data_.resangle_wgt", TWeightDetailsChunk_data__resangle_wgt, &b_TWeightDetailsChunk_data__resangle_wgt);
+   fChain->SetBranchAddress("TWeightDetailsChunk.data_.dirt_wgt", TWeightDetailsChunk_data__dirt_wgt, &b_TWeightDetailsChunk_data__dirt_wgt);
+   fChain->SetBranchAddress("TWeightDetailsChunk.data_.pi0mom_wgt", TWeightDetailsChunk_data__pi0mom_wgt, &b_TWeightDetailsChunk_data__pi0mom_wgt);
+   fChain->SetBranchAddress("TWeightDetailsChunk.data_.deltamom_wgt", TWeightDetailsChunk_data__deltamom_wgt, &b_TWeightDetailsChunk_data__deltamom_wgt);
+   fChain->SetBranchAddress("TWeightDetailsChunk.data_.raddelta_wgt", TWeightDetailsChunk_data__raddelta_wgt, &b_TWeightDetailsChunk_data__raddelta_wgt);
+   fChain->SetBranchAddress("TWeightDetailsChunk.data_.pi0coh_wgt", TWeightDetailsChunk_data__pi0coh_wgt, &b_TWeightDetailsChunk_data__pi0coh_wgt);
+   fChain->SetBranchAddress("TWeightDetailsChunk.data_.pi0res_wgt", TWeightDetailsChunk_data__pi0res_wgt, &b_TWeightDetailsChunk_data__pi0res_wgt);
+   fChain->SetBranchAddress("TWeightDetailsChunk.data_.nuance_wgt", TWeightDetailsChunk_data__nuance_wgt, &b_TWeightDetailsChunk_data__nuance_wgt);
+   fChain->SetBranchAddress("TWeightDetailsChunk.data_.multpi0_wgt", TWeightDetailsChunk_data__multpi0_wgt, &b_TWeightDetailsChunk_data__multpi0_wgt);
+   fChain->SetBranchAddress("TWeightDetailsChunk.data_.multdelta_wgt", TWeightDetailsChunk_data__multdelta_wgt, &b_TWeightDetailsChunk_data__multdelta_wgt);
+   fChain->SetBranchAddress("TWeightDetailsChunk.data_.pipflux_wgt", TWeightDetailsChunk_data__pipflux_wgt, &b_TWeightDetailsChunk_data__pipflux_wgt);
+   fChain->SetBranchAddress("TWeightDetailsChunk.data_.pimflux_wgt", TWeightDetailsChunk_data__pimflux_wgt, &b_TWeightDetailsChunk_data__pimflux_wgt);
+   fChain->SetBranchAddress("TWeightDetailsChunk.data_.kpflux_wgt", TWeightDetailsChunk_data__kpflux_wgt, &b_TWeightDetailsChunk_data__kpflux_wgt);
+   fChain->SetBranchAddress("TWeightDetailsChunk.data_.kmflux_wgt", TWeightDetailsChunk_data__kmflux_wgt, &b_TWeightDetailsChunk_data__kmflux_wgt);
+   fChain->SetBranchAddress("TWeightDetailsChunk.data_.k0flux_wgt", TWeightDetailsChunk_data__k0flux_wgt, &b_TWeightDetailsChunk_data__k0flux_wgt);
+   fChain->SetBranchAddress("TWeightDetailsChunk.data_.histo_wgt", TWeightDetailsChunk_data__histo_wgt, &b_TWeightDetailsChunk_data__histo_wgt);
+   fChain->SetBranchAddress("TWeightDetailsChunk.data_.npip_wgt", TWeightDetailsChunk_data__npip_wgt, &b_TWeightDetailsChunk_data__npip_wgt);
+   fChain->SetBranchAddress("TWeightDetailsChunk.data_.npim_wgt", TWeightDetailsChunk_data__npim_wgt, &b_TWeightDetailsChunk_data__npim_wgt);
+   fChain->SetBranchAddress("TWeightDetailsChunk.data_.absorber_wgt", TWeightDetailsChunk_data__absorber_wgt, &b_TWeightDetailsChunk_data__absorber_wgt);
+   fChain->SetBranchAddress("TWeightDetailsChunk.data_.totalweight", TWeightDetailsChunk_data__totalweight, &b_TWeightDetailsChunk_data__totalweight);
+   fChain->SetBranchAddress("TWeightDetailsChunk.name_", TWeightDetailsChunk_name_, &b_TWeightDetailsChunk_name_);
    Notify();
 }
 
