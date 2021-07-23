@@ -38,7 +38,7 @@ void newroot::Loop()
 		"may06OM_NueMCCV.root",//4
 		"may06OM_NueMC.root",
 	};
-	TString outputname = list[4];
+	TString outputname = list[1];
 
 
 	TString output = dir + outputname;
