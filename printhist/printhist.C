@@ -1,11 +1,3 @@
-#include "TCanvas.h"
-#include "TROOT.h"
-#include "TGraphErrors.h"
-#include "TF1.h"
-#include "TLegend.h"
-#include "TArrow.h"
-#include "TLatex.h"
-#include "TDirectory.h"
 #include <sys/stat.h>
 
 using namespace std;
