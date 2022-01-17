@@ -3,13 +3,20 @@ using namespace std;
 
 void printhist_v1(){
 	
-	char sbnfile_name[] = "./test_piplus.root";
-	char ubfile_name[] = "./test_piplus.root";
-	std::string hist_type = "piplus";
+//	char sbnfile_name[] = "/uboone/app/users/klin/ubflux_2_sbnflux/testing_directory/sbnmakehist_tool/test_kzero.root";
+	char sbnfile_name[] = "/uboone/app/users/klin/ubflux_2_sbnflux/testing_directory/sbnmakehist_tool/test_nucleonAll.root";
+	char ubfile_name[] = "/uboone/app/users/klin/ubflux_2_sbnflux/testing_directory/zkmakehist_tool/ubflux_ref_world_nonhadrons.root";
+	std::string hist_type = "nucleoninexsec";
 	double ymax=30000;
 
 	std::string sbn_hname = "numu_ms_"+hist_type+"_Flux/hEnumu_"+hist_type+"_Flux_ms_";
-	std::string ub_hname = "numu_ms_"+hist_type+"_Flux/hEnumu_"+hist_type+"_Flux_ms_";
+
+//Hadron
+	std::string special_name = hist_type+"_FluxUnisim";
+//	std::string special_name = "kzero_PrimaryHadronSanfordWang";
+	std::string ub_hname = "numu_ms_"+special_name+"/hEnumu_"+special_name+"_ms_";
+//NonHadron
+// std::string ub_hname = "numu_ms_"+hist_type+"_Flux/hEnumu_"+hist_type+"_Flux_ms_";
 	
 //std::cout<<std::to_string(0)<<std::endl;
 //exit(0);
@@ -25,7 +32,8 @@ void printhist_v1(){
 	mid_pd->Draw();//ub
 	bot_pd->Draw();//ratio
 
-	std::cout<<"Read "<<sbn_hname<<std::endl;
+	std::cout<<"Read sbn "<<sbn_hname<<std::endl;
+	std::cout<<"Read ub "<<ub_hname<<std::endl;
 
 	for(int index = 0; index < 1000; index++){//
 	//top
@@ -74,6 +82,6 @@ void printhist_v1(){
 	}
 
 
-	c1.SaveAs("./numu_"+hist_type+".png","png");
+	c1.SaveAs( ("./numu_"+hist_type+".pdf").c_str(),"pdf");
 	exit(0);	
 	}
