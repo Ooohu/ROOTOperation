@@ -11,8 +11,7 @@
 TFile *ReadText(bool get=false, Int_t print=1){
 	
 	double entry;
-	double run;
-	double subrun;
+	std::vector<double> location(2);
 
 	TString filename = "Reading_Output.root";
 	TString dir = gSystem->UnixPathName(gInterpreter->GetCurrentMacroName());
@@ -50,15 +49,14 @@ TFile *ReadText(bool get=false, Int_t print=1){
 
 	TTree* t = new TTree("TreeName","Descriptions just for reading");
 	t->Branch("entry",&entry,"entry/D");
-	t->Branch("run",&run,"run/D");
-	t->Branch("subrun",&subrun,"subrun/D");
+	t->Branch("location",&location);
 
 	char line[2000];
 	while (fgets(line,2000,fp)){//%lf for double!
 		sscanf(&line[0],"%lf %lf %lf"
 				,&entry
-				,&run
-				,&subrun);
+				,&location[0]
+				,&location[1]);
 
 		t->Fill();
 	}
