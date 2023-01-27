@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void printhist(){
+void Hist2Hist(){
 	
 	char file_name[] = "../SampleRoot/test_kminus.root";
 	char hist_name[] = "numu_ms_kminus_Flux/hEnumu_kminus_Flux_ms_995";

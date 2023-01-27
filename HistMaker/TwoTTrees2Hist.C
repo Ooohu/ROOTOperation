@@ -10,7 +10,7 @@
 
 using namespace std;
 
-void TwoTTree2Hist(){
+void TwoTTrees2Hist(){
 
 //Load files
 	TFile* Prun1 = TFile::Open("/uboone/data/users/kmistry/work/MCC9/searchingfornues/ntuple_files_v7/neutrinoselection_filt_run1_overlay.root");
