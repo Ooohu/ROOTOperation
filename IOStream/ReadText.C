@@ -17,7 +17,7 @@ TFile *ReadText(bool get=false, Int_t print=1){
 	TString dir = gSystem->UnixPathName(gInterpreter->GetCurrentMacroName());
 	dir.ReplaceAll("ReadText.C","");
 	dir.ReplaceAll("/./","/");
-	FILE *fp = fopen(Form("%sevents.dat",dir.Data()),"r");//THIS FILE.dat
+	FILE *fp = fopen(Form("%s/testInput/events.dat",dir.Data()),"r");//THIS FILE.dat
 
 	TFile *hfile = 0;
 
